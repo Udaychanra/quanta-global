@@ -6,16 +6,20 @@ import IndustriesSection from '../components/IndustriesSection';
 import WhyUsSection from '../components/WhyUsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
+import VideoHeroSection from '../components/VideoHeroSection';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
       <HeroSection />
+      <VideoHeroSection />
       <AboutSection />
       <ServicesSection />
       <IndustriesSection />
-      <WhyUsSection />
+      {/* <WhyUsSection /> */}
+      <TestimonialsSection />
       <ContactSection />
       <Footer />
     </div>

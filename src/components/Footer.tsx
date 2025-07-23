@@ -1,120 +1,78 @@
-import { Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react';
+import { Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <footer className="bg-primary text-white">
-      <div className="section-container py-16">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/lovable-uploads/e13eef68-a947-49e5-b75b-c582a24bf7c5.png" 
-                alt="QUANTA Global Logo" 
-                className="h-8 w-auto"
-              />
-              <h3 className="text-2xl font-bold">QuantaGlobal</h3>
-            </div>
-            <p className="text-white/80 mb-6 leading-relaxed">
-              Empowering digital transformation with expertise. We help organizations streamline 
-              operations, reduce costs, and accelerate innovation through cutting-edge technology 
-              solutions and expert manpower.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              <li>
-                <button 
-                  onClick={() => scrollToSection('home')}
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  Home
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('about')}
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  About Us
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('industries')}
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  Industries
-                </button>
-              </li>
+    <footer className="w-full">
+      {/* Main Footer Section */}
+      <div className="bg-black text-white px-8 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12">
+          {/* Left: Let's connect and first column */}
+          <div className="flex-1 min-w-[220px]">
+            <h2 className="text-5xl font-light mb-12">Let's connect</h2>
+            <ul className="space-y-6 text-2xl font-light">
+              <li><a href="#contact" className="hover:underline">Contact us</a></li>
+              <li><a href="#" className="hover:underline">Submit RFP</a></li>
+              <li><a href="#" className="hover:underline">View locations</a></li>
+              <li><a href="#about" className="hover:underline">About QuantaGlobal</a></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-white/60" />
-                <span className="text-white/80 text-sm">contact@quantaglobal.com</span>
+          {/* Middle Columns */}
+          <div className="flex-[2] grid grid-cols-2 md:grid-cols-3 gap-8 mt-12 lg:mt-0">
+            <ul className="space-y-4 text-lg font-light">
+              <li><a href="#services" className="hover:underline">Services</a></li>
+              <li><a href="#industries" className="hover:underline">Industries</a></li>
+              <li><a href="#" className="hover:underline">Alliances</a></li>
+            </ul>
+            <ul className="space-y-4 text-lg font-light">
+              <li><a href="#" className="hover:underline">Client stories</a></li>
+              <li><a href="#" className="hover:underline">Dbriefs</a></li>
+              <li><a href="#" className="hover:underline">Quanta Insights</a></li>
+              <li><a href="#" className="hover:underline">Newsroom</a></li>
+            </ul>
+            <ul className="space-y-4 text-lg font-light">
+              <li><a href="#careers" className="hover:underline">Careers</a></li>
+              <li><a href="#" className="hover:underline">Job Search</a></li>
+              <li><a href="#" className="hover:underline">Alumni</a></li>
+            </ul>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex flex-col items-end justify-between min-w-[180px] mt-12 lg:mt-0">
+            <div></div>
+            <div className="flex flex-col items-end">
+              <span className="text-sm text-white/80 mb-2">Follow us</span>
+              <div className="flex space-x-4 text-white text-2xl">
+                {/* Replace with actual icons as needed */}
+                <a href="#" aria-label="X" className="hover:text-blue-400"><span style={{fontFamily:'monospace'}}>X</span></a>
+                <a href="#" aria-label="LinkedIn" className="hover:text-blue-400"><Linkedin className="h-6 w-6" /></a>
+                <a href="#" aria-label="YouTube" className="hover:text-blue-400"><span className="inline-block align-middle"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="currentColor" className="text-white"/><path d="M10 15.5V8.5L16 12L10 15.5Z" fill="#000"/></svg></span></a>
+                <a href="#" aria-label="Instagram" className="hover:text-blue-400"><span className="inline-block align-middle"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="currentColor" className="text-white"/><circle cx="12" cy="12" r="5" stroke="#000" strokeWidth="2"/><circle cx="17" cy="7" r="1" fill="#000"/></svg></span></a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-white/60" />
-                <span className="text-white/80 text-sm">+91 12345 67890</span>
-              </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-white/60 mt-1" />
-                <span className="text-white/80 text-sm">
-                  123 Business District<br />
-                  Tech City, TC 12345<br />
-                  India
-                </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/60 text-sm">
-            © 2024 QuantaGlobal. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-white/60 hover:text-white text-sm transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-white/60 hover:text-white text-sm transition-colors">
-              Terms of Service
-            </a>
+      {/* Legal Section */}
+      {/* <div className="bg-white text-black text-sm border-t border-gray-200 px-4">
+        <div className="max-w-7xl mx-auto py-6">
+          <div className="flex flex-wrap gap-x-8 gap-y-2 mb-4 font-semibold">
+            <a href="#" className="hover:underline">Terms of Use</a>
+            <a href="#" className="hover:underline">Privacy</a>
+            <a href="#" className="hover:underline">Data Privacy Framework</a>
+            <a href="#" className="hover:underline">Cookie Notice</a>
+            <a href="#" className="hover:underline">Cookie Settings</a>
+            <a href="#" className="hover:underline">Legal information for Job Seekers</a>
+            <a href="#" className="hover:underline">Labor Condition Applications</a>
+            <a href="#" className="hover:underline">Do Not Sell or Share My Personal Information</a>
+          </div>
+          <div className="mb-2">© 2025. See <a href="#" className="text-blue-700 underline">Terms of Use</a> for more information.</div>
+          <div className="text-xs text-gray-700 max-w-5xl">
+            QuantaGlobal refers to one or more independent technology consulting entities. Each entity is legally separate and independent. QuantaGlobal does not provide services to clients in all jurisdictions. Certain services may not be available to attest clients under the rules and regulations of public accounting. Please see <a href="#" className="text-blue-700 underline">our about page</a> to learn more about our global network.
           </div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };

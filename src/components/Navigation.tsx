@@ -1,23 +1,51 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, Globe, Phone, User } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
+  const navigationItems = [
+    {
+      label: 'Who we are',
+      items: [
+        { label: 'About Us', action: () => (window.location.href = '/about') },
+        { label: 'Our Team', action: () => (window.location.href = '/team') },
+        // { label: 'Leadership', action: () => (window.location.href = '/leadership') },
+      ]
+    },
+    {
+      label: 'What we do',
+      items: [
+        { label: 'Services', action: () => (window.location.href = '/services') },
+        { label: 'Solutions', action: () => (window.location.href = '/solutions') },
+        { label: 'Products', action: () => (window.location.href = '/products') },
+      ]
+    },
+    // {
+    //   label: 'Our Thinking',
+    //   items: [
+    //     { label: 'Insights', action: () => (window.location.href = '/insights') },
+    //     { label: 'Research', action: () => (window.location.href = '/research') },
+    //     { label: 'Publications', action: () => (window.location.href = '/publications') },
+    //   ]
+    // },
+    {
+      label: 'Careers',
+      items: [
+        { label: 'Job Opportunities', action: () => (window.location.href = '/careers') },
+        { label: 'Culture', action: () => (window.location.href = '/culture') },
+        { label: 'Benefits', action: () => (window.location.href = '/benefits') },
+      ]
     }
-  };
+  ];
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-      <div className="section-container">
+    <nav className="top-0 w-full bg-black text-white z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div
@@ -34,60 +62,68 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/e13eef68-a947-49e5-b75b-c582a24bf7c5.png" 
               alt="QUANTA Global Logo" 
-              className="h-8 w-auto"
+              className="h-16 w-auto"
             />
-            <span className="text-2xl font-bold text-gradient">QuantaGlobal</span>
+            <span className="text-2xl font-bold text-white">QuantaGlobal</span>
+           
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Home
+            {navigationItems.map((item) => (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
+                style={{ display: 'inline-block' }}
+              >
+                <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+                  {item.label}
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
+                {/* Dropdown Menu */}
+                {activeDropdown === item.label && (
+                  <div className="absolute top-full left-0 mt-1 w-48 bg-white text-black rounded-md shadow-lg py-2 z-50">
+                    {item.items.map((subItem) => (
+                      <button
+                        key={subItem.label}
+                        onClick={subItem.action}
+                        className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
+                      >
+                        {subItem.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Utility Icons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button className="text-white hover:text-gray-300 transition-colors">
+              <Search className="h-5 w-5" />
             </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              About
+            <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+              <Globe className="h-5 w-5 mr-1" />
+              <span className="text-sm">US - EN</span>
+              <ChevronDown className="ml-1 h-4 w-4" />
             </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Services
+            <button className="text-white hover:text-gray-300 transition-colors relative">
+              <Phone className="h-5 w-5" />
+              <div className="absolute -top-1 -right-1">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              </div>
             </button>
-            <a
-              href="/products"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Products
-            </a>
-            <button
-              onClick={() => scrollToSection('industries')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Industries
+            <button className="text-white hover:text-gray-300 transition-colors">
+              <User className="h-5 w-5" />
             </button>
-            <button
-              onClick={() => scrollToSection('why-us')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Why Us
-            </button>
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              className="btn-corporate"
-            >
-              Contact
-            </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={toggleMenu}>
+            <Button variant="ghost" size="sm" onClick={toggleMenu} className="text-white">
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -96,49 +132,43 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
-              <button
-                onClick={() => scrollToSection('home')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors w-full text-left"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors w-full text-left"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection('services')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors w-full text-left"
-              >
-                Services
-              </button>
-              <a
-                href="/products"
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors w-full text-left"
-              >
-                Products
-              </a>
-              <button
-                onClick={() => scrollToSection('industries')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors w-full text-left"
-              >
-                Industries
-              </button>
-              <button
-                onClick={() => scrollToSection('why-us')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors w-full text-left"
-              >
-                Why Us
-              </button>
-              <Button 
-                onClick={() => scrollToSection('contact')}
-                className="btn-corporate w-full mt-4"
-              >
-                Contact
-              </Button>
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-black border-t border-gray-700">
+              {navigationItems.map((item) => (
+                <div key={item.label} className="space-y-1">
+                  <div className="px-3 py-2 text-white font-medium">
+                    {item.label}
+                  </div>
+                  {item.items.map((subItem) => (
+                    <button
+                      key={subItem.label}
+                      onClick={subItem.action}
+                      className="block px-6 py-2 text-gray-300 hover:text-white transition-colors w-full text-left text-sm"
+                    >
+                      {subItem.label}
+                    </button>
+                  ))}
+                </div>
+              ))}
+              
+              {/* Mobile Utility Icons */}
+              <div className="flex items-center justify-center space-x-4 pt-4 border-t border-gray-700">
+                <button className="text-white hover:text-gray-300 transition-colors">
+                  <Search className="h-5 w-5" />
+                </button>
+                <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+                  <Globe className="h-5 w-5 mr-1" />
+                  <span className="text-sm">US - EN</span>
+                </button>
+                <button className="text-white hover:text-gray-300 transition-colors relative">
+                  <Phone className="h-5 w-5" />
+                  <div className="absolute -top-1 -right-1">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  </div>
+                </button>
+                <button className="text-white hover:text-gray-300 transition-colors">
+                  <User className="h-5 w-5" />
+                </button>
+              </div>
             </div>
           </div>
         )}

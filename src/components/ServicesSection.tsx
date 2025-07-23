@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Code, Users, Wrench, Cloud, Zap, Link } from 'lucide-react';
 
 const ServicesSection = () => {
@@ -40,43 +41,75 @@ const ServicesSection = () => {
     }
   ];
 
+  const [current, setCurrent] = useState(0);
+  const total = services.length;
+
+  const goNext = () => setCurrent((prev) => (prev + 1) % total);
+  const goPrev = () => setCurrent((prev) => (prev - 1 + total) % total);
+
   return (
-    <section id="services" className="section-padding">
+    <section id="services" className="section-padding bg-[#f5f6f7]">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">Our Services</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Services</h2>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Comprehensive technology solutions designed to drive your business forward with scalability, 
             reliability, and enterprise-grade quality.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="card-corporate hover:shadow-lg transition-shadow group">
-              <div className="flex items-center mb-4">
-                <div className="bg-primary/10 rounded-lg p-3 mr-4">
-                  <service.icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-              </div>
-              
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              
-              <div className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-sm">
-                    <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                    <span className="text-muted-foreground">{feature}</span>
+        <div className="flex flex-col gap-12 items-center">
+          <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col md:flex-row w-full max-w-5xl mx-auto overflow-hidden">
+            {/* Left: Text */}
+            <div className="flex-1 p-8 flex flex-col justify-center">
+              <h3 className="text-3xl font-light text-gray-900 mb-6 leading-tight">{services[current].title}</h3>
+              <p className="text-base text-gray-700 mb-6 leading-relaxed">{services[current].description}</p>
+              <div className="mb-6">
+                {services[current].features.map((feature, featureIndex) => (
+                  <div key={featureIndex} className="flex items-center text-sm mb-2">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                    <span className="text-gray-600">{feature}</span>
                   </div>
                 ))}
               </div>
+              <button className="bg-blue-600 text-white font-semibold rounded-full px-6 py-2 mt-2 hover:bg-blue-700 transition-colors w-fit">
+                Read the full story
+              </button>
             </div>
-          ))}
+            {/* Right: Image */}
+            <div className="flex-1 flex items-center justify-center bg-gray-100 min-h-[320px]">
+              <img
+                src="/about.webp"
+                alt={services[current].title}
+                className="object-cover w-full h-full max-h-[340px] rounded-none md:rounded-r-2xl"
+                style={{ maxWidth: 420 }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Progress bar and navigation */}
+        <div className="flex items-center justify-center gap-4 mt-12">
+          <button
+            onClick={goPrev}
+            className="rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors"
+            aria-label="Previous"
+          >
+            {'<'}
+          </button>
+          <div className="flex-1 max-w-2xl h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-1 bg-green-400 rounded-full" style={{ width: `${((current + 1) / total) * 100}%` }}></div>
+          </div>
+          <button
+            onClick={goNext}
+            className="rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors"
+            aria-label="Next"
+          >
+            {'>'}
+          </button>
+          <span className="text-gray-500 text-sm ml-4">
+            {current + 1}/{total}
+          </span>
         </div>
       </div>
     </section>
