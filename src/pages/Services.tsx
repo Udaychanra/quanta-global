@@ -1,21 +1,21 @@
 import React from 'react'
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import AboutSection from '@/components/AboutSection';
-import WhyUsSection from '@/components/WhyUsSection';
+import ServicesSection from '@/components/ServicesSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 
-const AboutUs = () => {
+const Services = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       <main className="section-container py-16">
-        <AboutSection />
+        <ServicesSection />
         <div className="my-16" />
-        <WhyUsSection />
+        <TestimonialsSection />
       </main>
       <Footer />
     </div>
   );
 }
 
-export default AboutUs
+export default Services

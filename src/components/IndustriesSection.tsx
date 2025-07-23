@@ -3,12 +3,12 @@ import { Building2, Heart, Factory, Zap, ShoppingCart, Shield } from 'lucide-rea
 
 // Optionally, you can replace these with image URLs for each industry
 const industryImages = [
-  '/industry1.jpg', // BFSI
-  '/industry2.jpg', // Healthcare
-  '/industry3.jpg', // Manufacturing
-  '/industry4.jpg', // Energy & Utilities
-  '/industry5.jpg', // Retail
-  '/industry6.jpg', // Public Sector
+  '/quantaabout.png', // BFSI
+  '/quantaabout.png', // Healthcare
+  '/quantaabout.png', // Manufacturing
+  '/quantaabout.png', // Energy & Utilities
+  '/quantaabout.png', // Retail
+  '/quantaabout.png', // Public Sector
 ];
 
 const statsData = [
@@ -139,7 +139,7 @@ const IndustriesSection = () => {
               <div className="mt-auto pt-2">
                 <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">
                   {/* Use about.webp for all industry images */}
-                  <img src="/about.webp" alt={industry.title} className="object-cover w-full h-full" />
+                  <img src="/quantaabout.png" alt={industry.title} className="object-cover w-full h-full" />
                 </div>
               </div>
             </div>

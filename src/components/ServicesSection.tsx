@@ -48,7 +48,7 @@ const ServicesSection = () => {
   const goPrev = () => setCurrent((prev) => (prev - 1 + total) % total);
 
   return (
-    <section id="services" className="section-padding bg-[#f5f6f7]">
+    <section id="services" className="section-padding bg-white">
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Services</h2>
@@ -79,7 +79,7 @@ const ServicesSection = () => {
             {/* Right: Image */}
             <div className="flex-1 flex items-center justify-center bg-gray-100 min-h-[320px]">
               <img
-                src="/about.webp"
+                src="/quantaabout.png"
                 alt={services[current].title}
                 className="object-cover w-full h-full max-h-[340px] rounded-none md:rounded-r-2xl"
                 style={{ maxWidth: 420 }}

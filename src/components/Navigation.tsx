@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Menu, X, ChevronDown, Search, Globe, Phone, User } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -6,8 +6,12 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  // Timer ref for delayed dropdown close
+  const dropdownCloseTimer = useRef<NodeJS.Timeout | null>(null);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Remove Careers from dropdown navigationItems, handle as a single nav link
   const navigationItems = [
     {
       label: 'Who we are',
@@ -33,15 +37,25 @@ const Navigation = () => {
     //     { label: 'Publications', action: () => (window.location.href = '/publications') },
     //   ]
     // },
-    {
-      label: 'Careers',
-      items: [
-        { label: 'Job Opportunities', action: () => (window.location.href = '/careers') },
-        { label: 'Culture', action: () => (window.location.href = '/culture') },
-        { label: 'Benefits', action: () => (window.location.href = '/benefits') },
-      ]
-    }
   ];
+
+  // Handlers for dropdown with 5s delay on close
+  const handleDropdownMouseEnter = (label: string) => {
+    if (dropdownCloseTimer.current) {
+      clearTimeout(dropdownCloseTimer.current);
+      dropdownCloseTimer.current = null;
+    }
+    setActiveDropdown(label);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    if (dropdownCloseTimer.current) {
+      clearTimeout(dropdownCloseTimer.current);
+    }
+    dropdownCloseTimer.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 3000);
+  };
 
   return (
     <nav className="top-0 w-full bg-black text-white z-50">
@@ -74,8 +88,8 @@ const Navigation = () => {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() => handleDropdownMouseEnter(item.label)}
+                onMouseLeave={handleDropdownMouseLeave}
                 style={{ display: 'inline-block' }}
               >
                 <button className="flex items-center text-white hover:text-gray-300 transition-colors">
@@ -84,7 +98,11 @@ const Navigation = () => {
                 </button>
                 {/* Dropdown Menu */}
                 {activeDropdown === item.label && (
-                  <div className="absolute top-full left-0 mt-1 w-48 bg-white text-black rounded-md shadow-lg py-2 z-50">
+                  <div
+                    className="absolute top-full left-0 mt-1 w-48 bg-white text-black rounded-md shadow-lg py-2 z-50"
+                    onMouseEnter={() => handleDropdownMouseEnter(item.label)}
+                    onMouseLeave={handleDropdownMouseLeave}
+                  >
                     {item.items.map((subItem) => (
                       <button
                         key={subItem.label}
@@ -98,27 +116,37 @@ const Navigation = () => {
                 )}
               </div>
             ))}
+            {/* Careers as a single nav link */}
+            <button
+              className="flex items-center text-white hover:text-gray-300 transition-colors"
+              onClick={() => (window.location.href = '/careers')}
+            >
+              Careers
+            </button>
           </div>
 
           {/* Utility Icons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-white hover:text-gray-300 transition-colors">
+            {/* <button className="text-white hover:text-gray-300 transition-colors">
               <Search className="h-5 w-5" />
             </button>
             <button className="flex items-center text-white hover:text-gray-300 transition-colors">
               <Globe className="h-5 w-5 mr-1" />
               <span className="text-sm">US - EN</span>
               <ChevronDown className="ml-1 h-4 w-4" />
-            </button>
-            <button className="text-white hover:text-gray-300 transition-colors relative">
+            </button> */}
+            <button
+              className="text-white hover:text-gray-300 transition-colors relative"
+              onClick={() => (window.location.href = '/contact')}
+            >
               <Phone className="h-5 w-5" />
               <div className="absolute -top-1 -right-1">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+               
               </div>
             </button>
-            <button className="text-white hover:text-gray-300 transition-colors">
+            {/* <button className="text-white hover:text-gray-300 transition-colors">
               <User className="h-5 w-5" />
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile menu button */}
@@ -149,25 +177,35 @@ const Navigation = () => {
                   ))}
                 </div>
               ))}
+              {/* Careers as a single nav link in mobile */}
+              <button
+                className="block w-full px-3 py-2 text-white font-medium text-left hover:text-gray-300 transition-colors"
+                onClick={() => (window.location.href = '/careers')}
+              >
+                Careers
+              </button>
               
               {/* Mobile Utility Icons */}
               <div className="flex items-center justify-center space-x-4 pt-4 border-t border-gray-700">
-                <button className="text-white hover:text-gray-300 transition-colors">
+                {/* <button className="text-white hover:text-gray-300 transition-colors">
                   <Search className="h-5 w-5" />
                 </button>
                 <button className="flex items-center text-white hover:text-gray-300 transition-colors">
                   <Globe className="h-5 w-5 mr-1" />
                   <span className="text-sm">US - EN</span>
-                </button>
-                <button className="text-white hover:text-gray-300 transition-colors relative">
+                </button> */}
+                <button
+                  className="text-white hover:text-gray-300 transition-colors relative"
+                  onClick={() => (window.location.href = '/contact')}
+                >
                   <Phone className="h-5 w-5" />
                   <div className="absolute -top-1 -right-1">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    {/* <div className="w-3 h-3 bg-red-500 rounded-full"></div> */}
                   </div>
                 </button>
-                <button className="text-white hover:text-gray-300 transition-colors">
+                {/* <button className="text-white hover:text-gray-300 transition-colors">
                   <User className="h-5 w-5" />
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

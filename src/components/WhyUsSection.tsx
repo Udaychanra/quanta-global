@@ -1,4 +1,5 @@
 import { CheckCircle, Clock, Globe, TrendingUp, Shield, Star } from 'lucide-react';
+import TestimonialsSection from './TestimonialsSection';
 
 const WhyUsSection = () => {
   const advantages = [
@@ -35,7 +36,7 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section id="why-us" className="section-padding bg-[#f5f6f7]">
+    <section id="why-us" className="section-padding bg-white">
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Why Choose QuantaGlobal</h2>
@@ -66,7 +67,7 @@ const WhyUsSection = () => {
         </div>
 
         {/* Client Testimonial */}
-        <div className="bg-white rounded-xl shadow-md p-8 mb-16">
+        {/* <div className="bg-white rounded-xl shadow-md p-8 mb-16">
           <div className="text-center">
             <div className="mb-6">
               <div className="flex justify-center mb-4">
@@ -84,7 +85,9 @@ const WhyUsSection = () => {
               <p className="text-sm text-gray-500">CTO, Global Manufacturing Corp</p>
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <TestimonialsSection />
 
         {/* Call to Action */}
         <div className="text-center mt-16">
@@ -95,8 +98,7 @@ const WhyUsSection = () => {
           </p>
           <button 
             onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
+              window.location.href = '/contact';
             }}
             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
           >
