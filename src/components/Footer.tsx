@@ -10,30 +10,29 @@ const Footer = () => {
           <div className="flex-1 min-w-[220px]">
             <h2 className="text-5xl font-light mb-12">Let's connect</h2>
             <ul className="space-y-6 text-2xl font-light">
-              <li><a href="#contact" className="hover:underline">Contact us</a></li>
-              <li><a href="#" className="hover:underline">Submit RFP</a></li>
-              <li><a href="#" className="hover:underline">View locations</a></li>
-              <li><a href="#about" className="hover:underline">About QuantaGlobal</a></li>
+              <li><a href="/contact" className="hover:underline">Contact us</a></li>
+              <li><a href="/about" className="hover:underline">About QuantaGlobal</a></li>
+              <li><a href="/team" className="hover:underline">Our Team</a></li>
+              <li><a href="/careers" className="hover:underline">Careers</a></li>
             </ul>
           </div>
 
           {/* Middle Columns */}
           <div className="flex-[2] grid grid-cols-2 md:grid-cols-3 gap-8 mt-12 lg:mt-0">
             <ul className="space-y-4 text-lg font-light">
-              <li><a href="#services" className="hover:underline">Services</a></li>
-              <li><a href="#industries" className="hover:underline">Industries</a></li>
-              <li><a href="#" className="hover:underline">Alliances</a></li>
+              <li><a href="/services" className="hover:underline">Services</a></li>
+              <li><a href="/solutions" className="hover:underline">Solutions</a></li>
+              <li><a href="/products" className="hover:underline">Products</a></li>
             </ul>
             <ul className="space-y-4 text-lg font-light">
-              <li><a href="#" className="hover:underline">Client stories</a></li>
-              <li><a href="#" className="hover:underline">Dbriefs</a></li>
-              <li><a href="#" className="hover:underline">Quanta Insights</a></li>
-              <li><a href="#" className="hover:underline">Newsroom</a></li>
+              <li><a href="/about" className="hover:underline">About Us</a></li>
+              <li><a href="/team" className="hover:underline">Team</a></li>
+              <li><a href="/careers" className="hover:underline">Careers</a></li>
             </ul>
             <ul className="space-y-4 text-lg font-light">
-              <li><a href="#careers" className="hover:underline">Careers</a></li>
-              <li><a href="#" className="hover:underline">Job Search</a></li>
-              <li><a href="#" className="hover:underline">Alumni</a></li>
+              <li><a href="/contact" className="hover:underline">Contact</a></li>
+              <li><a href="/solutions" className="hover:underline">Solutions</a></li>
+              <li><a href="/products" className="hover:underline">Products</a></li>
             </ul>
           </div>
 
@@ -55,7 +54,7 @@ const Footer = () => {
         </div>
 
       {/* Legal Section */}
-      {/* <div className="bg-white text-black text-sm border-t border-gray-200 px-4">
+      <div className="bg-white text-black text-sm border-t border-gray-200 px-4">
         <div className="max-w-7xl mx-auto py-6">
           <div className="flex flex-wrap gap-x-8 gap-y-2 mb-4 font-semibold">
             <a href="#" className="hover:underline">Terms of Use</a>
@@ -67,12 +66,12 @@ const Footer = () => {
             <a href="#" className="hover:underline">Labor Condition Applications</a>
             <a href="#" className="hover:underline">Do Not Sell or Share My Personal Information</a>
           </div>
-          <div className="mb-2">© 2025. See <a href="#" className="text-blue-700 underline">Terms of Use</a> for more information.</div>
+          <div className="mb-2">© 2025 QuantaGlobal. See <a href="#" className="text-blue-700 underline">Terms of Use</a> for more information.</div>
           <div className="text-xs text-gray-700 max-w-5xl">
-            QuantaGlobal refers to one or more independent technology consulting entities. Each entity is legally separate and independent. QuantaGlobal does not provide services to clients in all jurisdictions. Certain services may not be available to attest clients under the rules and regulations of public accounting. Please see <a href="#" className="text-blue-700 underline">our about page</a> to learn more about our global network.
+            QuantaGlobal refers to one or more independent technology consulting entities. Each entity is legally separate and independent. QuantaGlobal does not provide services to clients in all jurisdictions. Certain services may not be available to attest clients under the rules and regulations of public accounting. Please see <a href="/about" className="text-blue-700 underline">our about page</a> to learn more about our global network.
           </div>
         </div>
-      </div> */}
+      </div>
     </footer>
   );
 };

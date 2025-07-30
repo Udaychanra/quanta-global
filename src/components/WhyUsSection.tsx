@@ -1,37 +1,63 @@
-import { CheckCircle, Clock, Globe, TrendingUp, Shield, Star } from 'lucide-react';
+import { CheckCircle, Clock, Globe, TrendingUp, Shield, Star, Users, Zap, Target, HeadphonesIcon, ArrowDown } from 'lucide-react';
 import TestimonialsSection from './TestimonialsSection';
 
 const WhyUsSection = () => {
   const advantages = [
     {
-      icon: Clock,
-      title: 'Agile Delivery',
-      description: 'Rapid deployment with iterative development methodologies ensuring faster time-to-market.'
+      number: '01',
+      icon: Users,
+      title: 'Expertise and Experience',
+      description: 'With 20+ years in enterprise software development, our expert team delivers tailored solutions across various industries.',
+      color: 'from-purple-500 to-purple-600'
     },
     {
-      icon: Globe,
-      title: 'Global-Local Approach',
-      description: 'International expertise combined with local market understanding and cultural sensitivity.'
+      number: '02',
+      icon: Target,
+      title: 'Client-Centric Approach',
+      description: 'Our solutions are customized to align with your business goals, ensuring satisfaction and success.',
+      color: 'from-pink-500 to-pink-600'
     },
     {
-      icon: TrendingUp,
-      title: 'Flexible Engagement Models',
-      description: 'Tailored engagement models including fixed-price, time & material, and dedicated teams.'
-    },
-    {
-      icon: Shield,
-      title: 'Security & Compliance',
-      description: 'Enterprise-grade security practices with industry compliance and data protection standards.'
-    },
-    {
+      number: '03',
       icon: Star,
       title: 'Proven Track Record',
-      description: 'Successful project delivery across industries with measurable business outcomes.'
+      description: 'We\'ve successfully delivered 100+ projects, consistently exceeding client expectations with on-time, on-budget solutions.',
+      color: 'from-orange-500 to-orange-600'
     },
     {
-      icon: CheckCircle,
-      title: '24/7 Support',
-      description: 'Round-the-clock support and maintenance ensuring maximum uptime and performance.'
+      number: '04',
+      icon: HeadphonesIcon,
+      title: 'Dedicated Support',
+      description: 'We provide ongoing support and maintenance to ensure your software\'s smooth and effective operation.',
+      color: 'from-yellow-500 to-yellow-600'
+    },
+    {
+      number: '05',
+      icon: Zap,
+      title: 'Innovative Solutions',
+      description: 'We use the latest technologies to drive digital transformation, enhance efficiency, and provide a competitive edge.',
+      color: 'from-teal-500 to-teal-600'
+    },
+    {
+      number: '06',
+      icon: Globe,
+      title: 'Comprehensive Services',
+      description: 'From strategy to implementation and support, we offer end-to-end services for seamless software integration and performance.',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      number: '07',
+      icon: Shield,
+      title: 'Commitment to Quality',
+      description: 'Our rigorous quality assurance guarantees top performance, security, and usability in every solution.',
+      color: 'from-green-500 to-green-600'
+    },
+    {
+      number: '08',
+      icon: TrendingUp,
+      title: 'Strategic Partnerships',
+      description: 'We partner with leading technology providers to offer the best tools and resources for superior solutions.',
+      color: 'from-indigo-500 to-indigo-600'
     }
   ];
 
@@ -39,29 +65,28 @@ const WhyUsSection = () => {
     <section id="why-us" className="section-padding bg-white">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Why Choose QuantaGlobal</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Why Choose Us?</h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Our commitment to excellence, innovation, and client success sets us apart in the competitive 
-            technology consulting landscape.
+            At QuantaGlobal, We empower enterprises with innovative software solutions to drive growth, efficiency, and success.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
           {advantages.map((advantage, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex flex-col h-full border-l-4 border-green-500"
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200"
             >
-              <div className="flex items-center mb-4">
-                <div className="bg-blue-400/10 rounded-lg p-3 flex-shrink-0 mr-3">
-                  <advantage.icon className="h-6 w-6 text-blue-400" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-0">{advantage.title}</h3>
+              <div className={`bg-gradient-to-r ${advantage.color} p-6 text-white`}>
+                <div className="text-2xl font-bold mb-2">{advantage.number}.</div>
+                <h3 className="text-xl font-bold mb-3">{advantage.title}</h3>
+                <ArrowDown className="h-6 w-6 text-white" />
               </div>
-              <p className="text-gray-700 leading-relaxed mb-6 flex-1">{advantage.description}</p>
-              <a href="#" className="text-blue-600 font-semibold hover:underline mt-auto flex items-center gap-1 w-fit">
-                Find out more <span aria-hidden="true">→</span>
-              </a>
+              <div className="p-6 bg-white">
+                <p className="text-gray-700 leading-relaxed text-sm">
+                  {advantage.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

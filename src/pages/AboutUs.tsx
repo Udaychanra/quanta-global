@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import AboutSection from '@/components/AboutSection';
 import WhyUsSection from '@/components/WhyUsSection';
+import DeliveryApproachSection from '@/components/DeliveryApproachSection';
 
 const AboutUs = () => {
   return (
@@ -12,6 +13,7 @@ const AboutUs = () => {
         <AboutSection />
         <div className="my-16" />
         <WhyUsSection />
+        {/* <DeliveryApproachSection/> */}
       </main>
       <Footer />
     </div>

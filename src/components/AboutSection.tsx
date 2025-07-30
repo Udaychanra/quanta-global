@@ -18,32 +18,20 @@ const AboutSection = () => {
           <div className="relative flex items-center justify-center mb-8" style={{height: '320px'}}>
             {/* Removed green circle */}
             <img
-              src="/quantaabout.png"
+              src="/abupd.jpg"
               alt="About QuantaGlobal Team"
               className="relative z-10 w-64 md:w-[340px] object-contain"
               style={{marginBottom: 0}}
             />
           </div>
-          <h2 className="text-3xl md:text-4xl font-light mb-6 text-green-600 text-center">At QuantaGlobal, we make an impact that matters</h2>
-          <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto text-center mb-4">
-            For over a decade, we have worked with leaders around the world—from global enterprises to innovative startups—to help them build better futures. To support their people. To succeed. All while caring for our communities.
-          </p>
-          <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto text-center">
-            With a workforce made up of the industry’s greatest minds, we continue to shape the future by delivering real, measurable results. We go beyond talk—we act.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-light mb-6 text-red-600 text-center">About Us</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div className="animate-fade-in">
-            <h3 className="text-2xl font-bold mb-6 text-black">Our Mission</h3>
+            <h3 className="text-2xl font-bold mb-6 text-black">Who We Are</h3>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              At QuantaGlobal, we bridge the gap between technology and business success. Our mission is to 
-              empower organizations with cutting-edge solutions and expert talent that drive digital transformation 
-              and sustainable growth.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              We combine deep technical expertise with a people-first culture, delivering solutions that 
-              not only meet today's challenges but also prepare our clients for tomorrow's opportunities.
+              QuantaGlobal is a leading enterprise software company dedicated to delivering innovative solutions that leverage the power of SAP, Machine Learning, and Artificial Intelligence. Our mission is to empower businesses to achieve unprecedented levels of efficiency, productivity, and success through cutting-edge technology and expert consulting.
             </p>
           </div>
 
@@ -71,6 +59,32 @@ const AboutSection = () => {
               <h4 className="font-semibold text-lg mb-2 text-black">Excellence</h4>
               <p className="text-sm text-gray-600">Committed to quality and innovation</p>
             </div>
+          </div>
+        </div>
+
+        {/* Our Vision Section */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4 text-black">Our Vision</h3>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              To be the global leader in enterprise technology solutions, driving digital transformation and delivering measurable value to our clients.
+            </p>
+          </div>
+        </div>
+
+        {/* Our Expertise Section */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4 text-black">Our Expertise</h3>
+            <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8">
+              Our expertise includes implementation, customization, support & optimization, ensuring that your enterprise systems run efficiently & effectively to support business goals.
+            </p>
+            <button 
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 text-lg"
+              onClick={() => window.location.href = '/contact'}
+            >
+              Tell Us Your Case
+            </button>
           </div>
         </div>
 

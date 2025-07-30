@@ -2,40 +2,22 @@ import React from 'react';
 
 const testimonials = [
   {
-    name: 'Priya Sharma',
-    handle: 'CTO, FinEdge Solutions',
-    avatar: '/avatar1.png',
-    text: "QuantaGlobal's SAP consulting team helped us migrate to S/4HANA with zero downtime. Their expertise and support were outstanding."
+    name: 'John Doe',
+    handle: 'Vancouver',
+    avatar: '/cl1.jpg',
+    text: "QuantaGlobal's smart manufacturing solutions have revolutionized our production processes. By implementing IoT and AI-driven technologies, we have seen a significant improvement in operational efficiency and product quality. Their predictive maintenance system has minimized our downtime, saving us both time and money. QuantaGlobal's expertise and support have been invaluable in driving our success."
   },
   {
-    name: 'Michael Chen',
-    handle: 'Head of IT, HealthSync',
-    avatar: '/avatar2.png',
-    text: "The cloud migration project was seamless. We reduced costs and improved reliability thanks to QuantaGlobal's cloud specialists."
+    name: 'Jessica Smith',
+    handle: 'Toronto',
+    avatar: '/cl2.jpg',
+    text: "Partnering with QuantaGlobal has been a game-changer for our business. Their personalized customer experience solutions have transformed the way we engage with our customers, both online and in-store. The advanced inventory management system has optimized our stock levels, reducing costs and enhancing our profitability. The insights gained from their sales and marketing analytics have enabled us to implement more effective strategies, resulting in increased customer satisfaction and sales."
   },
   {
-    name: 'Fatima Al-Farsi',
-    handle: 'COO, RetailX',
-    avatar: '/avatar3.png',
-    text: "Their staff augmentation service provided us with top-tier developers on short notice. We met our launch deadline with confidence."
-  },
-  {
-    name: 'Lucas Müller',
-    handle: 'CIO, ManuTech AG',
-    avatar: '/avatar4.png',
-    text: "QuantaGlobal's digital transformation strategy helped us automate key processes and boost productivity by 40%. Highly recommended!"
-  },
-  {
-    name: 'Sophie Dubois',
-    handle: 'Director of Operations, GovConnect',
-    avatar: '/avatar5.png',
-    text: "Their application management team is responsive and proactive. We've seen a significant drop in support tickets since partnering with QuantaGlobal."
-  },
-  {
-    name: 'Rajesh Iyer',
-    handle: 'VP Technology, EnergyGrid',
-    avatar: '/avatar6.png',
-    text: "From integration to security, QuantaGlobal delivered on every promise. Our systems are more connected and secure than ever."
+    name: 'Steve Rogers',
+    handle: 'Montreal',
+    avatar: '/cl3.jpg',
+    text: "QuantaGlobal's healthcare solutions have significantly improved our patient care and operational efficiency. Their electronic health records system ensures that our patient data is managed securely and efficiently, allowing our healthcare professionals to access vital information quickly. The telemedicine solutions provided by QuantaGlobal have expanded our reach, making it easier for patients to receive care remotely. Their predictive analytics tools have optimized our treatment plans, enhancing the overall quality of care we provide."
   },
 ];
 

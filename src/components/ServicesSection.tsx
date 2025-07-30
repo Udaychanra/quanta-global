@@ -1,43 +1,43 @@
-import { useState } from 'react';
-import { Code, Users, Wrench, Cloud, Zap, Link } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Cloud, Database, Brain, Users, Cpu, Zap } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: Code,
-      title: 'SAP Consulting',
-      description: 'Comprehensive SAP solutions including S/4HANA, SuccessFactors, Ariba, and BTP implementations.',
-      features: ['S/4HANA Migration', 'SuccessFactors HCM', 'SAP BTP', 'Custom Development']
+      icon: Cloud,
+      title: 'Cloud Computing',
+      description: 'Seamless cloud migration, cloud infrastructure management, cloud-native application development, and scalability and performance optimization.',
+      features: ['Seamless cloud migration', 'Cloud infrastructure management', 'Cloud-native application development', 'Scalability and performance optimization']
+    },
+    {
+      icon: Database,
+      title: 'Enterprise Technology',
+      description: 'SAP implementation and support, Enterprise Resource Planning (ERP), Customer Relationship Management (CRM), and performance analytics and optimization.',
+      features: ['SAP implementation and support', 'Enterprise Resource Planning (ERP)', 'Customer Relationship Management (CRM)', 'Performance analytics and optimization']
+    },
+    {
+      icon: Brain,
+      title: 'Data & Artificial Intelligence',
+      description: 'Advanced data analytics, machine learning model development, AI-driven business insights, and predictive analytics and forecasting.',
+      features: ['Advanced data analytics', 'Machine learning model development', 'AI-driven business insights', 'Predictive analytics and forecasting']
     },
     {
       icon: Users,
-      title: 'Technology Manpower Supply',
-      description: 'On-demand access to skilled technology professionals for your critical projects.',
-      features: ['Contract Staffing', 'Permanent Placement', 'Project Teams', 'Specialized Skills']
+      title: 'Business Consulting',
+      description: 'Strategic business planning and advisory, change management and organizational development, process reengineering and optimization, and risk management and compliance consulting.',
+      features: ['Strategic business planning and advisory', 'Change management and organizational development', 'Process reengineering and optimization', 'Risk management and compliance consulting']
     },
     {
-      icon: Wrench,
-      title: 'Application Management Services',
-      description: 'End-to-end post-implementation support and maintenance for your enterprise applications.',
-      features: ['24/7 Support', 'Performance Optimization', 'Bug Fixes', 'Enhancement Requests']
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud & Infrastructure',
-      description: 'Cloud strategy, migration, and infrastructure management across AWS, Azure, and hybrid environments.',
-      features: ['Cloud Migration', 'Infrastructure Setup', 'DevOps', 'Security Management']
+      icon: Cpu,
+      title: 'Digital Engineering and Manufacturing',
+      description: 'Digital twin and simulation technologies, smart manufacturing solutions, IoT integration for manufacturing, and product lifecycle management (PLM).',
+      features: ['Digital twin and simulation technologies', 'Smart manufacturing solutions', 'IoT integration for manufacturing', 'Product lifecycle management (PLM)']
     },
     {
       icon: Zap,
-      title: 'Digital Transformation',
-      description: 'Accelerate your digital journey with RPA, AI/ML, data analytics, and automation solutions.',
-      features: ['Process Automation', 'AI/ML Solutions', 'Data Analytics', 'Digital Strategy']
-    },
-    {
-      icon: Link,
-      title: 'Enterprise Integration',
-      description: 'Seamless integration solutions using SAP PI/PO, APIs, and modern middleware platforms.',
-      features: ['API Development', 'System Integration', 'Data Migration', 'Middleware Solutions']
+      title: 'Emerging Technology',
+      description: 'Internet of Things (IoT) solutions, blockchain technology implementation, augmented reality (AR) and virtual reality (VR) applications, and quantum computing and advanced research initiatives.',
+      features: ['Internet of Things (IoT) solutions', 'Blockchain technology implementation', 'Augmented reality (AR) and virtual reality (VR) applications', 'Quantum computing and advanced research initiatives']
     }
   ];
 
@@ -47,14 +47,22 @@ const ServicesSection = () => {
   const goNext = () => setCurrent((prev) => (prev + 1) % total);
   const goPrev = () => setCurrent((prev) => (prev - 1 + total) % total);
 
+  // Auto-advance animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      goNext();
+    }, 2000); // Change service every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="services" className="section-padding bg-white">
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Services</h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Comprehensive technology solutions designed to drive your business forward with scalability, 
-            reliability, and enterprise-grade quality.
+            At QuantaGlobal, we offer a wide range of services designed to meet the unique challenges and opportunities of modern enterprises. Our expertise spans across various domains to provide holistic and integrated solutions.
           </p>
         </div>
 
@@ -79,7 +87,7 @@ const ServicesSection = () => {
             {/* Right: Image */}
             <div className="flex-1 flex items-center justify-center bg-gray-100 min-h-[320px]">
               <img
-                src="/quantaabout.png"
+                src="/abupd.jpg"
                 alt={services[current].title}
                 className="object-cover w-full h-full max-h-[340px] rounded-none md:rounded-r-2xl"
                 style={{ maxWidth: 420 }}
@@ -98,7 +106,7 @@ const ServicesSection = () => {
             {'<'}
           </button>
           <div className="flex-1 max-w-2xl h-1 bg-gray-200 rounded-full overflow-hidden">
-            <div className="h-1 bg-green-400 rounded-full" style={{ width: `${((current + 1) / total) * 100}%` }}></div>
+            <div className="h-1 bg-green-400 rounded-full transition-all duration-500" style={{ width: `${((current + 1) / total) * 100}%` }}></div>
           </div>
           <button
             onClick={goNext}

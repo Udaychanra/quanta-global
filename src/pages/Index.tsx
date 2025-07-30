@@ -8,6 +8,8 @@ import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import VideoHeroSection from '../components/VideoHeroSection';
 import TestimonialsSection from '../components/TestimonialsSection';
+import DeliveryApproachSection from '@/components/DeliveryApproachSection';
+import OfficeLocationsSection from '@/components/OfficeLocationsSection';
 
 const Index = () => {
   return (
@@ -17,9 +19,11 @@ const Index = () => {
       <VideoHeroSection />
       <AboutSection />
       <ServicesSection />
+      <DeliveryApproachSection/>
       <IndustriesSection />
       {/* <WhyUsSection /> */}
       <TestimonialsSection />
+      <OfficeLocationsSection/>
       <ContactSection />
       <Footer />
     </div>

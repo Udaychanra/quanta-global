@@ -30,17 +30,15 @@ const HeroSection = () => {
             <div className="animate-fade-in space-y-8">
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                  QuantaGlobal and Digital Innovation
+                  Welcome to QuantaGlobal 
                 </h1>
                 
                 <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
-                  Taking your business to the next level.
+                  Innovative Solutions for a Digital World. Specializing in SAP, Machine Learning, and AI to drive your business forward.
                 </h2>
                 
                 <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
-                  By combining our industry knowledge with emerging technologies and innovative strategies, 
-                  QuantaGlobal is helping organizations grow, engage with more customers, and transform 
-                  their business operations to elevate their digital presence.
+                  QuantaGlobal provides cutting-edge solutions designed to meet the demands of modern digital enterprises, enabling businesses to stay competitive and innovative.
                 </p>
               </div>
               
@@ -49,7 +47,7 @@ const HeroSection = () => {
                   onClick={() => scrollToSection('services')}
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
                 >
-                  Learn more 
+                  Contact Us
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
