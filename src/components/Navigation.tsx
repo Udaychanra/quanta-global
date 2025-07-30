@@ -17,7 +17,7 @@ const Navigation = () => {
       label: 'Who we are',
       items: [
         { label: 'About Us', action: () => (window.location.href = '/about') },
-        { label: 'Our Team', action: () => (window.location.href = '/team') },
+        // { label: 'Our Team', action: () => (window.location.href = '/team') },
         // { label: 'Leadership', action: () => (window.location.href = '/leadership') },
       ]
     },
