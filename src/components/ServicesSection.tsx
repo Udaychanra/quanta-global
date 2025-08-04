@@ -61,10 +61,8 @@ const ServicesSection = () => {
     if (touchStartX.current === null) return;
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
     if (deltaX > 50) {
-      // swipe right
       setCurrent((prev) => clampIndex(prev - 1, total));
     } else if (deltaX < -50) {
-      // swipe left
       setCurrent((prev) => clampIndex(prev + 1, total));
     }
     touchStartX.current = null;
@@ -108,15 +106,16 @@ const ServicesSection = () => {
           </p>
         </div>
 
+        {/* Carousel for desktop, single card for mobile */}
         <div
-          className="w-full flex justify-center items-center select-none"
+          className="w-full flex justify-center items-center select-none relative"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           style={{ userSelect: 'none' }}
         >
-          {/* Arrow Button - Left */}
+          {/* Arrow Button - Left (hidden on mobile) */}
           <button
             onClick={() => setCurrent((prev) => clampIndex(prev - 1, total))}
             className="hidden md:flex items-center justify-center rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors absolute left-0 z-30"
@@ -125,27 +124,31 @@ const ServicesSection = () => {
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
-          <div className="relative flex w-full max-w-5xl justify-center items-center gap-0 md:gap-8">
-            {/* Left Card */}
-            <ServiceCard
-              service={services[leftIdx]}
-              position="left"
-              isActive={false}
-            />
-            {/* Center Card */}
-            <ServiceCard
-              service={services[centerIdx]}
-              position="center"
-              isActive={true}
-            />
-            {/* Right Card */}
-            <ServiceCard
-              service={services[rightIdx]}
-              position="right"
-              isActive={false}
-            />
+          {/* Cards */}
+          <div className="relative flex w-full max-w-5xl justify-center items-center gap-4">
+            {/* Desktop: show 3 cards, Mobile: show only center card */}
+            <div className="hidden md:flex w-full justify-center items-center gap-4">
+              <ServiceCard
+                service={services[leftIdx]}
+                isActive={false}
+              />
+              <ServiceCard
+                service={services[centerIdx]}
+                isActive={true}
+              />
+              <ServiceCard
+                service={services[rightIdx]}
+                isActive={false}
+              />
+            </div>
+            <div className="flex md:hidden w-full justify-center items-center">
+              <ServiceCard
+                service={services[centerIdx]}
+                isActive={true}
+              />
+            </div>
           </div>
-          {/* Arrow Button - Right */}
+          {/* Arrow Button - Right (hidden on mobile) */}
           <button
             onClick={() => setCurrent((prev) => clampIndex(prev + 1, total))}
             className="hidden md:flex items-center justify-center rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors absolute right-0 z-30"
@@ -188,53 +191,25 @@ const ServicesSection = () => {
 
 type ServiceCardProps = {
   service: typeof services[number];
-  position: 'left' | 'center' | 'right';
   isActive: boolean;
 };
 
-const ServiceCard = ({ service, position, isActive }: ServiceCardProps) => {
-  // Responsive: hide side cards on mobile, show all 3 on md+
-  // Center card is always visible and highlighted
-  // Side cards are slightly scaled down and faded
+const ServiceCard = ({ service, isActive }: ServiceCardProps) => {
   const Icon = service.icon;
-  let base =
-    'transition-all duration-500 flex flex-col items-stretch bg-white rounded-2xl shadow-md overflow-hidden mx-0 md:mx-0';
-  let style: React.CSSProperties = {};
-  let extra = '';
-
-  if (position === 'center') {
-    base += ' z-20';
-    style = {
-      transform: 'scale(1.05)',
-      boxShadow: '0 8px 32px 0 rgba(0,0,0,0.10)',
-      opacity: 1,
-    };
-    extra = 'block';
-  } else {
-    base += ' md:flex-row z-10';
-    style = {
-      transform: 'scale(0.92)',
-      opacity: 0.6,
-      filter: 'blur(0.5px)',
-    };
-    // Hide side cards on mobile
-    extra = 'hidden md:flex';
-  }
-
-  // For all cards, text at top, image at bottom (stacked vertically)
+  // All cards same width, but allow height to grow with content
   return (
     <div
-      className={`${base} ${extra}`}
-      style={{
-        ...style,
-        width: '100%',
-        maxWidth: position === 'center' ? 480 : 400,
-        minHeight: 320,
-        marginLeft: position === 'left' ? '-40px' : undefined,
-        marginRight: position === 'right' ? '-40px' : undefined,
-      }}
+      className={`transition-all duration-500 flex flex-col items-stretch bg-white rounded-2xl shadow-md overflow-hidden w-full max-w-[400px] min-h-[520px] mx-0 ${
+        isActive
+          ? 'z-20 ring-4 ring-blue-200 ring-opacity-60 shadow-xl'
+          : 'z-10 opacity-80'
+      }`}
       tabIndex={isActive ? 0 : -1}
       aria-hidden={!isActive}
+      style={{
+        filter: isActive ? 'drop-shadow(0 0 16px #3b82f6aa)' : 'none',
+        height: 'auto'
+      }}
     >
       {/* Top: Text */}
       <div className="flex-1 p-8 flex flex-col justify-center">
@@ -256,14 +231,14 @@ const ServiceCard = ({ service, position, isActive }: ServiceCardProps) => {
         </button>
       </div>
       {/* Bottom: Image */}
-      <div className="flex-1 flex items-center justify-center bg-gray-100 min-h-[180px]">
+      {/* <div className="flex-1 flex items-center justify-center bg-gray-100 min-h-[180px]">
         <img
           src="/abupd.jpg"
           alt={service.title}
           className="object-cover w-full h-full max-h-[220px] rounded-none md:rounded-b-2xl"
           style={{ maxWidth: 420 }}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
