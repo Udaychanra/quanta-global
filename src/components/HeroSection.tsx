@@ -30,18 +30,22 @@ const HeroSection = () => {
             <div className="animate-fade-in space-y-8">
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                  Welcome to QuantaGlobal 
+                  Welcome to QuantaGlobal - From digital to decisive.
                 </h1>
-                
                 <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
-                  Innovative Solutions for a Digital World. Specializing in SAP, Machine Learning, and AI to drive your business forward.
+                  You already know your business can be better
                 </h2>
-                
                 <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
-                  QuantaGlobal provides cutting-edge solutions designed to meet the demands of modern digital enterprises, enabling businesses to stay competitive and innovative.
+                  Faster decisions. Smarter operations. More value from every investment.
+                  You don’t need more dashboards or disconnected tools.
+                  You need clarity.
+                  You need systems that scale with you, not slow you down.<br />
+                  That’s where we come in.
+                </p>
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
+                  At QuantaGlobal, we bring deep expertise in AI, ERP, and SAP to help you unlock what’s possible.
                 </p>
               </div>
-              
               <div className="pt-4">
                 <Button 
                   onClick={() => scrollToSection('services')}
@@ -51,43 +55,7 @@ const HeroSection = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
-
-              {/* Core Services Highlights */}
-                {/* <div className="grid grid-cols-2 gap-6 pt-8 animate-slide-up">
-                  <div className="group text-center p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105">
-                    <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-3 mb-3 inline-block shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300">
-                      <Code className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="font-bold text-white text-base mb-1">SAP Consulting</h3>
-                    <p className="text-xs text-white/80">End-to-end SAP solutions</p>
-                  </div>
-                  
-                  <div className="group text-center p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105">
-                    <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-3 mb-3 inline-block shadow-lg group-hover:shadow-green-500/50 transition-all duration-300">
-                      <Users className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="font-bold text-white text-base mb-1">Staff Augmentation</h3>
-                    <p className="text-xs text-white/80">Expert talent on-demand</p>
-                  </div>
-                  
-                  <div className="group text-center p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105">
-                    <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-3 mb-3 inline-block shadow-lg group-hover:shadow-purple-500/50 transition-all duration-300">
-                      <Cloud className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="font-bold text-white text-base mb-1">Cloud Solutions</h3>
-                    <p className="text-xs text-white/80">AWS, Azure, cloud strategy</p>
-                  </div>
-                  
-                  <div className="group text-center p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105">
-                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-3 mb-3 inline-block shadow-lg group-hover:shadow-orange-500/50 transition-all duration-300">
-                      <Zap className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="font-bold text-white text-base mb-1">Digital Transformation</h3>
-                    <p className="text-xs text-white/80">AI/ML, RPA, automation</p>
-                  </div>
-                </div> */}
             </div>
-
             {/* Right Section - Empty for now, can be used for additional content */}
             <div className="flex justify-center lg:justify-end">
               {/* This space can be used for additional content or kept empty */}

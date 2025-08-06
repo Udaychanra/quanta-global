@@ -1,15 +1,18 @@
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
+import VideoHeroSection from '../components/VideoHeroSection';
+import WhyItMattersSection from '@/components/WhyItMattersSection';
+import ValuePropositionSection from '@/components/ValuePropositionSection';
 import AboutSection from '../components/AboutSection';
+import HowWeWorkSection from '@/components/HowWeWorkSection';
+import WhatSetsUsApartSection from '@/components/WhatSetsUsApartSection';
 import ServicesSection from '../components/ServicesSection';
+import DeliveryApproachSection from '@/components/DeliveryApproachSection';
 import IndustriesSection from '../components/IndustriesSection';
-import WhyUsSection from '../components/WhyUsSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import OfficeLocationsSection from '@/components/OfficeLocationsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
-import VideoHeroSection from '../components/VideoHeroSection';
-import TestimonialsSection from '../components/TestimonialsSection';
-import DeliveryApproachSection from '@/components/DeliveryApproachSection';
-import OfficeLocationsSection from '@/components/OfficeLocationsSection';
 
 const Index = () => {
   return (
@@ -17,13 +20,17 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <VideoHeroSection />
+      {/* <WhyItMattersSection /> */}
+      {/* <ValuePropositionSection /> */}
       <AboutSection />
+      <HowWeWorkSection />
+      <WhatSetsUsApartSection />
       <ServicesSection />
-      <DeliveryApproachSection/>
+      <DeliveryApproachSection />
+      <WhyItMattersSection />
       <IndustriesSection />
-      {/* <WhyUsSection /> */}
       <TestimonialsSection />
-      <OfficeLocationsSection/>
+      <OfficeLocationsSection />
       <ContactSection />
       <Footer />
     </div>

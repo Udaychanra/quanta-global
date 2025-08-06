@@ -30,7 +30,6 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <Navigation />
-      
       {/* Hero Section */}
       <section className="section-padding pt-32 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 relative overflow-hidden">
         {/* Background Elements */}
@@ -38,7 +37,6 @@ const Products = () => {
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
         </div>
-        
         <div className="section-container relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -73,7 +71,6 @@ const Products = () => {
                 </Button>
               </div>
             </div>
-            
             <div className="flex justify-center">
               <div className="relative">
                 <div className="w-96 h-96 bg-gradient-to-br from-blue-600 to-purple-600 shadow-2xl rounded-3xl flex items-center justify-center relative overflow-hidden">
@@ -98,6 +95,21 @@ const Products = () => {
         </div>
       </section>
 
+      {/* Embedded Verver AI App */}
+      <section className="section-padding bg-white relative z-10">
+        <div className="section-container">
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-700 mb-6 text-center">Try Verver AI (Beta)</h2>
+          <div className="flex justify-center">
+            <iframe
+              src="https://verve-app.vercel.app"
+              title="Verver AI App"
+              className="w-full max-w-5xl h-[700px] rounded-2xl border-4 border-blue-600 shadow-xl bg-white"
+              allow="clipboard-write; clipboard-read; microphone; camera"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* What is SARAH Section */}
       <section className="section-padding bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-blue-50/50"></div>
@@ -110,9 +122,29 @@ const Products = () => {
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
               What is SARAH?
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              SARAH AI (Smart Autonomous Responsive Assistant for Humans) is an AI-native productivity layer built for SAP—on S/4HANA, ECC, or BTP.
-            </p>
+            <div className="max-w-6xl mx-auto space-y-6 text-left">
+              <p className="text-xl text-gray-700 leading-relaxed">
+                SARAH AI (Smart Autonomous Responsive Assistant for Humans) is an AI-native productivity layer built for SAP—on S/4HANA, ECC, or BTP.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                SARAH is not just for SAP … its any cloud any Systems … Sarah is the intelligent assistant that speaks ERP, CRM, and cloud natively—connecting the dots so your people can focus on what matters.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                She puts the human at the center, turning fragmented systems into seamless action, and everyday work into real impact. At Sarah, we build AI that puts leaders back in control—of their time, their data, and their decisions.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                In a world shaped by volatility, complexity, and relentless change, business resilience isn't just a goal—it's a survival instinct. Sarah helps forward-thinking executives lead with clarity by transforming disconnected systems into unified, intelligent workflows.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                We engineer computationally efficient AI designed to live across your enterprise stack—from ERP to CRM to cloud—so intelligence doesn't sit in silos, it moves with you. Whether you're scaling operations, navigating market disruption, or unlocking productivity across teams, Sarah turns friction into flow and data into direction.
+              </p>
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100 mt-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our vision is simple:</h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  When every process is powered by intelligence, leaders are free to focus on what only humans can do—make bold moves, see around corners, and build the future.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -164,7 +196,6 @@ const Products = () => {
           <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
         </div>
-        
         <div className="section-container relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-6">

@@ -3,11 +3,11 @@ import { Factory, ShoppingCart, Heart, Building2, Wifi } from 'lucide-react';
 
 // Optionally, you can replace these with image URLs for each industry
 const industryImages = [
-  '/manufacturing.jpeg', // Manufacturing
-  '/retail.jpg', // Retail
-  '/healthcare.jpg', // Healthcare
-  '/finance.jpg', // Finance
-  '/telecom.jpeg', // Telecom
+  '/manu.jpg', // Manufacturing
+  '/ret.jpg', // Retail
+  '/heal.jpeg', // Healthcare
+  '/fina.jpg', // Finance
+  '/tel.jpeg', // Telecom
 ];
 
 const statsData = [
