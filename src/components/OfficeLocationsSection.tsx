@@ -51,7 +51,7 @@ const OfficeLocationsSection = () => {
               </div>
 
               <button 
-                className="flex items-center gap-2 text-red-600 border border-red-600 rounded-lg px-4 py-2 hover:bg-red-600 hover:text-white transition-all duration-300 text-sm font-medium"
+                className="flex items-center gap-2 text-blue-200 border border-red-600 rounded-lg px-4 py-2 hover:bg-red-600 hover:text-white transition-all duration-300 text-sm font-medium"
               >
                 <MapPin className="h-4 w-4" />
                 Get Directions

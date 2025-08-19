@@ -1,22 +1,39 @@
 import { useState, useRef } from 'react';
-import { Menu, X, ChevronDown, Search, Globe, Phone, User } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Search, Globe, Phone, User } from 'lucide-react';
 import { Button } from './ui/button';
+
+// Types for navigation structure
+type NavLeaf = {
+	label: string;
+	action: () => void;
+};
+
+type NavGroup = NavLeaf & {
+	subItems?: NavLeaf[];
+};
+
+type TopNav = {
+	label: string;
+	items: NavGroup[];
+};
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
 
   // Timer ref for delayed dropdown close
   const dropdownCloseTimer = useRef<NodeJS.Timeout | null>(null);
+  const subDropdownCloseTimer = useRef<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Remove Careers from dropdown navigationItems, handle as a single nav link
-  const navigationItems = [
+  // Navigation items with sub-items for Services, Solutions, Products, Industries, Blogs, Insights
+  const navigationItems: TopNav[] = [
     {
       label: 'Who we are',
       items: [
-        { label: 'About Us', action: () => (window.location.href = '/about') },
+        { label: 'About Us', action: () => { window.location.href = '/about'; } },
         // { label: 'Our Team', action: () => (window.location.href = '/team') },
         // { label: 'Leadership', action: () => (window.location.href = '/leadership') },
       ]
@@ -24,22 +41,98 @@ const Navigation = () => {
     {
       label: 'What we do',
       items: [
-        { label: 'Services', action: () => (window.location.href = '/services') },
-        { label: 'Solutions', action: () => (window.location.href = '/solutions') },
-        { label: 'Products', action: () => (window.location.href = '/products') },
+        {
+          label: 'Services',
+          action: () => { window.location.href = '/services'; },
+          subItems: [
+            { label: 'Consulting', action: () => { window.location.href = '/services/consulting'; } },
+            { label: 'Implementation', action: () => { window.location.href = '/services/implementation'; } },
+            { label: 'Support', action: () => { window.location.href = '/services/support'; } },
+          ]
+        },
+        {
+          label: 'Solutions',
+          action: () => { window.location.href = '/solutions'; },
+          subItems: [
+            { label: 'AI Solutions', action: () => { window.location.href = '/solutions/ai'; } },
+            { label: 'Cloud Solutions', action: () => { window.location.href = '/solutions/cloud'; } },
+            { label: 'Custom Solutions', action: () => { window.location.href = '/solutions/custom'; } },
+          ]
+        },
+        {
+          label: 'Products',
+          action: () => { window.location.href = '/products'; },
+          subItems: [
+            { label: 'Product A', action: () => { window.location.href = '/products/a'; } },
+            { label: 'Product B', action: ()=> { window.location.href = '/products/b'; } },
+            { label: 'Product C', action: () => { window.location.href = '/products/c'; } },
+          ]
+        },
+        {
+          label: 'Industries',
+          action: () => { window.location.href = '/industries'; },
+          subItems: [
+            { label: 'Finance', action: () => { window.location.href = '/industries/finance'; } },
+            { label: 'Healthcare', action: () => { window.location.href = '/industries/healthcare'; } },
+            { label: 'Retail', action: () => { window.location.href = '/industries/retail'; } },
+          ]
+        },
       ]
     },
-    // {
-    //   label: 'Our Thinking',
-    //   items: [
-    //     { label: 'Insights', action: () => (window.location.href = '/insights') },
-    //     { label: 'Research', action: () => (window.location.href = '/research') },
-    //     { label: 'Publications', action: () => (window.location.href = '/publications') },
-    //   ]
-    // },
+    {
+      label: 'Blogs',
+      items: [
+        {
+          label: 'Company Blog',
+          action: () => { window.location.href = '/blogs'; },
+          subItems: [
+            { label: 'Latest Posts', action: () => { window.location.href = '/blogs/latest'; } },
+            { label: 'Tech Updates', action: () => { window.location.href = '/blogs/tech'; } },
+            { label: 'Culture', action: () => { window.location.href = '/blogs/culture'; } },
+          ]
+        },
+        {
+          label: 'Guest Posts',
+          action: () => { window.location.href = '/blogs/guest'; },
+          subItems: [
+            { label: 'Industry Voices', action: () => { window.location.href = '/blogs/guest/industry'; } },
+            { label: 'Partner Stories', action: () => { window.location.href = '/blogs/guest/partners'; } },
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Insights',
+      items: [
+        {
+          label: 'Research',
+          action: () => { window.location.href = '/insights/research'; },
+          subItems: [
+            { label: 'Whitepapers', action: () => { window.location.href = '/insights/research/whitepapers'; } },
+            { label: 'Case Studies', action: () => { window.location.href = '/insights/research/case-studies'; } },
+          ]
+        },
+        {
+          label: 'Publications',
+          action: () => { window.location.href = '/insights/publications'; },
+          subItems: [
+            { label: 'Reports', action: () => { window.location.href = '/insights/publications/reports'; } },
+            { label: 'Magazines', action: () => { window.location.href = '/insights/publications/magazines'; } },
+          ]
+        },
+        {
+          label: 'Events',
+          action: () => { window.location.href = '/insights/events'; },
+          subItems: [
+            { label: 'Webinars', action: () => { window.location.href = '/insights/events/webinars'; } },
+            { label: 'Conferences', action: () => { window.location.href = '/insights/events/conferences'; } },
+          ]
+        }
+      ]
+    },
   ];
 
-  // Handlers for dropdown with 5s delay on close
+  // Handlers for dropdown with 3s delay on close
   const handleDropdownMouseEnter = (label: string) => {
     if (dropdownCloseTimer.current) {
       clearTimeout(dropdownCloseTimer.current);
@@ -54,13 +147,31 @@ const Navigation = () => {
     }
     dropdownCloseTimer.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 3000);
+      setActiveSubDropdown(null);
+    }, 1000);
+  };
+
+  const handleSubDropdownMouseEnter = (label: string) => {
+    if (subDropdownCloseTimer.current) {
+      clearTimeout(subDropdownCloseTimer.current);
+      subDropdownCloseTimer.current = null;
+    }
+    setActiveSubDropdown(label);
+  };
+
+  const handleSubDropdownMouseLeave = () => {
+    if (subDropdownCloseTimer.current) {
+      clearTimeout(subDropdownCloseTimer.current);
+    }
+    subDropdownCloseTimer.current = setTimeout(() => {
+      setActiveSubDropdown(null);
+    }, 2000);
   };
 
   return (
-    <nav className="top-0 w-full bg-black text-white z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-3/4 bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl text-blue-400 z-50">
+      <div className="px-12 py-3">
+        <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <div
             className="flex items-center space-x-3 cursor-pointer"
@@ -74,12 +185,11 @@ const Navigation = () => {
             }}
           >
             <img 
-              src="/lovable-uploads/e13eef68-a947-49e5-b75b-c582a24bf7c5.png" 
+              src="/logolightlatest.png" 
               alt="QUANTA Global Logo" 
-              className="h-16 w-auto"
+              className="h-20 w-auto"
             />
-            <span className="text-2xl font-bold text-white">QuantaGlobal</span>
-           
+            <span className="text-2xl font-bold text-blue-400">QuantaGlobal</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -88,37 +198,106 @@ const Navigation = () => {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => handleDropdownMouseEnter(item.label)}
+                onMouseEnter={() => {
+                  // Open dropdown and prime first sub category (for mega menu style)
+                  handleDropdownMouseEnter(item.label);
+                  const firstWithChildren = item.items.find((i: any) => i.subItems && i.subItems.length > 0);
+                  if (firstWithChildren) {
+                    setActiveSubDropdown(firstWithChildren.label);
+                  } else {
+                    setActiveSubDropdown(null);
+                  }
+                }}
                 onMouseLeave={handleDropdownMouseLeave}
                 style={{ display: 'inline-block' }}
               >
-                <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+                <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
                   {item.label}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 {/* Dropdown Menu */}
                 {activeDropdown === item.label && (
-                  <div
-                    className="absolute top-full left-0 mt-1 w-48 bg-white text-black rounded-md shadow-lg py-2 z-50"
-                    onMouseEnter={() => handleDropdownMouseEnter(item.label)}
-                    onMouseLeave={handleDropdownMouseLeave}
-                  >
-                    {item.items.map((subItem) => (
-                      <button
-                        key={subItem.label}
-                        onClick={subItem.action}
-                        className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
+                  (() => {
+                    const isMega = item.items.some((i: any) => i.subItems && i.subItems.length > 0);
+                    if (!isMega) {
+                      // Simple list dropdown
+                      return (
+                        <div
+                          className="absolute top-full left-0 mt-1 w-56 bg-white text-blue-400 rounded-md shadow-lg py-2 z-50"
+                          onMouseEnter={() => handleDropdownMouseEnter(item.label)}
+                          onMouseLeave={handleDropdownMouseLeave}
+                        >
+                          {item.items.map((subItem: any) => (
+                            <button
+                              key={subItem.label}
+                              onClick={subItem.action}
+                              className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-400 transition-colors"
+                            >
+                              {subItem.label}
+                            </button>
+                          ))}
+                        </div>
+                      );
+                    }
+
+                    // Mega menu layout
+                    const selectedCategory = item.items.find((i: any) => i.label === activeSubDropdown) || item.items.find((i: any) => i.subItems && i.subItems.length > 0);
+
+                    return (
+                      <div
+                        className="absolute top-full left-0 mt-1 bg-white text-blue-400 rounded-md shadow-lg z-50"
+                        onMouseEnter={() => handleDropdownMouseEnter(item.label)}
+                        onMouseLeave={handleDropdownMouseLeave}
                       >
-                        {subItem.label}
-                      </button>
-                    ))}
-                  </div>
+                        <div className="flex w-[600px] h-auto py-4">
+                          {/* Left column: categories */}
+                          <div className="w-48 border-r border-gray-200">
+                            {item.items.map((subItem: any) => {
+                              const isActive = activeSubDropdown === subItem.label;
+                              return (
+                                <button
+                                  key={subItem.label}
+                                  onMouseEnter={() => handleSubDropdownMouseEnter(subItem.label)}
+                                  onFocus={() => handleSubDropdownMouseEnter(subItem.label)}
+                                  onClick={subItem.action}
+                                  className={`w-full text-left px-4 py-2 text-sm transition-colors ${
+                                    isActive ? 'bg-blue-50 font-medium text-blue-400' : 'hover:bg-blue-50 hover:text-blue-400'
+                                  }`}
+                                >
+                                  {subItem.label}
+                                </button>
+                              );
+                            })}
+                          </div>
+
+                          {/* Right panel: links grid for active category */}
+                          <div className="flex-1 px-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {selectedCategory && selectedCategory.subItems && selectedCategory.subItems.length > 0 ? (
+                                selectedCategory.subItems.map((link: any) => (
+                                  <button
+                                    key={link.label}
+                                    onClick={link.action}
+                                    className="text-left px-3 py-2 rounded-md text-sm hover:bg-blue-50 hover:text-blue-400"
+                                  >
+                                    {link.label}
+                                  </button>
+                                ))
+                              ) : (
+                                <div className="text-sm text-blue-400 px-3 py-2">No items</div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()
                 )}
               </div>
             ))}
             {/* Careers as a single nav link */}
             <button
-              className="flex items-center text-white hover:text-gray-300 transition-colors"
+              className="flex items-center text-blue-400 hover:text-blue-300 transition-colors"
               onClick={() => (window.location.href = '/careers')}
             >
               Careers
@@ -127,16 +306,16 @@ const Navigation = () => {
 
           {/* Utility Icons */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* <button className="text-white hover:text-gray-300 transition-colors">
+            {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
               <Search className="h-5 w-5" />
             </button>
-            <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+            <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
               <Globe className="h-5 w-5 mr-1" />
               <span className="text-sm">US - EN</span>
               <ChevronDown className="ml-1 h-4 w-4" />
             </button> */}
             <button
-              className="text-white hover:text-gray-300 transition-colors relative"
+              className="text-blue-400 hover:text-blue-300 transition-colors relative"
               onClick={() => (window.location.href = '/contact')}
             >
               <Phone className="h-5 w-5" />
@@ -144,14 +323,14 @@ const Navigation = () => {
                
               </div>
             </button>
-            {/* <button className="text-white hover:text-gray-300 transition-colors">
+            {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
               <User className="h-5 w-5" />
             </button> */}
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={toggleMenu} className="text-white">
+            <Button variant="ghost" size="sm" onClick={toggleMenu} className="text-blue-400">
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -163,23 +342,39 @@ const Navigation = () => {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black border-t border-gray-700">
               {navigationItems.map((item) => (
                 <div key={item.label} className="space-y-1">
-                  <div className="px-3 py-2 text-white font-medium">
+                  <div className="px-3 py-2 text-blue-400 font-medium">
                     {item.label}
                   </div>
                   {item.items.map((subItem) => (
-                    <button
-                      key={subItem.label}
-                      onClick={subItem.action}
-                      className="block px-6 py-2 text-gray-300 hover:text-white transition-colors w-full text-left text-sm"
-                    >
-                      {subItem.label}
-                    </button>
+                    <div key={subItem.label} className="space-y-1">
+                      <button
+                        onClick={subItem.action}
+                        className=" px-6 py-2 text-blue-400 hover:text-blue-400 transition-colors w-full text-left text-sm flex items-center justify-between"
+                      >
+                        <span>{subItem.label}</span>
+                        {subItem.subItems && <ChevronDown className="ml-2 h-4 w-4" />}
+                      </button>
+                      {/* Mobile sub-items */}
+                      {subItem.subItems && (
+                        <div className="pl-8">
+                          {subItem.subItems.map((subSubItem) => (
+                            <button
+                              key={subSubItem.label}
+                              onClick={subSubItem.action}
+                              className="block px-4 py-2 text-blue-100 hover:text-blue-400 transition-colors w-full text-left text-xs"
+                            >
+                              {subSubItem.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               ))}
               {/* Careers as a single nav link in mobile */}
               <button
-                className="block w-full px-3 py-2 text-white font-medium text-left hover:text-gray-300 transition-colors"
+                className="block w-full px-3 py-2 text-blue-400 font-medium text-left hover:text-blue-400 transition-colors"
                 onClick={() => (window.location.href = '/careers')}
               >
                 Careers
@@ -187,15 +382,15 @@ const Navigation = () => {
               
               {/* Mobile Utility Icons */}
               <div className="flex items-center justify-center space-x-4 pt-4 border-t border-gray-700">
-                {/* <button className="text-white hover:text-gray-300 transition-colors">
+                {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
                   <Search className="h-5 w-5" />
                 </button>
-                <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+                <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
                   <Globe className="h-5 w-5 mr-1" />
                   <span className="text-sm">US - EN</span>
                 </button> */}
                 <button
-                  className="text-white hover:text-gray-300 transition-colors relative"
+                  className="text-blue-400 hover:text-blue-300 transition-colors relative"
                   onClick={() => (window.location.href = '/contact')}
                 >
                   <Phone className="h-5 w-5" />
@@ -203,7 +398,7 @@ const Navigation = () => {
                     {/* <div className="w-3 h-3 bg-red-500 rounded-full"></div> */}
                   </div>
                 </button>
-                {/* <button className="text-white hover:text-gray-300 transition-colors">
+                {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
                   <User className="h-5 w-5" />
                 </button> */}
               </div>

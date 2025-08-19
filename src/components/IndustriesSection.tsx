@@ -8,6 +8,7 @@ const industryImages = [
   '/heal.jpeg', // Healthcare
   '/fina.jpg', // Finance
   '/tel.jpeg', // Telecom
+  '/wwa1.jpg', // Public Sector
 ];
 
 const statsData = [
@@ -53,6 +54,13 @@ const IndustriesSection = () => {
       subtitle: 'Improve Connectivity and Service Delivery',
       description: 'Network Optimization: Leverage AI and machine learning to optimize network performance and reduce latency, ensuring high-quality service delivery. Customer Analytics: Analyze customer data to provide personalized service offerings and improve customer satisfaction. Automation Solutions: Implement automation technologies to streamline operations and reduce operational costs, enhancing overall efficiency.',
       features: ['Network Optimization', 'Customer Analytics', 'Automation Solutions']
+    },
+    {
+      icon: Building2,
+      title: 'Public Sector',
+      subtitle: 'Drive Digital Transformation in Government and Public Services',
+      description: 'E-Government Solutions: Implement digital platforms to streamline public service delivery and improve citizen engagement. Data-Driven Policy Making: Leverage analytics and AI to inform policy decisions and optimize resource allocation. Cybersecurity: Enhance the security and resilience of public sector IT infrastructure to protect sensitive data and ensure compliance.',
+      features: ['E-Government Solutions', 'Data-Driven Policy Making', 'Cybersecurity']
     }
   ];
 
@@ -112,7 +120,7 @@ const IndustriesSection = () => {
   }, []);
 
   return (
-    <section id="industries" className="section-padding bg-[#f5f6f7]">
+    <section id="industries" className="section-padding bg-gray-200">
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Industries We Serve</h2>
@@ -125,27 +133,44 @@ const IndustriesSection = () => {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 flex flex-col h-full max-w-md mx-auto group"
+              className="relative group rounded-2xl overflow-hidden shadow-lg h-80 cursor-pointer"
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-1">{industry.title}</h3>
-              <div className="text-sm text-gray-600 mb-2 font-semibold">{industry.subtitle}</div>
-              <p className="text-gray-700 mb-4 leading-relaxed text-base">
-                {industry.description}
-              </p>
-              {/* Features List */}
-              <div className="mb-4">
-                {industry.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-sm mb-2">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                    <span className="text-gray-600">{feature}</span>
-                  </div>
-                ))}
+              {/* Full height background image */}
+              <div
+                className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                style={{ backgroundImage: `url('${industryImages[index]}')` }}
+              >
+                {/* Dark overlay for better text readability */}
+                <div className="absolute inset-0 bg-black/40"></div>
               </div>
-              {/* Card Image/Icon */}
-              <div className="mt-auto pt-2">
-                <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl flex items-center justify-center overflow-hidden">
-                  {/* Use about.webp for all industry images */}
-                  <img src={industryImages[index]} alt={industry.title} className="object-cover w-full h-full" />
+
+              {/* Category tag */}
+              <div className="absolute top-4 left-4 bg-blue-600/90 text-white px-3 py-1 rounded-full text-xs font-semibold z-10 backdrop-blur-sm">
+                {industry.title}
+              </div>
+
+              {/* Card heading overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <h4 className="text-white font-bold text-lg leading-tight">
+                  {industry.subtitle}
+                </h4>
+              </div>
+
+              {/* Hover content with glass morphism */}
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                <div className="bg-white/20 backdrop-blur-md rounded-xl p-6 mx-4 text-center border border-white/30">
+                  <h4 className="text-white font-bold text-lg mb-3">{industry.title}</h4>
+                  <p className="text-white/90 text-sm leading-relaxed mb-4">
+                    {industry.description}
+                  </p>
+                  <div className="space-y-2 text-sm text-white/90">
+                    {industry.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center justify-center gap-2">
+                        <div className="w-2 h-2 bg-blue-200 rounded-full" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -157,7 +182,7 @@ const IndustriesSection = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {statsData.map((stat, i) => (
               <div key={stat.label}>
-                <div className="text-3xl font-bold text-blue-400 mb-2">
+                <div className="text-3xl font-bold text-gray-400 mb-2 ">
                   {stats[i]}{stat.suffix}
                 </div>
                 <div className="text-gray-700">{stat.label}</div>

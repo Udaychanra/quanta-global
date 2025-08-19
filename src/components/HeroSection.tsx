@@ -1,7 +1,27 @@
-import { ArrowRight, Code, Users, Cloud, Zap } from 'lucide-react';
 import { Button } from './ui/button';
 
+// Font-face declaration for Bower-Bold
+const bowerBoldFont = `
+@font-face {
+    font-family: "Bower-Bold";
+    src: url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.eot");
+    src: url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.eot?#iefix") format("embedded-opentype"),
+         url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.woff2") format("woff2"),
+         url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.woff") format("woff"),
+         url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.ttf") format("truetype"),
+         url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.svg#Bower-Bold") format("svg");
+}
+`;
+
 const HeroSection = () => {
+  // Inject font-face into the document head (only once)
+  if (typeof window !== "undefined" && !document.getElementById("bower-bold-font")) {
+    const style = document.createElement("style");
+    style.id = "bower-bold-font";
+    style.innerHTML = bowerBoldFont;
+    document.head.appendChild(style);
+  }
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -10,16 +30,27 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen bg-black text-white overflow-hidden pt-20">
+    <section
+      id="home"
+      className="relative min-h-screen text-black overflow-hidden"
+      style={{ fontFamily: '"Bower-Bold", sans-serif' }}
+    >
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
-        <img 
-          src="/hero.webp" 
-          alt="Hero Background" 
-          className="w-full h-full object-cover opacity-40"
-        />
+        <video
+          className="w-full h-full object-cover opacity-90"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster=""
+        >
+          <source src="/herovid2.mp4" type="video/mp4" />
+          {/* You can add additional <source> tags for different formats if needed */}
+          Your browser does not support the video tag.
+        </video>
         {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        {/* <div className="absolute inset-0 bg-black/50"></div> */}
       </div>
 
       {/* Content Overlay */}
@@ -29,30 +60,35 @@ const HeroSection = () => {
             {/* Left Section - Content */}
             <div className="animate-fade-in space-y-8">
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-                  Welcome to QuantaGlobal - From digital to decisive.
-                </h1>
-                <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
-                  You already know your business can be better
-                </h2>
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
-                  Faster decisions. Smarter operations. More value from every investment.
-                  You don’t need more dashboards or disconnected tools.
-                  You need clarity.
-                  You need systems that scale with you, not slow you down.<br />
-                  That’s where we come in.
-                </p>
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
-                  At QuantaGlobal, we bring deep expertise in AI, ERP, and SAP to help you unlock what’s possible.
-                </p>
-              </div>
-              <div className="pt-4">
-                <Button 
-                  onClick={() => scrollToSection('services')}
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
+                <h1
+                  className="text-4xl md:text-3xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent"
+                  style={{ fontFamily: '"Bower-Bold", sans-serif' }}
                 >
-                  Contact Us
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  AI First Consulting, built for <span className="text-blue-500">Orchestration</span>.
+                </h1>
+                <h2
+                  className="text-2xl md:text-4xl font-bold text-white drop-shadow-lg"
+                  style={{ fontFamily: '"Bower-Bold", sans-serif' }}
+                >
+                  We bring <span className="text-blue-500">foresight</span>, AI, and orchestration to turn it into&nbsp;
+                  <span className="text-blue-500">results</span>
+                </h2>
+              </div>
+              <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                <Button
+                  onClick={() => scrollToSection('eo-framework')}
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
+                  style={{ fontFamily: '"Bower-Bold", sans-serif' }}
+                >
+                  Explore EO Framework
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => scrollToSection('sarah-ai')}
+                  className="border-white bg-white text-blue-500 px-8 py-4 text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
+                  style={{ fontFamily: '"Bower-Bold", sans-serif' }}
+                >
+                  Discover&nbsp;SARAH&nbsp;AI
                 </Button>
               </div>
             </div>

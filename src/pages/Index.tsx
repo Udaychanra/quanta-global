@@ -13,24 +13,26 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import OfficeLocationsSection from '@/components/OfficeLocationsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
+import ModelMonitor from '@/components/ModelMonitor';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <VideoHeroSection />
+      {/* <VideoHeroSection /> */}
       {/* <WhyItMattersSection /> */}
       {/* <ValuePropositionSection /> */}
       <AboutSection />
-      <HowWeWorkSection />
-      <WhatSetsUsApartSection />
+      {/* <HowWeWorkSection /> */}
+      {/* <WhatSetsUsApartSection /> */}
       <ServicesSection />
-      <DeliveryApproachSection />
-      <WhyItMattersSection />
+      {/* <DeliveryApproachSection /> */}
+      <ModelMonitor />
+      {/* <WhyItMattersSection /> */}
       <IndustriesSection />
       <TestimonialsSection />
-      <OfficeLocationsSection />
+      {/* <OfficeLocationsSection /> */}
       <ContactSection />
       <Footer />
     </div>

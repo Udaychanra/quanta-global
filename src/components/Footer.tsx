@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="w-full">
       {/* Main Footer Section */}
-      <div className="bg-black text-white px-8 pt-16 pb-8">
+      <div className="bg-[#040053] text-white px-8 pt-16 pb-8">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12">
           {/* Left: Let's connect and first column */}
           <div className="flex-1 min-w-[220px]">

@@ -1,245 +1,203 @@
-import { useState, useRef } from 'react';
-import { Cloud, Database, Brain, Users, Cpu, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef, useLayoutEffect, useMemo } from 'react';
+import { Cloud, Database, Brain, Users, Cpu, Zap } from 'lucide-react';
+
+// GSAP imports (you'll need to install gsap: npm install gsap)
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
     icon: Cloud,
     title: 'Cloud Computing',
     description: 'Seamless cloud migration, cloud infrastructure management, cloud-native application development, and scalability and performance optimization.',
-    features: ['Seamless cloud migration', 'Cloud infrastructure management', 'Cloud-native application development', 'Scalability and performance optimization']
+    features: ['Seamless cloud migration', 'Cloud infrastructure management', 'Cloud-native application development', 'Scalability and performance optimization'],
+    image: 'wwa1.jpg'
   },
   {
     icon: Database,
     title: 'Enterprise Technology',
     description: 'SAP implementation and support, Enterprise Resource Planning (ERP), Customer Relationship Management (CRM), and performance analytics and optimization.',
-    features: ['SAP implementation and support', 'Enterprise Resource Planning (ERP)', 'Customer Relationship Management (CRM)', 'Performance analytics and optimization']
+    features: ['SAP implementation and support', 'Enterprise Resource Planning (ERP)', 'Customer Relationship Management (CRM)', 'Performance analytics and optimization'],
+    image: 'wwa2.jpg'
   },
   {
     icon: Brain,
     title: 'Data & Artificial Intelligence',
     description: 'Advanced data analytics, machine learning model development, AI-driven business insights, and predictive analytics and forecasting.',
-    features: ['Advanced data analytics', 'Machine learning model development', 'AI-driven business insights', 'Predictive analytics and forecasting']
+    features: ['Advanced data analytics', 'Machine learning model development', 'AI-driven business insights', 'Predictive analytics and forecasting'],
+    image: 'wwa3.jpg'
   },
   {
     icon: Users,
     title: 'Business Consulting',
     description: 'Strategic business planning and advisory, change management and organizational development, process reengineering and optimization, and risk management and compliance consulting.',
-    features: ['Strategic business planning and advisory', 'Change management and organizational development', 'Process reengineering and optimization', 'Risk management and compliance consulting']
+    features: ['Strategic business planning and advisory', 'Change management and organizational development', 'Process reengineering and optimization', 'Risk management and compliance consulting'],
+    image: 'wwa4.jpg'
   },
   {
     icon: Cpu,
     title: 'Digital Engineering and Manufacturing',
     description: 'Digital twin and simulation technologies, smart manufacturing solutions, IoT integration for manufacturing, and product lifecycle management (PLM).',
-    features: ['Digital twin and simulation technologies', 'Smart manufacturing solutions', 'IoT integration for manufacturing', 'Product lifecycle management (PLM)']
+    features: ['Digital twin and simulation technologies', 'Smart manufacturing solutions', 'IoT integration for manufacturing', 'Product lifecycle management (PLM)'],
+    image: 'wwa1.jpg'
   },
   {
     icon: Zap,
     title: 'Emerging Technology',
     description: 'Internet of Things (IoT) solutions, blockchain technology implementation, augmented reality (AR) and virtual reality (VR) applications, and quantum computing and advanced research initiatives.',
-    features: ['Internet of Things (IoT) solutions', 'Blockchain technology implementation', 'Augmented reality (AR) and virtual reality (VR) applications', 'Quantum computing and advanced research initiatives']
+    features: ['Internet of Things (IoT) solutions', 'Blockchain technology implementation', 'Augmented reality (AR) and virtual reality (VR) applications', 'Quantum computing and advanced research initiatives'],
+    image: 'wwa2.jpg'
   }
 ];
 
-const clampIndex = (idx: number, length: number) => {
-  if (idx < 0) return length - 1;
-  if (idx >= length) return 0;
-  return idx;
-};
-
 const ServicesSection = () => {
-  const [current, setCurrent] = useState(0);
-  const total = services.length;
+  // Duplicate first five at the end to ensure smooth scroll loop
+  const renderServices = useMemo(() => {
+    return [...services, ...services.slice(0, 5)];
+  }, []);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardsRowRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
-  // Touch/drag support
-  const touchStartX = useRef<number | null>(null);
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const cardsRow = cardsRowRef.current;
+    if (!section || !cardsRow) return;
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
+    let trigger: ScrollTrigger | null = null;
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-    if (deltaX > 50) {
-      setCurrent((prev) => clampIndex(prev - 1, total));
-    } else if (deltaX < -50) {
-      setCurrent((prev) => clampIndex(prev + 1, total));
-    }
-    touchStartX.current = null;
-  };
+    const rebuild = () => {
+      // Compute dynamic measurements based on current viewport and gap
+      const cardCount = renderServices.length;
+      const cardWidth = 900; // px (matches inline style flex-basis)
+      const viewportWidth = window.innerWidth;
+      const computed = window.getComputedStyle(cardsRow);
+      const gapValue = computed.getPropertyValue('column-gap') || computed.getPropertyValue('gap') || '0px';
+      const gapPx = parseFloat(gapValue) || 0; // horizontal gap
 
-  // Mouse drag support (desktop)
-  const dragStartX = useRef<number | null>(null);
+      // Ensure first and last card are centered: sidePadding = (viewportWidth - cardWidth) / 2
+      const sidePadding = Math.max((viewportWidth - cardWidth) / 2, 0);
+      const totalWidth = cardCount * cardWidth + (cardCount - 1) * gapPx + 2 * sidePadding;
+      const scrollDistance = Math.max(totalWidth - viewportWidth, 0);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    dragStartX.current = e.clientX;
-  };
+      // Apply paddings and width so content size matches our calculations
+      (cardsRow as HTMLDivElement).style.paddingLeft = `${sidePadding}px`;
+      (cardsRow as HTMLDivElement).style.paddingRight = `${sidePadding}px`;
+      (cardsRow as HTMLDivElement).style.width = `${cardCount * cardWidth + (cardCount - 1) * gapPx + 2 * sidePadding}px`;
 
-  const handleMouseUp = (e: React.MouseEvent) => {
-    if (dragStartX.current === null) return;
-    const deltaX = e.clientX - dragStartX.current;
-    if (deltaX > 50) {
-      setCurrent((prev) => clampIndex(prev - 1, total));
-    } else if (deltaX < -50) {
-      setCurrent((prev) => clampIndex(prev + 1, total));
-    }
-    dragStartX.current = null;
-  };
+      // Calculate the vertical offset so the first card is centered in the viewport
+      const cardHeight = 500; // px (matches minHeight below)
+      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
+      const sectionPaddingTop = Math.max((window.innerHeight - headerHeight - cardHeight) / 2, 0);
+      section.style.paddingTop = `${sectionPaddingTop}px`;
+      section.style.paddingBottom = `${sectionPaddingTop}px`;
 
-  // Get indices for left, center, right cards
-  const getIndices = () => {
-    const left = clampIndex(current - 1, total);
-    const center = current;
-    const right = clampIndex(current + 1, total);
-    return [left, center, right];
-  };
+      // Reset and create trigger
+      if (trigger) {
+        trigger.kill();
+        trigger = null;
+      }
+      gsap.set(cardsRow, { x: 0 });
 
-  const [leftIdx, centerIdx, rightIdx] = getIndices();
+      // Pin until the last card is fully visible, then unpin and scroll to next section
+      trigger = ScrollTrigger.create({
+        trigger: section,
+        start: () => `top+=${sectionPaddingTop}px top`,
+        end: () => `+=${scrollDistance}px`,
+        pin: true,
+        scrub: 1.2,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          gsap.to(cardsRow, {
+            x: -progress * scrollDistance,
+            duration: 0.1,
+            overwrite: 'auto',
+            ease: 'power1.inOut',
+          });
+        },
+        onLeave: () => {
+          // When the user scrolls past the last card, jump to the next section
+          // Find the next section after this one
+          const nextSection = document.querySelector('#after-services') as HTMLElement;
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'auto' });
+          }
+        },
+      });
+      ScrollTrigger.refresh();
+    };
+
+    // Initial build and on resize
+    rebuild();
+    window.addEventListener('resize', rebuild);
+
+    return () => {
+      window.removeEventListener('resize', rebuild);
+      if (trigger) trigger.kill();
+    };
+  }, [renderServices]);
 
   return (
-    <section id="services" className="section-padding bg-white">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Services</h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            At QuantaGlobal, we offer a wide range of services designed to meet the unique challenges and opportunities of modern enterprises. Our expertise spans across various domains to provide holistic and integrated solutions.
-          </p>
-        </div>
+    <section 
+      ref={sectionRef} 
+      id="services" 
+      style={{ height: "100vh" }} 
+      className="w-full flex flex-col items-center justify-center py-16 relative overflow-hidden bg-gray-200"
+    >
+      {/* Header */}
+      <div ref={headerRef} className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Services</h2>
+        <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+          At QuantaGlobal, we offer a wide range of services designed to meet the unique challenges and opportunities of modern enterprises. Our expertise spans across various domains to provide holistic and integrated solutions.
+        </p>
+      </div>
 
-        {/* Carousel for desktop, single card for mobile */}
-        <div
-          className="w-full flex justify-center items-center select-none relative"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          style={{ userSelect: 'none' }}
-        >
-          {/* Arrow Button - Left (hidden on mobile) */}
-          <button
-            onClick={() => setCurrent((prev) => clampIndex(prev - 1, total))}
-            className="hidden md:flex items-center justify-center rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors absolute left-0 z-30"
-            aria-label="Previous"
-            style={{ left: '-48px' }}
+      {/* Cards Row */}
+      <div
+        ref={cardsRowRef}
+        className="relative flex flex-row items-center justify-center z-10 gap-x-12 md:gap-x-24 overflow-x-hidden"
+        style={{ minHeight: 500 }}
+      >
+        {renderServices.map((service, idx) => (
+          <div
+            key={idx}
+            className="bg-transparent w-[90vw] max-w-[900px] h-[500px] flex flex-col md:flex-row justify-center items-center px-4 md:px-8 relative"
+            style={{ flex: "0 0 900px", maxWidth: 900 }}
           >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          {/* Cards */}
-          <div className="relative flex w-full max-w-5xl justify-center items-center gap-4">
-            {/* Desktop: show 3 cards, Mobile: show only center card */}
-            <div className="hidden md:flex w-full justify-center items-center gap-4">
-              <ServiceCard
-                service={services[leftIdx]}
-                isActive={false}
-              />
-              <ServiceCard
-                service={services[centerIdx]}
-                isActive={true}
-              />
-              <ServiceCard
-                service={services[rightIdx]}
-                isActive={false}
-              />
+            {/* Text */}
+            <div className="flex-1 flex flex-col justify-center items-start md:pr-8">
+              <div className="mb-4">
+                <service.icon className="w-10 h-10 text-blue-600 mb-2" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-light text-gray-900 mb-4 leading-tight">
+                {service.title}
+              </h3>
+              <p className="text-base text-gray-700 mb-4 leading-relaxed">
+                {service.description}
+              </p>
+              <button className="bg-blue-600 text-white font-semibold rounded-full px-6 py-2 mt-2 hover:bg-blue-700 transition-colors w-fit">
+                Read the full story
+              </button>
             </div>
-            <div className="flex md:hidden w-full justify-center items-center">
-              <ServiceCard
-                service={services[centerIdx]}
-                isActive={true}
-              />
+            {/* Image: show the image for every service */}
+            <div className="hidden md:flex flex-1 items-center justify-center">
+              <div className="rounded-xl overflow-hidden shadow-lg w-[320px] h-[240px] md:w-[400px] md:h-[300px] bg-gray-100 flex items-center justify-center">
+                <img
+                  src={`/${service.image}`}
+                  alt={`Service ${service.title}`}
+                  className="object-cover w-full h-full"
+                  style={{ maxWidth: '100%', maxHeight: '100%' }}
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          {/* Arrow Button - Right (hidden on mobile) */}
-          <button
-            onClick={() => setCurrent((prev) => clampIndex(prev + 1, total))}
-            className="hidden md:flex items-center justify-center rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors absolute right-0 z-30"
-            aria-label="Next"
-            style={{ right: '-48px' }}
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex items-center justify-center gap-4 mt-12">
-          <button
-            onClick={() => setCurrent((prev) => clampIndex(prev - 1, total))}
-            className="rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors"
-            aria-label="Previous"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <div className="flex gap-2">
-            {services.map((_, idx) => (
-              <span
-                key={idx}
-                className={`inline-block w-2 h-2 rounded-full transition-all duration-300 ${idx === current ? 'bg-blue-600' : 'bg-gray-300'}`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={() => setCurrent((prev) => clampIndex(prev + 1, total))}
-            className="rounded-full p-2 bg-white border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors"
-            aria-label="Next"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+        ))}
       </div>
     </section>
-  );
-};
-
-type ServiceCardProps = {
-  service: typeof services[number];
-  isActive: boolean;
-};
-
-const ServiceCard = ({ service, isActive }: ServiceCardProps) => {
-  const Icon = service.icon;
-  // All cards same width, but allow height to grow with content
-  return (
-    <div
-      className={`transition-all duration-500 flex flex-col items-stretch bg-white rounded-2xl shadow-md overflow-hidden w-full max-w-[400px] min-h-[520px] mx-0 ${
-        isActive
-          ? 'z-20 ring-4 ring-blue-200 ring-opacity-60 shadow-xl'
-          : 'z-10 opacity-80'
-      }`}
-      tabIndex={isActive ? 0 : -1}
-      aria-hidden={!isActive}
-      style={{
-        filter: isActive ? 'drop-shadow(0 0 16px #3b82f6aa)' : 'none',
-        height: 'auto'
-      }}
-    >
-      {/* Top: Text */}
-      <div className="flex-1 p-8 flex flex-col justify-center">
-        <div className="mb-4">
-          <Icon className="w-10 h-10 text-blue-600 mb-2" />
-        </div>
-        <h3 className="text-2xl md:text-3xl font-light text-gray-900 mb-4 leading-tight">{service.title}</h3>
-        <p className="text-base text-gray-700 mb-4 leading-relaxed">{service.description}</p>
-        <div className="mb-4">
-          {service.features.map((feature, featureIndex) => (
-            <div key={featureIndex} className="flex items-center text-sm mb-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-              <span className="text-gray-600">{feature}</span>
-            </div>
-          ))}
-        </div>
-        <button className="bg-blue-600 text-white font-semibold rounded-full px-6 py-2 mt-2 hover:bg-blue-700 transition-colors w-fit">
-          Read the full story
-        </button>
-      </div>
-      {/* Bottom: Image */}
-      {/* <div className="flex-1 flex items-center justify-center bg-gray-100 min-h-[180px]">
-        <img
-          src="/abupd.jpg"
-          alt={service.title}
-          className="object-cover w-full h-full max-h-[220px] rounded-none md:rounded-b-2xl"
-          style={{ maxWidth: 420 }}
-        />
-      </div> */}
-    </div>
   );
 };
 

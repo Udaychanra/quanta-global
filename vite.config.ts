@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "next/image": path.resolve(__dirname, "./src/shims/next-image.tsx"),
     },
   },
 }));
