@@ -169,7 +169,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-3/4 bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl text-blue-400 z-50">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-3/4 bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl text-blue-800 z-50">
       <div className="px-12 py-3">
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
@@ -189,7 +189,7 @@ const Navigation = () => {
               alt="QUANTA Global Logo" 
               className="h-20 w-auto"
             />
-            <span className="text-2xl font-bold text-blue-400">QuantaGlobal</span>
+            <span className="text-2xl font-bold text-blue-800">QuantaGlobal</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -211,7 +211,7 @@ const Navigation = () => {
                 onMouseLeave={handleDropdownMouseLeave}
                 style={{ display: 'inline-block' }}
               >
-                <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                <button className="flex items-center text-blue-800 hover:text-blue-300 transition-colors">
                   {item.label}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
@@ -223,7 +223,7 @@ const Navigation = () => {
                       // Simple list dropdown
                       return (
                         <div
-                          className="absolute top-full left-0 mt-1 w-56 bg-white text-blue-400 rounded-md shadow-lg py-2 z-50"
+                          className="absolute top-full left-0 mt-1 w-56 bg-white text-blue-800 rounded-md shadow-lg py-2 z-50"
                           onMouseEnter={() => handleDropdownMouseEnter(item.label)}
                           onMouseLeave={handleDropdownMouseLeave}
                         >
@@ -231,7 +231,7 @@ const Navigation = () => {
                             <button
                               key={subItem.label}
                               onClick={subItem.action}
-                              className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-400 transition-colors"
+                              className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-800 transition-colors"
                             >
                               {subItem.label}
                             </button>
@@ -245,7 +245,7 @@ const Navigation = () => {
 
                     return (
                       <div
-                        className="absolute top-full left-0 mt-1 bg-white text-blue-400 rounded-md shadow-lg z-50"
+                        className="absolute top-full left-0 mt-1 bg-white text-blue-800 rounded-md shadow-lg z-50"
                         onMouseEnter={() => handleDropdownMouseEnter(item.label)}
                         onMouseLeave={handleDropdownMouseLeave}
                       >
@@ -261,7 +261,7 @@ const Navigation = () => {
                                   onFocus={() => handleSubDropdownMouseEnter(subItem.label)}
                                   onClick={subItem.action}
                                   className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                                    isActive ? 'bg-blue-50 font-medium text-blue-400' : 'hover:bg-blue-50 hover:text-blue-400'
+                                    isActive ? 'bg-blue-50 font-medium text-blue-800' : 'hover:bg-blue-50 hover:text-blue-800'
                                   }`}
                                 >
                                   {subItem.label}
@@ -278,13 +278,13 @@ const Navigation = () => {
                                   <button
                                     key={link.label}
                                     onClick={link.action}
-                                    className="text-left px-3 py-2 rounded-md text-sm hover:bg-blue-50 hover:text-blue-400"
+                                    className="text-left px-3 py-2 rounded-md text-sm hover:bg-blue-50 hover:text-blue-800"
                                   >
                                     {link.label}
                                   </button>
                                 ))
                               ) : (
-                                <div className="text-sm text-blue-400 px-3 py-2">No items</div>
+                                <div className="text-sm text-blue-800 px-3 py-2">No items</div>
                               )}
                             </div>
                           </div>
@@ -297,7 +297,7 @@ const Navigation = () => {
             ))}
             {/* Careers as a single nav link */}
             <button
-              className="flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+              className="flex items-center text-blue-800 hover:text-blue-300 transition-colors"
               onClick={() => (window.location.href = '/careers')}
             >
               Careers
@@ -306,16 +306,16 @@ const Navigation = () => {
 
           {/* Utility Icons */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
+            {/* <button className="text-blue-800 hover:text-blue-300 transition-colors">
               <Search className="h-5 w-5" />
             </button>
-            <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <button className="flex items-center text-blue-800 hover:text-blue-300 transition-colors">
               <Globe className="h-5 w-5 mr-1" />
               <span className="text-sm">US - EN</span>
               <ChevronDown className="ml-1 h-4 w-4" />
             </button> */}
             <button
-              className="text-blue-400 hover:text-blue-300 transition-colors relative"
+              className="text-blue-800 hover:text-blue-300 transition-colors relative"
               onClick={() => (window.location.href = '/contact')}
             >
               <Phone className="h-5 w-5" />
@@ -323,14 +323,14 @@ const Navigation = () => {
                
               </div>
             </button>
-            {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
+            {/* <button className="text-blue-800 hover:text-blue-300 transition-colors">
               <User className="h-5 w-5" />
             </button> */}
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={toggleMenu} className="text-blue-400">
+            <Button variant="ghost" size="sm" onClick={toggleMenu} className="text-blue-800">
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -342,14 +342,14 @@ const Navigation = () => {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black border-t border-gray-700">
               {navigationItems.map((item) => (
                 <div key={item.label} className="space-y-1">
-                  <div className="px-3 py-2 text-blue-400 font-medium">
+                  <div className="px-3 py-2 text-blue-800 font-medium">
                     {item.label}
                   </div>
                   {item.items.map((subItem) => (
                     <div key={subItem.label} className="space-y-1">
                       <button
                         onClick={subItem.action}
-                        className=" px-6 py-2 text-blue-400 hover:text-blue-400 transition-colors w-full text-left text-sm flex items-center justify-between"
+                        className=" px-6 py-2 text-blue-800 hover:text-blue-800 transition-colors w-full text-left text-sm flex items-center justify-between"
                       >
                         <span>{subItem.label}</span>
                         {subItem.subItems && <ChevronDown className="ml-2 h-4 w-4" />}
@@ -361,7 +361,7 @@ const Navigation = () => {
                             <button
                               key={subSubItem.label}
                               onClick={subSubItem.action}
-                              className="block px-4 py-2 text-blue-100 hover:text-blue-400 transition-colors w-full text-left text-xs"
+                              className="block px-4 py-2 text-blue-100 hover:text-blue-800 transition-colors w-full text-left text-xs"
                             >
                               {subSubItem.label}
                             </button>
@@ -374,7 +374,7 @@ const Navigation = () => {
               ))}
               {/* Careers as a single nav link in mobile */}
               <button
-                className="block w-full px-3 py-2 text-blue-400 font-medium text-left hover:text-blue-400 transition-colors"
+                className="block w-full px-3 py-2 text-blue-800 font-medium text-left hover:text-blue-800 transition-colors"
                 onClick={() => (window.location.href = '/careers')}
               >
                 Careers
@@ -382,15 +382,15 @@ const Navigation = () => {
               
               {/* Mobile Utility Icons */}
               <div className="flex items-center justify-center space-x-4 pt-4 border-t border-gray-700">
-                {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
+                {/* <button className="text-blue-800 hover:text-blue-300 transition-colors">
                   <Search className="h-5 w-5" />
                 </button>
-                <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                <button className="flex items-center text-blue-800 hover:text-blue-300 transition-colors">
                   <Globe className="h-5 w-5 mr-1" />
                   <span className="text-sm">US - EN</span>
                 </button> */}
                 <button
-                  className="text-blue-400 hover:text-blue-300 transition-colors relative"
+                  className="text-blue-800 hover:text-blue-300 transition-colors relative"
                   onClick={() => (window.location.href = '/contact')}
                 >
                   <Phone className="h-5 w-5" />
@@ -398,7 +398,7 @@ const Navigation = () => {
                     {/* <div className="w-3 h-3 bg-red-500 rounded-full"></div> */}
                   </div>
                 </button>
-                {/* <button className="text-blue-400 hover:text-blue-300 transition-colors">
+                {/* <button className="text-blue-800 hover:text-blue-300 transition-colors">
                   <User className="h-5 w-5" />
                 </button> */}
               </div>
