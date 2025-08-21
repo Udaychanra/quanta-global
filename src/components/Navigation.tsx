@@ -28,14 +28,44 @@ const Navigation = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Navigation items with sub-items for Services, Solutions, Products, Industries, Blogs, Insights
+  // Navigation items with sub-items for Services, Solutions, Products, Industries, Blogs, Insights, Careers, Contact Us
   const navigationItems: TopNav[] = [
     {
       label: 'Who we are',
       items: [
-        { label: 'About Us', action: () => { window.location.href = '/about'; } },
-        // { label: 'Our Team', action: () => (window.location.href = '/team') },
-        // { label: 'Leadership', action: () => (window.location.href = '/leadership') },
+        {
+          label: 'Our Story',
+          action: () => { window.location.href = '/about'; },
+          subItems: [
+            { label: 'Mission', action: () => { window.location.href = '/about#mission'; } },
+            { label: 'Values', action: () => { window.location.href = '/about#values'; } },
+            { label: 'Quanta as the Orchestrator of Clarity', action: () => { window.location.href = '/about#orchestrator-of-clarity'; } },
+          ]
+        },
+        {
+          label: 'Enterprise Orchestration (EO)',
+          action: () => { window.location.href = '/enterprise-orchestration'; },
+          subItems: [
+            { label: 'Navigate + Orchestrate Philosophy', action: () => { window.location.href = '/enterprise-orchestration#navigate-orchestrate'; } },
+            { label: 'Anchor Framework', action: () => { window.location.href = '/enterprise-orchestration#anchor-framework'; } },
+          ]
+        },
+        {
+          label: 'Leadership',
+          action: () => { window.location.href = '/leadership'; },
+          subItems: [
+            { label: 'Executive Bios', action: () => { window.location.href = '/leadership#executive-bios'; } },
+            { label: 'Credibility', action: () => { window.location.href = '/leadership#credibility'; } },
+          ]
+        },
+        {
+          label: 'Insights',
+          action: () => { window.location.href = '/insights'; },
+          subItems: [
+            { label: 'Blogs', action: () => { window.location.href = '/insights/blogs'; } },
+            { label: 'Thought Leadership', action: () => { window.location.href = '/insights/thought-leadership'; } },
+          ]
+        },
       ]
     },
     {
@@ -45,91 +75,257 @@ const Navigation = () => {
           label: 'Services',
           action: () => { window.location.href = '/services'; },
           subItems: [
-            { label: 'Consulting', action: () => { window.location.href = '/services/consulting'; } },
-            { label: 'Implementation', action: () => { window.location.href = '/services/implementation'; } },
-            { label: 'Support', action: () => { window.location.href = '/services/support'; } },
+            { label: 'SAP & ERP Transformation', action: () => { window.location.href = '/services/sap-erp-transformation'; } },
+            { label: 'Finance Transformation', action: () => { window.location.href = '/services/finance-transformation'; } },
+            { label: 'Supply Chain Transformation', action: () => { window.location.href = '/services/supply-chain-transformation'; } },
+            { label: 'Cloud & Platforms', action: () => { window.location.href = '/services/cloud-platforms'; } },
           ]
         },
         {
           label: 'Solutions',
           action: () => { window.location.href = '/solutions'; },
           subItems: [
-            { label: 'AI Solutions', action: () => { window.location.href = '/solutions/ai'; } },
-            { label: 'Cloud Solutions', action: () => { window.location.href = '/solutions/cloud'; } },
-            { label: 'Custom Solutions', action: () => { window.location.href = '/solutions/custom'; } },
+            { label: 'Transformation Control Tower', action: () => { window.location.href = '/solutions/transformation-control-tower'; } },
+            { label: 'Partner Ecosystem Strategy', action: () => { window.location.href = '/solutions/partner-ecosystem-strategy'; } },
+            { label: 'AI & Data for the Intelligent Enterprise', action: () => { window.location.href = '/solutions/ai-data-intelligent-enterprise'; } },
           ]
         },
         {
           label: 'Products',
           action: () => { window.location.href = '/products'; },
           subItems: [
-            { label: 'Product A', action: () => { window.location.href = '/products/a'; } },
-            { label: 'Product B', action: ()=> { window.location.href = '/products/b'; } },
-            { label: 'Product C', action: () => { window.location.href = '/products/c'; } },
+            { label: 'SARAH AI (spotlight page)', action: () => { window.location.href = '/products/sarah-ai'; } },
           ]
         },
         {
           label: 'Industries',
           action: () => { window.location.href = '/industries'; },
           subItems: [
-            { label: 'Finance', action: () => { window.location.href = '/industries/finance'; } },
-            { label: 'Healthcare', action: () => { window.location.href = '/industries/healthcare'; } },
-            { label: 'Retail', action: () => { window.location.href = '/industries/retail'; } },
+            { label: 'Financial Services', action: () => { window.location.href = '/industries/financial-services'; } },
+            { label: 'Technology, Media & Telecom', action: () => { window.location.href = '/industries/technology-media-telecom'; } },
+            { label: 'Life Sciences & Healthcare', action: () => { window.location.href = '/industries/life-sciences-healthcare'; } },
+            { label: 'Manufacturing & Industrial', action: () => { window.location.href = '/industries/manufacturing-industrial'; } },
+            { label: 'Consumer Goods & Retail', action: () => { window.location.href = '/industries/consumer-goods-retail'; } },
+            { label: 'Energy & Utilities', action: () => { window.location.href = '/industries/energy-utilities'; } },
+            { label: 'Automotive & Transportation', action: () => { window.location.href = '/industries/automotive-transportation'; } },
+            { label: 'Government & Public Services', action: () => { window.location.href = '/industries/government-public-services'; } },
           ]
         },
       ]
     },
     {
-      label: 'Blogs',
+      label: 'Blogs ',
       items: [
         {
-          label: 'Company Blog',
-          action: () => { window.location.href = '/blogs'; },
+          label: 'Services',
+          action: () => { window.location.href = '/blogs/services'; },
           subItems: [
-            { label: 'Latest Posts', action: () => { window.location.href = '/blogs/latest'; } },
-            { label: 'Tech Updates', action: () => { window.location.href = '/blogs/tech'; } },
-            { label: 'Culture', action: () => { window.location.href = '/blogs/culture'; } },
+            { label: 'SAP & ERP Transformation', action: () => { window.location.href = '/blogs/services/sap-erp-transformation'; } },
+            { label: 'Finance Transformation', action: () => { window.location.href = '/blogs/services/finance-transformation'; } },
+            { label: 'Supply Chain Transformation', action: () => { window.location.href = '/blogs/services/supply-chain-transformation'; } },
+            { label: 'Cloud & Platforms', action: () => { window.location.href = '/blogs/services/cloud-platforms'; } },
           ]
         },
         {
-          label: 'Guest Posts',
-          action: () => { window.location.href = '/blogs/guest'; },
+          label: 'Solutions',
+          action: () => { window.location.href = '/blogs/solutions'; },
           subItems: [
-            { label: 'Industry Voices', action: () => { window.location.href = '/blogs/guest/industry'; } },
-            { label: 'Partner Stories', action: () => { window.location.href = '/blogs/guest/partners'; } },
+            { label: 'Transformation Control Tower', action: () => { window.location.href = '/blogs/solutions/transformation-control-tower'; } },
+            { label: 'Partner Ecosystem Strategy', action: () => { window.location.href = '/blogs/solutions/partner-ecosystem-strategy'; } },
+            { label: 'AI & Data for the Intelligent Enterprise', action: () => { window.location.href = '/blogs/solutions/ai-data-intelligent-enterprise'; } },
           ]
-        }
+        },
+        {
+          label: 'Products',
+          action: () => { window.location.href = '/blogs/products'; },
+          subItems: [
+            { label: 'SARAH AI (spotlight page)', action: () => { window.location.href = '/blogs/products/sarah-ai'; } },
+          ]
+        },
+        {
+          label: 'Industries',
+          action: () => { window.location.href = '/blogs/industries'; },
+          subItems: [
+            { label: 'Financial Services', action: () => { window.location.href = '/blogs/industries/financial-services'; } },
+            { label: 'Technology, Media & Telecom', action: () => { window.location.href = '/blogs/industries/technology-media-telecom'; } },
+            { label: 'Life Sciences & Healthcare', action: () => { window.location.href = '/blogs/industries/life-sciences-healthcare'; } },
+            { label: 'Manufacturing & Industrial', action: () => { window.location.href = '/blogs/industries/manufacturing-industrial'; } },
+            { label: 'Consumer Goods & Retail', action: () => { window.location.href = '/blogs/industries/consumer-goods-retail'; } },
+            { label: 'Energy & Utilities', action: () => { window.location.href = '/blogs/industries/energy-utilities'; } },
+            { label: 'Automotive & Transportation', action: () => { window.location.href = '/blogs/industries/automotive-transportation'; } },
+            { label: 'Government & Public Services', action: () => { window.location.href = '/blogs/industries/government-public-services'; } },
+          ]
+        },
       ]
     },
     {
       label: 'Insights',
       items: [
         {
-          label: 'Research',
-          action: () => { window.location.href = '/insights/research'; },
+          label: 'Services',
+          action: () => { window.location.href = '/insights/services'; },
           subItems: [
-            { label: 'Whitepapers', action: () => { window.location.href = '/insights/research/whitepapers'; } },
-            { label: 'Case Studies', action: () => { window.location.href = '/insights/research/case-studies'; } },
+            { label: 'SAP & ERP Transformation', action: () => { window.location.href = '/insights/services/sap-erp-transformation'; } },
+            { label: 'Finance Transformation', action: () => { window.location.href = '/insights/services/finance-transformation'; } },
+            { label: 'Supply Chain Transformation', action: () => { window.location.href = '/insights/services/supply-chain-transformation'; } },
+            { label: 'Cloud & Platforms', action: () => { window.location.href = '/insights/services/cloud-platforms'; } },
           ]
         },
         {
-          label: 'Publications',
-          action: () => { window.location.href = '/insights/publications'; },
+          label: 'Solutions',
+          action: () => { window.location.href = '/insights/solutions'; },
           subItems: [
-            { label: 'Reports', action: () => { window.location.href = '/insights/publications/reports'; } },
-            { label: 'Magazines', action: () => { window.location.href = '/insights/publications/magazines'; } },
+            { label: 'Transformation Control Tower', action: () => { window.location.href = '/insights/solutions/transformation-control-tower'; } },
+            { label: 'Partner Ecosystem Strategy', action: () => { window.location.href = '/insights/solutions/partner-ecosystem-strategy'; } },
+            { label: 'AI & Data for the Intelligent Enterprise', action: () => { window.location.href = '/insights/solutions/ai-data-intelligent-enterprise'; } },
           ]
         },
         {
-          label: 'Events',
-          action: () => { window.location.href = '/insights/events'; },
+          label: 'Products',
+          action: () => { window.location.href = '/insights/products'; },
           subItems: [
-            { label: 'Webinars', action: () => { window.location.href = '/insights/events/webinars'; } },
-            { label: 'Conferences', action: () => { window.location.href = '/insights/events/conferences'; } },
+            { label: 'SARAH AI (spotlight page)', action: () => { window.location.href = '/insights/products/sarah-ai'; } },
+          ]
+        },
+        {
+          label: 'Industries',
+            action: () => { window.location.href = '/insights/industries'; },
+          subItems: [
+            { label: 'Financial Services', action: () => { window.location.href = '/insights/industries/financial-services'; } },
+            { label: 'Technology, Media & Telecom', action: () => { window.location.href = '/insights/industries/technology-media-telecom'; } },
+            { label: 'Life Sciences & Healthcare', action: () => { window.location.href = '/insights/industries/life-sciences-healthcare'; } },
+            { label: 'Manufacturing & Industrial', action: () => { window.location.href = '/insights/industries/manufacturing-industrial'; } },
+            { label: 'Consumer Goods & Retail', action: () => { window.location.href = '/insights/industries/consumer-goods-retail'; } },
+            { label: 'Energy & Utilities', action: () => { window.location.href = '/insights/industries/energy-utilities'; } },
+            { label: 'Automotive & Transportation', action: () => { window.location.href = '/insights/industries/automotive-transportation'; } },
+            { label: 'Government & Public Services', action: () => { window.location.href = '/insights/industries/government-public-services'; } },
+          ]
+        },
+      ]
+    },
+    // {
+    //   label: 'Blogs',
+    //   items: [
+    //     {
+    //       label: 'Company Blog',
+    //       action: () => { window.location.href = '/blogs'; },
+    //       subItems: [
+    //         { label: 'Latest Posts', action: () => { window.location.href = '/blogs/latest'; } },
+    //         { label: 'Tech Updates', action: () => { window.location.href = '/blogs/tech'; } },
+    //         { label: 'Culture', action: () => { window.location.href = '/blogs/culture'; } },
+    //       ]
+    //     },
+    //     {
+    //       label: 'Guest Posts',
+    //       action: () => { window.location.href = '/blogs/guest'; },
+    //       subItems: [
+    //         { label: 'Industry Voices', action: () => { window.location.href = '/blogs/guest/industry'; } },
+    //         { label: 'Partner Stories', action: () => { window.location.href = '/blogs/guest/partners'; } },
+    //       ]
+    //     }
+    //   ]
+    // },
+    // {
+    //   label: 'Insights',
+    //   items: [
+    //     {
+    //       label: 'Research',
+    //       action: () => { window.location.href = '/insights/research'; },
+    //       subItems: [
+    //         { label: 'Whitepapers', action: () => { window.location.href = '/insights/research/whitepapers'; } },
+    //         { label: 'Case Studies', action: () => { window.location.href = '/insights/research/case-studies'; } },
+    //       ]
+    //     },
+    //     {
+    //       label: 'Publications',
+    //       action: () => { window.location.href = '/insights/publications'; },
+    //       subItems: [
+    //         { label: 'Reports', action: () => { window.location.href = '/insights/publications/reports'; } },
+    //         { label: 'Magazines', action: () => { window.location.href = '/insights/publications/magazines'; } },
+    //       ]
+    //     },
+    //     {
+    //       label: 'Events',
+    //       action: () => { window.location.href = '/insights/events'; },
+    //       subItems: [
+    //         { label: 'Webinars', action: () => { window.location.href = '/insights/events/webinars'; } },
+    //         { label: 'Conferences', action: () => { window.location.href = '/insights/events/conferences'; } },
+    //       ]
+    //     }
+    //   ]
+    // },
+    {
+      label: 'Careers',
+      items: [
+        {
+          label: 'Life at QuantaGlobal',
+          action: () => { window.location.href = '/careers/life'; }
+        },
+        {
+          label: 'Open Roles',
+          action: () => { window.location.href = '/careers/open-roles'; }
+        },
+        {
+          label: 'Culture & Values',
+          action: () => { window.location.href = '/careers/culture-values'; }
+        },
+        {
+          label: 'Future of Work',
+          action: () => { window.location.href = '/careers/future-of-work'; },
+          subItems: [
+            {
+              label: 'AI-first consulting',
+              action: () => { window.location.href = '/careers/future-of-work/ai-first-consulting'; }
+            },
+            {
+              label: 'Orchestration mindset',
+              action: () => { window.location.href = '/careers/future-of-work/orchestration-mindset'; }
+            }
           ]
         }
       ]
     },
+    {
+      label: 'Contact Us',
+      items: [
+        {
+          label: 'Talk to Us',
+          action: () => { window.location.href = '/contact#talk'; },
+          subItems: [
+            {
+              label: 'Form',
+              action: () => { window.location.href = '/contact#form'; }
+            },
+            {
+              label: 'Email',
+              action: () => { window.location.href = 'mailto:info@quantaglobal.com'; }
+            },
+            {
+              label: 'Phone',
+              action: () => { window.location.href = 'tel:+1234567890'; }
+            }
+          ]
+        },
+        {
+          label: 'Chat with Us',
+          action: () => { window.location.href = '/contact#chat'; },
+          subItems: [
+            {
+              label: 'AI-powered site assistant',
+              action: () => { window.location.href = '/contact#ai-assistant'; }
+            },
+            {
+              label: 'SARAH-lite',
+              action: () => { window.location.href = '/contact#sarah-lite'; }
+            }
+          ]
+        },
+        {
+          label: 'Office locations / global reach',
+          action: () => { window.location.href = '/contact#locations'; }
+        }
+      ]
+    }
   ];
 
   // Handlers for dropdown with 3s delay on close
@@ -189,7 +385,7 @@ const Navigation = () => {
               alt="QUANTA Global Logo" 
               className="h-20 w-auto"
             />
-            <span className="text-2xl font-bold text-blue-800">QuantaGlobal</span>
+            {/* <span className="text-2xl font-bold text-blue-800">QuantaGlobal</span> */}
           </div>
 
           {/* Desktop Navigation */}
@@ -295,13 +491,6 @@ const Navigation = () => {
                 )}
               </div>
             ))}
-            {/* Careers as a single nav link */}
-            <button
-              className="flex items-center text-blue-800 hover:text-blue-300 transition-colors"
-              onClick={() => (window.location.href = '/careers')}
-            >
-              Careers
-            </button>
           </div>
 
           {/* Utility Icons */}
@@ -372,36 +561,6 @@ const Navigation = () => {
                   ))}
                 </div>
               ))}
-              {/* Careers as a single nav link in mobile */}
-              <button
-                className="block w-full px-3 py-2 text-blue-800 font-medium text-left hover:text-blue-800 transition-colors"
-                onClick={() => (window.location.href = '/careers')}
-              >
-                Careers
-              </button>
-              
-              {/* Mobile Utility Icons */}
-              <div className="flex items-center justify-center space-x-4 pt-4 border-t border-gray-700">
-                {/* <button className="text-blue-800 hover:text-blue-300 transition-colors">
-                  <Search className="h-5 w-5" />
-                </button>
-                <button className="flex items-center text-blue-800 hover:text-blue-300 transition-colors">
-                  <Globe className="h-5 w-5 mr-1" />
-                  <span className="text-sm">US - EN</span>
-                </button> */}
-                <button
-                  className="text-blue-800 hover:text-blue-300 transition-colors relative"
-                  onClick={() => (window.location.href = '/contact')}
-                >
-                  <Phone className="h-5 w-5" />
-                  <div className="absolute -top-1 -right-1">
-                    {/* <div className="w-3 h-3 bg-red-500 rounded-full"></div> */}
-                  </div>
-                </button>
-                {/* <button className="text-blue-800 hover:text-blue-300 transition-colors">
-                  <User className="h-5 w-5" />
-                </button> */}
-              </div>
             </div>
           </div>
         )}

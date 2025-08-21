@@ -7,12 +7,12 @@ import DeliveryApproachSection from '@/components/DeliveryApproachSection';
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-200">
       <Navigation />
-      <main className="section-container py-16">
+      <main className="section-container mt-10">
         <AboutSection />
         <div className="my-16" />
-        <WhyUsSection />
+        {/* <WhyUsSection /> */}
         {/* <DeliveryApproachSection/> */}
       </main>
       <Footer />

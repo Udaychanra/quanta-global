@@ -55,7 +55,7 @@ const Careers = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white mt-20">
       <Navigation />
       <main className="section-container py-16">
         <h1 className="text-4xl font-extrabold text-center mb-2 text-gray-900">Careers at QuantaGlobal</h1>

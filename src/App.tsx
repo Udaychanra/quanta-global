@@ -12,6 +12,11 @@ import Careers from "./pages/Careers";
 import Services from "./pages/Services";
 import Solutions from "./pages/Solutions";
 import Contact from "./pages/Contact";
+import Blogs from "./pages/Blogs";
+import Insights from "./pages/Insights";
+import ContentHub from "./pages/ContentHub";
+import ContentDetail from "./pages/ContentDetail";
+import AdminContent from "./pages/AdminContent";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +35,15 @@ const App = () => (
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/careers" element={<Careers />} />     
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/insights" element={<Insights />} />
+          {/* Dynamic hubs: /blogs/:section? and /insights/:section? */}
+          <Route path="/blogs/:section" element={<ContentHub type="blogs" />} />
+          <Route path="/insights/:section" element={<ContentHub type="insights" />} />
+          <Route path="/blogs/:section/:slug" element={<ContentDetail type="blogs" />} />
+          <Route path="/insights/:section/:slug" element={<ContentDetail type="insights" />} />
+          <Route path="/admin/content" element={<AdminContent />} />
+        
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

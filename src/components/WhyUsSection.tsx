@@ -62,7 +62,7 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section id="why-us" className="section-padding bg-white">
+    <section id="why-us" className="section-padding bg-gray-200">
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Why Choose Us?</h2>
@@ -112,7 +112,7 @@ const WhyUsSection = () => {
           </div>
         </div> */}
 
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
 
         {/* Call to Action */}
         <div className="text-center mt-16">
