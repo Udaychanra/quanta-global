@@ -27,6 +27,8 @@ import EOService from "./pages/EOService";
 import TCTSolutions from "./pages/TCTSolutions";
 import PESSolution from "./pages/PESSolution";
 import AIDATASolution from "./pages/AIDATASolution";
+import EnterpriseOrchestration from "./pages/EnterpriseOrchestration";
+import OurStory from "./pages/OurStory";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -39,29 +41,41 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/products" element={<Products />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/our-story" element={<OurStory />} />
           <Route path="/team" element={<Team />} />
           <Route path="/services" element={<Services />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/careers" element={<Careers />} />     
           <Route path="/contact" element={<Contact />} />
+          {/* Content pages */}
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/insights" element={<Insights />} />
-          {/* Dynamic hubs: /blogs/:section? and /insights/:section? */}
-          <Route path="/blogs/:section" element={<ContentHub type="blogs" />} />
-          <Route path="/insights/:section" element={<ContentHub type="insights" />} />
-          <Route path="/blogs/:section/:slug" element={<ContentDetail type="blogs" />} />
-          <Route path="/insights/:section/:slug" element={<ContentDetail type="insights" />} />
           <Route path="/admin/content" element={<AdminContent />} />
+          
+          {/* Specific service routes - must come BEFORE dynamic blog routes */}
           <Route path="/services/ai" element={<AIServices />} />
           <Route path="/services/finance-transformation" element={<FinanceServices />} />
-         
           <Route path="/services/cloud-platforms" element={<CloudServices />} />
           <Route path="/services/supply-chain-transformation" element={<SupplyChainServices />} />
           <Route path="/services/sap-erp-transformation" element={<SAPERPServices />} />
           <Route path="/services/enterprise-orchestration" element={<EOService />} />
+          
+          {/* Enterprise Orchestration main page */}
+          <Route path="/enterprise-orchestration" element={<EnterpriseOrchestration />} />
+          
+          {/* Specific solution routes - must come BEFORE dynamic blog routes */}
           <Route path="/solutions/transformation-control-tower" element={<TCTSolutions />} />
           <Route path="/solutions/partner-ecosystem-strategy" element={<PESSolution />} />
           <Route path="/solutions/ai-data-tactical" element={<AIDATASolution />} />
+          
+          {/* Dynamic content routes - must come AFTER specific routes */}
+          <Route path="/blogs/:section" element={<ContentHub type="blogs" />} />
+          <Route path="/insights/:section" element={<ContentHub type="insights" />} />
+          <Route path="/blogs/:section/:subcategory" element={<ContentHub type="blogs" />} />
+          <Route path="/insights/:section/:subcategory" element={<ContentHub type="insights" />} />
+          <Route path="/blogs/:section/:subcategory/:slug" element={<ContentDetail type="blogs" />} />
+          <Route path="/insights/:section/:subcategory/:slug" element={<ContentDetail type="insights" />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

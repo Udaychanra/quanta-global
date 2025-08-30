@@ -35,36 +35,15 @@ const Navigation = () => {
       items: [
         {
           label: 'Our Story',
-          action: () => { window.location.href = '/about'; },
-          subItems: [
-            { label: 'Mission', action: () => { window.location.href = '/about#mission'; } },
-            { label: 'Values', action: () => { window.location.href = '/about#values'; } },
-            { label: 'Quanta as the Orchestrator of Clarity', action: () => { window.location.href = '/about#orchestrator-of-clarity'; } },
-          ]
+          action: () => { window.location.href = '/our-story'; },
         },
         {
           label: 'Enterprise Orchestration (EO)',
           action: () => { window.location.href = '/enterprise-orchestration'; },
-          subItems: [
-            { label: 'Navigate + Orchestrate Philosophy', action: () => { window.location.href = '/enterprise-orchestration#navigate-orchestrate'; } },
-            { label: 'Anchor Framework', action: () => { window.location.href = '/enterprise-orchestration#anchor-framework'; } },
-          ]
         },
         {
           label: 'Leadership',
           action: () => { window.location.href = '/leadership'; },
-          subItems: [
-            { label: 'Executive Bios', action: () => { window.location.href = '/leadership#executive-bios'; } },
-            { label: 'Credibility', action: () => { window.location.href = '/leadership#credibility'; } },
-          ]
-        },
-        {
-          label: 'Insights',
-          action: () => { window.location.href = '/insights'; },
-          subItems: [
-            { label: 'Blogs', action: () => { window.location.href = '/insights/blogs'; } },
-            { label: 'Thought Leadership', action: () => { window.location.href = '/insights/thought-leadership'; } },
-          ]
         },
       ]
     },
@@ -79,10 +58,8 @@ const Navigation = () => {
             { label: 'Finance Transformation', action: () => { window.location.href = '/services/finance-transformation'; } },
             { label: 'Supply Chain Transformation', action: () => { window.location.href = '/services/supply-chain-transformation'; } },
             { label: 'Cloud & Platforms', action: () => { window.location.href = '/services/cloud-platforms'; } },
-              { label: 'AI Services', action: () => { window.location.href = '/services/ai'; } },
-              { label: 'Enterprise Orchestration (EO)', action: () => { window.location.href = '/services/enterprise-orchestration'; } },
-
-       
+            { label: 'AI Services', action: () => { window.location.href = '/services/ai'; } },
+            { label: 'Enterprise Orchestration (EO)', action: () => { window.location.href = '/services/enterprise-orchestration'; } },
           ]
         },
         {
@@ -128,6 +105,8 @@ const Navigation = () => {
             { label: 'Finance Transformation', action: () => { window.location.href = '/blogs/services/finance-transformation'; } },
             { label: 'Supply Chain Transformation', action: () => { window.location.href = '/blogs/services/supply-chain-transformation'; } },
             { label: 'Cloud & Platforms', action: () => { window.location.href = '/blogs/services/cloud-platforms'; } },
+            { label: 'AI Services', action: () => { window.location.href = '/blogs/services/ai'; } },
+            { label: 'Enterprise Orchestration (EO)', action: () => { window.location.href = '/blogs/services/enterprise-orchestration'; } },
           ]
         },
         {
@@ -173,6 +152,8 @@ const Navigation = () => {
             { label: 'Finance Transformation', action: () => { window.location.href = '/insights/services/finance-transformation'; } },
             { label: 'Supply Chain Transformation', action: () => { window.location.href = '/insights/services/supply-chain-transformation'; } },
             { label: 'Cloud & Platforms', action: () => { window.location.href = '/insights/services/cloud-platforms'; } },
+            { label: 'AI Services', action: () => { window.location.href = '/insights/services/ai'; } },
+            { label: 'Enterprise Orchestration (EO)', action: () => { window.location.href = '/insights/services/enterprise-orchestration'; } },
           ]
         },
         {
@@ -193,7 +174,7 @@ const Navigation = () => {
         },
         {
           label: 'Industries',
-            action: () => { window.location.href = '/insights/industries'; },
+          action: () => { window.location.href = '/insights/industries'; },
           subItems: [
             { label: 'Financial Services', action: () => { window.location.href = '/insights/industries/financial-services'; } },
             { label: 'Technology, Media & Telecom', action: () => { window.location.href = '/insights/industries/technology-media-telecom'; } },
@@ -207,85 +188,12 @@ const Navigation = () => {
         },
       ]
     },
-    // {
-    //   label: 'Blogs',
-    //   items: [
-    //     {
-    //       label: 'Company Blog',
-    //       action: () => { window.location.href = '/blogs'; },
-    //       subItems: [
-    //         { label: 'Latest Posts', action: () => { window.location.href = '/blogs/latest'; } },
-    //         { label: 'Tech Updates', action: () => { window.location.href = '/blogs/tech'; } },
-    //         { label: 'Culture', action: () => { window.location.href = '/blogs/culture'; } },
-    //       ]
-    //     },
-    //     {
-    //       label: 'Guest Posts',
-    //       action: () => { window.location.href = '/blogs/guest'; },
-    //       subItems: [
-    //         { label: 'Industry Voices', action: () => { window.location.href = '/blogs/guest/industry'; } },
-    //         { label: 'Partner Stories', action: () => { window.location.href = '/blogs/guest/partners'; } },
-    //       ]
-    //     }
-    //   ]
-    // },
-    // {
-    //   label: 'Insights',
-    //   items: [
-    //     {
-    //       label: 'Research',
-    //       action: () => { window.location.href = '/insights/research'; },
-    //       subItems: [
-    //         { label: 'Whitepapers', action: () => { window.location.href = '/insights/research/whitepapers'; } },
-    //         { label: 'Case Studies', action: () => { window.location.href = '/insights/research/case-studies'; } },
-    //       ]
-    //     },
-    //     {
-    //       label: 'Publications',
-    //       action: () => { window.location.href = '/insights/publications'; },
-    //       subItems: [
-    //         { label: 'Reports', action: () => { window.location.href = '/insights/publications/reports'; } },
-    //         { label: 'Magazines', action: () => { window.location.href = '/insights/publications/magazines'; } },
-    //       ]
-    //     },
-    //     {
-    //       label: 'Events',
-    //       action: () => { window.location.href = '/insights/events'; },
-    //       subItems: [
-    //         { label: 'Webinars', action: () => { window.location.href = '/insights/events/webinars'; } },
-    //         { label: 'Conferences', action: () => { window.location.href = '/insights/events/conferences'; } },
-    //       ]
-    //     }
-    //   ]
-    // },
     {
       label: 'Careers',
       items: [
         {
-          label: 'Life at QuantaGlobal',
-          action: () => { window.location.href = '/careers/life'; }
-        },
-        {
-          label: 'Open Roles',
-          action: () => { window.location.href = '/careers/open-roles'; }
-        },
-        {
-          label: 'Culture & Values',
-          action: () => { window.location.href = '/careers/culture-values'; }
-        },
-        {
-          label: 'Future of Work',
-          action: () => { window.location.href = '/careers/future-of-work'; },
-          subItems: [
-            {
-              label: 'AI-first consulting',
-              action: () => { window.location.href = '/careers/future-of-work/ai-first-consulting'; }
-            },
-            {
-              label: 'Orchestration mindset',
-              action: () => { window.location.href = '/careers/future-of-work/orchestration-mindset'; }
-            }
-          ]
+          label: 'Careers',
+          action: () => { window.location.href = '/careers'; }
         }
       ]
     },
@@ -293,40 +201,8 @@ const Navigation = () => {
       label: 'Contact Us',
       items: [
         {
-          label: 'Talk to Us',
-          action: () => { window.location.href = '/contact#talk'; },
-          subItems: [
-            {
-              label: 'Form',
-              action: () => { window.location.href = '/contact#form'; }
-            },
-            {
-              label: 'Email',
-              action: () => { window.location.href = 'mailto:info@quantaglobal.com'; }
-            },
-            {
-              label: 'Phone',
-              action: () => { window.location.href = 'tel:+1234567890'; }
-            }
-          ]
-        },
-        {
-          label: 'Chat with Us',
-          action: () => { window.location.href = '/contact#chat'; },
-          subItems: [
-            {
-              label: 'AI-powered site assistant',
-              action: () => { window.location.href = '/contact#ai-assistant'; }
-            },
-            {
-              label: 'SARAH-lite',
-              action: () => { window.location.href = '/contact#sarah-lite'; }
-            }
-          ]
-        },
-        {
-          label: 'Office locations / global reach',
-          action: () => { window.location.href = '/contact#locations'; }
+          label: 'Contact Us',
+          action: () => { window.location.href = '/contact'; }
         }
       ]
     }
@@ -411,7 +287,15 @@ const Navigation = () => {
                 onMouseLeave={handleDropdownMouseLeave}
                 style={{ display: 'inline-block' }}
               >
-                <button className="flex items-center text-blue-800 hover:text-blue-300 transition-colors">
+                <button
+                  className="flex items-center text-blue-800 hover:text-blue-300 transition-colors"
+                  // If Careers or Contact Us, make the button directly clickable
+                  onClick={
+                    (item.label === 'Careers' || item.label === 'Contact Us')
+                      ? item.items[0].action
+                      : undefined
+                  }
+                >
                   {item.label}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
@@ -419,6 +303,10 @@ const Navigation = () => {
                 {activeDropdown === item.label && (
                   (() => {
                     const isMega = item.items.some((i: any) => i.subItems && i.subItems.length > 0);
+                    // If Careers or Contact Us, do not show dropdown
+                    if (item.label === 'Careers' || item.label === 'Contact Us') {
+                      return null;
+                    }
                     if (!isMega) {
                       // Simple list dropdown
                       return (
@@ -484,7 +372,7 @@ const Navigation = () => {
                                   </button>
                                 ))
                               ) : (
-                                <div className="text-sm text-blue-800 px-3 py-2">No items</div>
+                                <div className="text-sm text-blue-800 px-3 py-2"></div>
                               )}
                             </div>
                           </div>
