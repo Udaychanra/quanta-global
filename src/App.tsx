@@ -17,7 +17,16 @@ import Insights from "./pages/Insights";
 import ContentHub from "./pages/ContentHub";
 import ContentDetail from "./pages/ContentDetail";
 import AdminContent from "./pages/AdminContent";
+import AIServices from "./pages/AIServices";
+import FinanceServices from "./pages/FinanceServices";
 
+import CloudServices from "./pages/CloudServices";
+import SupplyChainServices from "./pages/SupplyChainServices";
+import SAPERPServices from "./pages/SAPERPServices";
+import EOService from "./pages/EOService";
+import TCTSolutions from "./pages/TCTSolutions";
+import PESSolution from "./pages/PESSolution";
+import AIDATASolution from "./pages/AIDATASolution";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -43,7 +52,16 @@ const App = () => (
           <Route path="/blogs/:section/:slug" element={<ContentDetail type="blogs" />} />
           <Route path="/insights/:section/:slug" element={<ContentDetail type="insights" />} />
           <Route path="/admin/content" element={<AdminContent />} />
-        
+          <Route path="/services/ai" element={<AIServices />} />
+          <Route path="/services/finance-transformation" element={<FinanceServices />} />
+         
+          <Route path="/services/cloud-platforms" element={<CloudServices />} />
+          <Route path="/services/supply-chain-transformation" element={<SupplyChainServices />} />
+          <Route path="/services/sap-erp-transformation" element={<SAPERPServices />} />
+          <Route path="/services/enterprise-orchestration" element={<EOService />} />
+          <Route path="/solutions/transformation-control-tower" element={<TCTSolutions />} />
+          <Route path="/solutions/partner-ecosystem-strategy" element={<PESSolution />} />
+          <Route path="/solutions/ai-data-tactical" element={<AIDATASolution />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -74,22 +74,45 @@ const HeroSection = () => {
                   <span className="text-blue-500">results</span>
                 </h2>
               </div>
-              <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                <Button
-                  onClick={() => scrollToSection('eo-framework')}
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
-                  style={{ fontFamily: '"Bower-Bold", sans-serif' }}
-                >
-                  Explore EO Framework
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => scrollToSection('sarah-ai')}
-                  className="border-white bg-white text-blue-500 px-8 py-4 text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
-                  style={{ fontFamily: '"Bower-Bold", sans-serif' }}
-                >
-                  Discover&nbsp;SARAH&nbsp;AI
-                </Button>
+              <div className="pt-10 flex flex-col sm:flex-row gap-4 ">
+                {/* EO Button with Tooltip */}
+                <div className="relative group">
+                  <Button
+                    onClick={() => scrollToSection('eo-framework')}
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
+                    style={{ fontFamily: '"Bower-Bold", sans-serif' }}
+                  >
+                    EO
+                  </Button>
+                  {/* Tooltip */}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 px-4 py-2 bg-black/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
+                    <div className="text-center">
+                      See how foresight and orchestration connect vision to execution.
+                    </div>
+                    {/* Arrow */}
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-black/90"></div>
+                  </div>
+                </div>
+
+                {/* SARAH AI Button with Tooltip */}
+                <div className="relative group">
+                  <Button
+                    variant="outline"
+                    onClick={() => scrollToSection('sarah-ai')}
+                    className="border-white bg-white text-blue-500 px-8 py-4 text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
+                    style={{ fontFamily: '"Bower-Bold", sans-serif' }}
+                  >
+                    Discover&nbsp;SARAH&nbsp;AI
+                  </Button>
+                  {/* Tooltip */}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 px-4 py-2 bg-black/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
+                    <div className="text-center">
+                      Our intelligent platform that automates, cleans, and guides transformation.
+                    </div>
+                    {/* Arrow */}
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-black/90"></div>
+                  </div>
+                </div>
               </div>
             </div>
             {/* Right Section - Empty for now, can be used for additional content */}

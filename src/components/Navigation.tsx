@@ -79,6 +79,10 @@ const Navigation = () => {
             { label: 'Finance Transformation', action: () => { window.location.href = '/services/finance-transformation'; } },
             { label: 'Supply Chain Transformation', action: () => { window.location.href = '/services/supply-chain-transformation'; } },
             { label: 'Cloud & Platforms', action: () => { window.location.href = '/services/cloud-platforms'; } },
+              { label: 'AI Services', action: () => { window.location.href = '/services/ai'; } },
+              { label: 'Enterprise Orchestration (EO)', action: () => { window.location.href = '/services/enterprise-orchestration'; } },
+
+       
           ]
         },
         {
