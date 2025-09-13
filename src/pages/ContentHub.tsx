@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase, hasSupabaseEnv } from '@/lib/supabaseClient';
+const storageBucket = (import.meta as any)?.env?.VITE_SUPABASE_STORAGE_BUCKET || 'media';
 import { useParams, Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -12,66 +13,97 @@ type ContentItem = {
   title: string;
   excerpt?: string;
   cover_image_url?: string;
+  featured_image_id?: number;
   slug: string;
-  section: string; // e.g., services | solutions | products | industries
   created_at: string;
-  subcategory?: string; // Added for three-level routes
 };
 
-async function fetchContent(type: ContentType, section?: string, subcategory?: string) {
+async function fetchContent(type: ContentType, section?: string, subcategory?: string, subitem?: string) {
   if (!hasSupabaseEnv) return [] as ContentItem[];
   
   console.log(`Fetching ${type} content for section: ${section || 'all'}, subcategory: ${subcategory || 'all'}`);
   
-  // Check if the requested section conflicts with service routes
-  if (section) {
-    const serviceSections = ['ai', 'finance-transformation', 'cloud-platforms', 'supply-chain-transformation', 'sap-erp-transformation', 'enterprise-orchestration'];
-    const solutionSections = ['transformation-control-tower', 'partner-ecosystem-strategy', 'ai-data-tactical'];
-    
-    if (serviceSections.includes(section) || solutionSections.includes(subcategory || '')) {
-      console.warn(`Section '${section}' or subcategory '${subcategory}' conflicts with service routes. This should not be handled by the ${type} system.`);
-      throw new Error(`Section '${section}' or subcategory '${subcategory}' is not available for ${type}. Please use the appropriate service page instead.`);
+  const baseTable = type === 'blogs' ? 'blog_posts' : 'insights_content';
+  const mappingTable = type === 'blogs' ? 'blog_post_tags' : 'insights_content_tags';
+  const idColumn = type === 'blogs' ? 'blog_post_id' : 'insights_content_id';
+
+  // Resolve navigation scope from URL (category/item/subitem)
+  let navItemIds: number[] | null = null;
+  let itemIdForPath: number | null = null;
+  {
+    const sectionSlug = type; // 'blogs' or 'insights'
+    const { data: sections } = await supabase.from('navigation_sections').select('id,slug').eq('slug', sectionSlug).limit(1);
+    const sec = sections && sections[0];
+    if (sec && section) {
+      const { data: cats } = await supabase.from('navigation_categories').select('id,slug').eq('section_id', sec.id).eq('slug', section).limit(1);
+      const cat = cats && cats[0];
+      if (cat) {
+        if (subcategory) {
+          const { data: items } = await supabase.from('navigation_items').select('id,slug').eq('category_id', cat.id).eq('slug', subcategory).limit(1);
+          const it = items && items[0];
+          if (it) {
+            itemIdForPath = it.id as number;
+            navItemIds = [it.id as number];
+          }
+        } else {
+          const { data: items } = await supabase.from('navigation_items').select('id').eq('category_id', cat.id);
+          navItemIds = (items || []).map((r:any)=>r.id as number);
+        }
+      }
     }
-    
-    console.log(`Filtering by section: ${section}${subcategory ? `, subcategory: ${subcategory}` : ''}`);
   }
-  
-  let query = supabase.from(type).select('*').order('created_at', { ascending: false });
-  if (section) {
-    query = query.eq('section', section);
+
+  // Build required tag slugs based on URL (only subitem strictly required for 3-level URLs)
+  const requiredTagSlugs = [subitem].filter(Boolean) as string[];
+  let allowedIdsByTags: Set<number> | null = null;
+  for (const tagSlug of requiredTagSlugs) {
+    const { data: tagRows } = await supabase.from('content_tags').select('id').eq('slug', tagSlug as string).maybeSingle();
+    const tagId = tagRows?.id as number | undefined;
+    if (!tagId) { allowedIdsByTags = null; break; }
+    const { data: mapRows } = await supabase.from(mappingTable).select(idColumn).eq('tag_id', tagId);
+    const ids = new Set<number>((mapRows || []).map((r: any) => r[idColumn] as number));
+    allowedIdsByTags = allowedIdsByTags ? new Set([...allowedIdsByTags].filter(x => ids.has(x))) : ids;
+    if (allowedIdsByTags.size === 0) { allowedIdsByTags = null; break; }
   }
-  if (subcategory) {
-    query = query.eq('subcategory', subcategory);
+
+  let contentQuery = supabase
+    .from(baseTable)
+    .select('*')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+  if (navItemIds && navItemIds.length > 0) contentQuery = contentQuery.in('navigation_item_id', navItemIds);
+  if (allowedIdsByTags && allowedIdsByTags.size > 0) contentQuery = contentQuery.in('id', Array.from(allowedIdsByTags));
+  const { data, error } = await contentQuery;
+  if (error) throw error;
+  const items = (data || []) as unknown as ContentItem[];
+
+  // Attach cover_image_url from media_files if featured_image_id is present
+  const mediaIds = Array.from(new Set((items as any[])
+    .map((i:any)=>i.featured_image_id)
+    .filter((x:any)=>typeof x === 'number')));
+  if (mediaIds.length > 0) {
+    const { data: media } = await supabase.from('media_files').select('id,file_path');
+    const map = new Map((media||[]).map((m:any)=>[m.id, m.file_path]));
+    (items as any[]).forEach((i:any)=>{
+      if (i.featured_image_id && map.has(i.featured_image_id)) {
+        const fp = map.get(i.featured_image_id) as string;
+        if (fp.startsWith('http')) i.cover_image_url = fp;
+        else {
+          const { data: pub } = supabase.storage.from(storageBucket).getPublicUrl(fp);
+          i.cover_image_url = pub?.publicUrl || undefined;
+        }
+      }
+    });
   }
-  
-  const { data, error } = await query;
-  
-  if (error) {
-    console.error('Supabase query error:', error);
-    throw error;
-  }
-  
-  // Filter out items that might conflict with service routes
-  const filteredData = data?.filter(item => {
-    // Don't show items with sections that are actual service routes
-    const serviceSections = ['ai', 'finance-transformation', 'cloud-platforms', 'supply-chain-transformation', 'sap-erp-transformation', 'enterprise-orchestration'];
-    const solutionSections = ['transformation-control-tower', 'partner-ecosystem-strategy', 'ai-data-tactical'];
-    
-    if (serviceSections.includes(item.section) || solutionSections.includes(item.subcategory || '')) {
-      console.log(`Filtering out item with conflicting section: ${item.section} or subcategory: ${item.subcategory}`);
-      return false;
-    }
-    return true;
-  });
-  
-  console.log(`Fetched ${data?.length || 0} items, filtered to ${filteredData?.length || 0} items for ${type}`);
-  return (filteredData as unknown) as ContentItem[];
+  return items;
 }
 
-const Card: React.FC<{ item: ContentItem; basePath: string }> = ({ item, basePath }) => {
+const Card: React.FC<{ item: ContentItem; basePath: string; section?: string; subcategory?: string; subitem?: string }> = ({ item, basePath, section, subcategory, subitem }) => {
   return (
     <Link
-      to={`/${basePath}/${item.section}/${item.subcategory || 'general'}/${item.slug}`}
+      to={subitem
+        ? `/${basePath}/${section || 'all'}/${subcategory || 'all'}/${subitem}/${item.slug}`
+        : `/${basePath}/${section || 'all'}/${subcategory || 'all'}/p/${item.slug}`}
       className="group relative rounded-2xl overflow-hidden shadow hover:shadow-lg transition-shadow bg-white"
     >
       <div className="h-40 w-full bg-gray-100 overflow-hidden">
@@ -82,7 +114,7 @@ const Card: React.FC<{ item: ContentItem; basePath: string }> = ({ item, basePat
         )}
       </div>
       <div className="p-4">
-        <div className="text-xs uppercase tracking-wide text-blue-600 mb-1">{item.section}{item.subcategory ? ` · ${item.subcategory}` : ''}</div>
+        <div className="text-xs uppercase tracking-wide text-blue-600 mb-1">{section}{subcategory ? ` · ${subcategory}` : ''}{subitem ? ` · ${subitem}` : ''}</div>
         <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 line-clamp-2">{item.title}</h3>
         {item.excerpt && <p className="text-sm text-gray-600 mt-2 line-clamp-3">{item.excerpt}</p>}
       </div>
@@ -95,12 +127,13 @@ const ContentHub: React.FC<{ type: ContentType }> = ({ type }) => {
   const params = useParams();
   const section = (params.section as string | undefined) || undefined;
   const subcategory = (params.subcategory as string | undefined) || undefined;
+  const subitem = (params.subitem as string | undefined) || undefined;
   
   console.log(`ContentHub: type=${type}, section=${section}, subcategory=${subcategory}, params=`, params);
   
   const { data, isLoading, error } = useQuery({
-    queryKey: ['content', type, section, subcategory],
-    queryFn: () => fetchContent(type, section, subcategory),
+    queryKey: ['content', type, section, subcategory, subitem],
+    queryFn: () => fetchContent(type, section, subcategory, subitem),
   });
 
   return (
@@ -139,7 +172,7 @@ const ContentHub: React.FC<{ type: ContentType }> = ({ type }) => {
           {data && data.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {data.map((item) => (
-                <Card key={item.id} item={item} basePath={basePath} />
+                <Card key={item.id} item={item} basePath={basePath} section={section} subcategory={subcategory} subitem={subitem} />
               ))}
             </div>
           ) : !isLoading && !error ? (

@@ -29,6 +29,11 @@ import PESSolution from "./pages/PESSolution";
 import AIDATASolution from "./pages/AIDATASolution";
 import EnterpriseOrchestration from "./pages/EnterpriseOrchestration";
 import OurStory from "./pages/OurStory";
+import AdminDashboard from "./pages/admin/Dashboard";
+import NavigationManagement from "./pages/admin/NavigationManagement";
+import BlogManagement from "./pages/admin/BlogManagement";
+import InsightsManagement from "./pages/admin/InsightsManagement";
+import TagManagement from "./pages/admin/TagManagement";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -51,6 +56,12 @@ const App = () => (
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/admin/content" element={<AdminContent />} />
+          {/* Public Admin (no auth) */}
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/navigation" element={<NavigationManagement />} />
+          <Route path="/admin/blogs" element={<BlogManagement />} />
+          <Route path="/admin/insights" element={<InsightsManagement />} />
+          <Route path="/admin/tags" element={<TagManagement />} />
           
           {/* Specific service routes - must come BEFORE dynamic blog routes */}
           <Route path="/services/ai" element={<AIServices />} />
@@ -73,8 +84,14 @@ const App = () => (
           <Route path="/insights/:section" element={<ContentHub type="insights" />} />
           <Route path="/blogs/:section/:subcategory" element={<ContentHub type="blogs" />} />
           <Route path="/insights/:section/:subcategory" element={<ContentHub type="insights" />} />
-          <Route path="/blogs/:section/:subcategory/:slug" element={<ContentDetail type="blogs" />} />
-          <Route path="/insights/:section/:subcategory/:slug" element={<ContentDetail type="insights" />} />
+          <Route path="/blogs/:section/:subcategory/:subitem" element={<ContentHub type="blogs" />} />
+          <Route path="/insights/:section/:subcategory/:subitem" element={<ContentHub type="insights" />} />
+          {/* Detail routes: two-layer detail uses /p/:slug to avoid conflict with subitem listings */}
+          <Route path="/blogs/:section/:subcategory/p/:slug" element={<ContentDetail type="blogs" />} />
+          <Route path="/insights/:section/:subcategory/p/:slug" element={<ContentDetail type="insights" />} />
+          {/* Three-layer detail remains four segments */}
+          <Route path="/blogs/:section/:subcategory/:subitem/:slug" element={<ContentDetail type="blogs" />} />
+          <Route path="/insights/:section/:subcategory/:subitem/:slug" element={<ContentDetail type="insights" />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
