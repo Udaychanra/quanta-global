@@ -34,6 +34,9 @@ import NavigationManagement from "./pages/admin/NavigationManagement";
 import BlogManagement from "./pages/admin/BlogManagement";
 import InsightsManagement from "./pages/admin/InsightsManagement";
 import TagManagement from "./pages/admin/TagManagement";
+import Offerings from "./pages/Offerings";
+import Enablers from "./pages/Enablers";
+import Industries from "./pages/Industries";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -45,6 +48,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/offerings" element={<Offerings />} />
+          <Route path="/enablers" element={<Enablers />} />
+          <Route path="/industries" element={<Industries />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/our-story" element={<OurStory />} />
           <Route path="/team" element={<Team />} />
