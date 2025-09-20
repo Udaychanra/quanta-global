@@ -78,11 +78,11 @@ const HeroSection = () => {
                 {/* EO Button with Tooltip */}
                 <div className="relative group">
                   <Button
-                    onClick={() => scrollToSection('eo-framework')}
+                    onClick={() => window.location.href = '/enterprise-orchestration'}
                     className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105"
                     style={{ fontFamily: '"Bower-Bold", sans-serif' }}
                   >
-                    EO
+                    Explore Our EO
                   </Button>
                   {/* Tooltip */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 px-4 py-2 bg-black/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
@@ -98,7 +98,7 @@ const HeroSection = () => {
                 <div className="relative group">
                   <Button
                     variant="outline"
-                    onClick={() => scrollToSection('sarah-ai')}
+                    onClick={() => window.location.href = '/products'}
                     className="border-white bg-white text-blue-500 px-8 py-4 text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
                     style={{ fontFamily: '"Bower-Bold", sans-serif' }}
                   >

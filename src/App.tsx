@@ -37,6 +37,7 @@ import TagManagement from "./pages/admin/TagManagement";
 import Offerings from "./pages/Offerings";
 import Enablers from "./pages/Enablers";
 import Industries from "./pages/Industries";
+import Leadership from "./pages/Leadership";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/offerings" element={<Offerings />} />
           <Route path="/enablers" element={<Enablers />} />
           <Route path="/industries" element={<Industries />} />
+          <Route path="/leadership" element={<Leadership />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/our-story" element={<OurStory />} />
           <Route path="/team" element={<Team />} />
