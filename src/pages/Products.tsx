@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import { ArrowRight, Brain, Zap, Target, Clock, Users, BarChart3, CheckCircle, Sparkles, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import AboutSection3 from '@/components/our-story/about-section';
+import { FeatureSteps } from '@/components/our-story/features-section';
+import { CTA } from '@/components/our-story/call-to-action';
 import ProductsHero from '@/components/ProductsHero';
 import SarahAIIntro from '@/components/SarahAIIntro';
 import SarahAIWhatItDoes from '@/components/SarahAIWhatItDoes';
@@ -14,53 +13,121 @@ import SarahAIImpact from '@/components/SarahAIImpact';
 import SarahAIClosing from '@/components/SarahAIClosing';
 
 const Products = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
+  const sarahFeatures = [
+    {
+      step: 'Productivity',
+      title: 'AI-Powered Efficiency',
+      content: 'Handles repetitive tasks and frees your team\'s time for strategic work that actually matters.',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop'
+    },
+    {
+      step: 'Personality',
+      title: 'Adaptive Intelligence',
+      content: 'Learns how your team works and adapts to your unique processes and preferences.',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop'
+    },
+    {
+      step: 'Precision',
+      title: 'Anticipatory Insights',
+      content: 'Surfaces insights before you even ask, anticipating your needs with intelligent automation.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop'
+    },
+    {
+      step: 'Integration',
+      title: 'Seamless Connectivity',
+      content: 'Connects ERP, CRM, and cloud systems natively for unified enterprise intelligence.',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop'
+    }
+  ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Beta signup:', formData);
-    // Handle form submission
-  };
+  const sarahCapabilities = [
+    {
+      step: 'Enterprise Integration',
+      title: 'Universal System Connectivity',
+      content: 'Works across SAP S/4HANA, ECC, BTP, and any cloud system for comprehensive enterprise coverage.',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop'
+    },
+    {
+      step: 'AI Orchestration',
+      title: 'Intelligent Workflow Automation',
+      content: 'Orchestrates complex business processes with AI-driven decision making and automation.',
+      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop'
+    },
+    {
+      step: 'Data Intelligence',
+      title: 'Real-Time Insights',
+      content: 'Transforms data into actionable insights with real-time analytics and predictive capabilities.',
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop'
+    },
+    {
+      step: 'Human-Centric Design',
+      title: 'Empowering Leadership',
+      content: 'Puts leaders back in control of their time, data, and decisions with intuitive AI assistance.',
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop'
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gray-200">
       <Navigation />
-      
-      {/* New Products Hero Section */}
-      <ProductsHero />
+      <main className="section-padding">
+        <div className="section-container mt-10">
+          {/* Hero Section */}
+          {/* <AboutSection3 /> */}
+
+          {/* SARAH AI Core Features */}
+          <div className="bg-white rounded-2xl shadow-lg mb-16 mt-10">
+            <FeatureSteps 
+              features={sarahFeatures}
+              title="SARAH AI Core Features"
+              autoPlayInterval={4000}
+              imageHeight="h-[500px]"
+            />
+          </div>
+
+          {/* SARAH AI Capabilities */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-100 rounded-2xl shadow-lg mb-16">
+            <FeatureSteps 
+              features={sarahCapabilities}
+              title="SARAH AI Capabilities"
+              autoPlayInterval={4000}
+              imageHeight="h-[500px]"
+            />
+          </div>
       
       {/* SARAH AI Intro Section */}
+          <div className="bg-white rounded-2xl shadow-lg mb-16">
       <SarahAIIntro />
+          </div>
       
       {/* SARAH AI What It Does Section */}
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-100 rounded-2xl shadow-lg mb-16">
       <SarahAIWhatItDoes />
+          </div>
       
       {/* SARAH AI Capabilities Section */}
+          <div className="bg-white rounded-2xl shadow-lg mb-16">
       <SarahAICapabilities />
+          </div>
       
       {/* SARAH AI Embedded Across Transformation Section */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-100 rounded-2xl shadow-lg mb-16">
       <SarahAIEmbedded />
+          </div>
       
       {/* SARAH AI Impact Section */}
+          <div className="bg-white rounded-2xl shadow-lg mb-16">
       <SarahAIImpact />
+          </div>
       
       {/* SARAH AI Closing Section */}
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-100 rounded-2xl shadow-lg mb-16">
       <SarahAIClosing />
+          </div>
       
       {/* Embedded Verver AI App */}
-      <section className="section-padding bg-white relative z-10">
+          <div className="bg-white rounded-2xl shadow-lg mb-16">
+            <section className="section-padding relative z-10">
         <div className="section-container">
           <h2 className="text-2xl md:text-3xl font-bold text-blue-700 mb-6 text-center">Try Verver AI (Beta)</h2>
           <div className="flex justify-center">
@@ -73,155 +140,12 @@ const Products = () => {
           </div>
         </div>
       </section>
-
-      {/* What is SARAH Section */}
-      <section className="section-padding bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-blue-50/50"></div>
-        <div className="section-container relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-6">
-              <Sparkles className="h-4 w-4" />
-              Revolutionary AI Technology
-            </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-              What is SARAH?
-            </h2>
-            <div className="max-w-6xl mx-auto space-y-6 text-left">
-              <p className="text-xl text-gray-700 leading-relaxed">
-                SARAH AI (Smart Autonomous Responsive Assistant for Humans) is an AI-native productivity layer built for SAP—on S/4HANA, ECC, or BTP.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                SARAH is not just for SAP … its any cloud any Systems … Sarah is the intelligent assistant that speaks ERP, CRM, and cloud natively—connecting the dots so your people can focus on what matters.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                She puts the human at the center, turning fragmented systems into seamless action, and everyday work into real impact. At Sarah, we build AI that puts leaders back in control—of their time, their data, and their decisions.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                In a world shaped by volatility, complexity, and relentless change, business resilience isn't just a goal—it's a survival instinct. Sarah helps forward-thinking executives lead with clarity by transforming disconnected systems into unified, intelligent workflows.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                We engineer computationally efficient AI designed to live across your enterprise stack—from ERP to CRM to cloud—so intelligence doesn't sit in silos, it moves with you. Whether you're scaling operations, navigating market disruption, or unlocking productivity across teams, Sarah turns friction into flow and data into direction.
-              </p>
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100 mt-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our vision is simple:</h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  When every process is powered by intelligence, leaders are free to focus on what only humans can do—make bold moves, see around corners, and build the future.
-                </p>
-              </div>
-            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              <div className="relative text-center space-y-6 p-8 bg-white rounded-3xl shadow-xl transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl border border-gray-100">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Zap className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Productivity</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Handles repetitive tasks and frees your team's time for strategic work that actually matters.
-                </p>
-              </div>
-            </div>
-
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              <div className="relative text-center space-y-6 p-8 bg-white rounded-3xl shadow-xl transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl border border-gray-100">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Brain className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Personality</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Learns how your team works and adapts to your unique processes and preferences.
-                </p>
-              </div>
-            </div>
-
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-teal-600 rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              <div className="relative text-center space-y-6 p-8 bg-white rounded-3xl shadow-xl transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl border border-gray-100">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Target className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Precision</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Surfaces insights before you even ask, anticipating your needs with intelligent automation.
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* Call to Action */}
+          <CTA />
         </div>
-      </section>
-
-      {/* Private Beta CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
-        </div>
-        <div className="section-container relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-6">
-              <Star className="h-4 w-4" />
-              Limited Time Opportunity
-            </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900">
-              Join the Private Beta
-            </h2>
-            <p className="text-xl mb-12 text-gray-700 max-w-3xl mx-auto">
-              We're selecting a limited number of partners for our private beta. Be among the first to experience the future of SAP productivity.
-            </p>
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-10 max-w-2xl mx-auto shadow-2xl border border-white/20">
-              <form 
-                action="https://script.google.com/macros/s/AKfycbwG-qjQsqSjGB2n8LhHt_ZV5mZkiHGFz7lUuMn80kCpTEYxGegQ6Jur1cq4o_VBzIpR/exec"
-                method="POST"
-                target="_blank"
-                className="space-y-6"
-              >
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    className="bg-white/90 border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-300 h-12"
-                  />
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    required
-                    className="bg-white/90 border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-300 h-12"
-                  />
-                </div>
-                <Input
-                  type="text"
-                  name="company"
-                  placeholder="Company Name"
-                  className="bg-white/90 border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-300 h-12"
-                />
-                <Textarea
-                  name="message"
-                  placeholder="Tell us about your SAP challenges..."
-                  rows={4}
-                  className="bg-white/90 border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-300 resize-none"
-                />
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 font-bold text-lg py-4 rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105"
-                >
-                  Request Beta Access
-                  <CheckCircle className="ml-2 h-5 w-5" />
-                </Button>
-                <p className="text-xs text-gray-500 mt-2">We respect your privacy. Your information will never be shared.</p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      </main>
       <Footer />
     </div>
   );
