@@ -48,13 +48,13 @@ const TechSpecs: React.FC = () => {
             transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
           }}
         >
-          <h6 className="text-sm font-semibold text-[#8B4513] uppercase tracking-wide mb-4">
+          <h6 className="text-sm font-body-medium text-[#8B4513] uppercase tracking-wide mb-4">
             TECH SPECS
           </h6>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-heading text-gray-900 mb-6">
             Specifications
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 font-body">
             Our Solutions built to run on variety of Hardware devices.
           </p>
         </div>
@@ -69,7 +69,7 @@ const TechSpecs: React.FC = () => {
         >
           {specs.map((spec, index) => (
             <div key={index} className="text-center">
-              <h4 className="text-xl font-bold text-gray-900 mb-4 uppercase">
+              <h4 className="text-xl font-subheading text-gray-900 mb-4 uppercase">
                 {spec.title}
               </h4>
               
@@ -82,7 +82,7 @@ const TechSpecs: React.FC = () => {
                     <svg className="w-4 h-4 text-[#4CAF50] mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-gray-600 text-left">{item}</span>
+                    <span className="text-gray-600 text-left font-body">{item}</span>
                   </li>
                 ))}
               </ul>

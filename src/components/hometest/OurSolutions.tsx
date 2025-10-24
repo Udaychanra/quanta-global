@@ -49,10 +49,10 @@ const OurSolutions: React.FC = () => {
             transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
           }}
         >
-          <h2 className="text-xl md:text-2xl font-semibold text-[#222] mb-3 font-serif tracking-tight">
+          <h2 className="text-xl md:text-2xl font-subheading text-[#222] mb-3 tracking-tight">
             Our Solutions
           </h2>
-          <p className="text-[14px] md:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed mb-1">
+          <p className="text-[14px] md:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed mb-1 font-body">
             SwiftAI provides perception solutions across a broad range of industries, from Retail and Smart Home to Government. 
             The SwiftAI platform is designed to be useful from the very start, from application-specific, out-of-the-box models to easy integration with edge devices and the cloud. The result is secure data, decreased data processing costs, and faster, more accurate insights.
           </p>
@@ -85,11 +85,11 @@ const OurSolutions: React.FC = () => {
               </div>
               {/* Card Body */}
               <div className="flex flex-col flex-1 px-7 py-7 md:py-6">
-                <h3 className="text-[15px] font-bold text-gray-900 mb-2">{solution.title}</h3>
-                <p className="text-[13px] text-gray-700 leading-relaxed mb-4">{solution.description}</p>
+                <h3 className="text-[15px] font-subheading text-gray-900 mb-2">{solution.title}</h3>
+                <p className="text-[13px] text-gray-700 leading-relaxed mb-4 font-body">{solution.description}</p>
                 <a
                   href="#contact"
-                  className="mt-auto text-[12px] text-[#4694dc] hover:text-[#27557d] font-medium transition-colors underline underline-offset-2"
+                  className="mt-auto text-[12px] text-[#4694dc] hover:text-[#27557d] font-body-medium transition-colors underline underline-offset-2"
                 >
                   Request Demo &rsaquo;
                 </a>

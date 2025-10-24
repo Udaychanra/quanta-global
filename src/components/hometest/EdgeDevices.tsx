@@ -63,10 +63,10 @@ const EdgeDevices: React.FC = () => {
                     <span className="text-2xl">{feature.icon}</span>
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl font-bold text-white mb-2">
+                    <h4 className="text-xl font-subheading text-white mb-2">
                       {feature.title}
                     </h4>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed font-body">
                       {feature.description}
                     </p>
                   </div>

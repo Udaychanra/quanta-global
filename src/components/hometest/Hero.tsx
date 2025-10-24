@@ -59,23 +59,11 @@ const Hero: React.FC = () => {
                 transition: "opacity 0.7s",
               }}
             >
-              <h1 className="text-white font-bold text-[2rem] md:text-[2.5rem] lg:text-[2.7rem] xl:text-[2.9rem] leading-tight mb-1"
-                  style={{
-                    fontFamily: "serif",
-                    letterSpacing: "-.02em",
-                  }}
+              <h1 className="text-white font-display text-[2rem] md:text-[2.5rem] lg:text-[2.7rem] xl:text-[2.9rem] mb-1"
               >
                 {headlines[0].title}
               </h1>
-              <p className="text-white text-base md:text-lg xl:text-lg mb-0 font-normal tracking-tight"
-                style={{
-                  fontFamily: "serif",
-                  marginTop: '0px',
-                  marginBottom: '0px',
-                  opacity: 0.95,
-                  lineHeight: 1.3,
-                  maxWidth: '720px',
-                }}
+              <p className="text-white text-base md:text-lg xl:text-lg mb-0 font-body"
               >{headlines[0].subtitle}</p>
             </div>
             <div
@@ -86,23 +74,11 @@ const Hero: React.FC = () => {
                 transition: "opacity 0.7s",
               }}
             >
-              <h2 className="text-white font-bold text-[2rem] md:text-[2.5rem] lg:text-[2.7rem] xl:text-[2.9rem] leading-tight mb-1"
-                style={{
-                  fontFamily: "serif",
-                  letterSpacing: "-.02em",
-                }}
+              <h2 className="text-white font-display text-[2rem] md:text-[2.5rem] lg:text-[2.7rem] xl:text-[2.9rem] mb-1"
               >
                 {headlines[1].title}
               </h2>
-              <p className="text-white text-base md:text-lg xl:text-lg mb-0 font-normal tracking-tight"
-                style={{
-                  fontFamily: "serif",
-                  marginTop: '0px',
-                  marginBottom: '0px',
-                  opacity: 0.95,
-                  lineHeight: 1.3,
-                  maxWidth: '620px',
-                }}
+              <p className="text-white text-base md:text-lg xl:text-lg mb-0 font-body"
               >{headlines[1].subtitle}</p>
             </div>
           </div>
@@ -110,7 +86,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-row gap-4 mt-6">
             <a
               href="#studio"
-              className="inline-flex items-center px-6 py-2.5 text-base font-semibold rounded bg-[#F18641] hover:bg-[#e2772f] text-white shadow transition-colors duration-200"
+              className="inline-flex items-center px-6 py-2.5 text-base font-body-medium rounded bg-[#F18641] hover:bg-[#e2772f] text-white shadow transition-colors duration-200"
               style={{ minWidth: '170px', justifyContent: 'center' }}
             >
               Explore Solutions
@@ -120,7 +96,7 @@ const Hero: React.FC = () => {
             </a>
             <a
               href="#edge"
-              className="inline-flex items-center px-6 py-2.5 text-base font-semibold rounded border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#F18641] transition-colors duration-200"
+              className="inline-flex items-center px-6 py-2.5 text-base font-body-medium rounded border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#F18641] transition-colors duration-200"
               style={{ minWidth: '170px', justifyContent: 'center' }}
             >
               <svg className="mr-2 -ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">

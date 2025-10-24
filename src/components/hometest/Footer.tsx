@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             <nav className="flex flex-row space-x-5 mb-[5px]">
               <a
                 href="#studio"
-                className="text-[9px] text-gray-400 hover:text-white font-medium uppercase tracking-wider"
+                className="text-[9px] text-gray-400 hover:text-white font-body-medium uppercase tracking-wider"
                 style={{ letterSpacing: "0.13em" }}
               >
                 SWIFT STUDIO
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               <span className="text-gray-500 text-[8px]">/</span>
               <a
                 href="#edge"
-                className="text-[9px] text-gray-400 hover:text-white font-medium uppercase tracking-wider"
+                className="text-[9px] text-gray-400 hover:text-white font-body-medium uppercase tracking-wider"
                 style={{ letterSpacing: "0.13em" }}
               >
                 SWIFT EDGE
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
               <span className="text-gray-500 text-[8px]">/</span>
               <a
                 href="#cloud"
-                className="text-[9px] text-gray-400 hover:text-white font-medium uppercase tracking-wider"
+                className="text-[9px] text-gray-400 hover:text-white font-body-medium uppercase tracking-wider"
                 style={{ letterSpacing: "0.13em" }}
               >
                 SWIFT CLOUD
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
               <span className="text-gray-500 text-[8px]">/</span>
               <a
                 href="#squad"
-                className="text-[9px] text-gray-400 hover:text-white font-medium uppercase tracking-wider"
+                className="text-[9px] text-gray-400 hover:text-white font-body-medium uppercase tracking-wider"
                 style={{ letterSpacing: "0.13em" }}
               >
                 SWIFT SQUAD
@@ -43,14 +43,14 @@ const Footer: React.FC = () => {
               <span className="text-gray-500 text-[8px]">/</span>
               <a
                 href="#contact"
-                className="text-[9px] text-gray-400 hover:text-white font-medium uppercase tracking-wider"
+                className="text-[9px] text-gray-400 hover:text-white font-body-medium uppercase tracking-wider"
                 style={{ letterSpacing: "0.11em" }}
               >
                 CONTACT US
               </a>
             </nav>
             <p className="text-gray-500 text-[9px] font-normal mt-[5px]">
-              Copyright 2025 © <span className="font-semibold">SwiftAI</span>
+              Copyright 2025 © <span className="font-subheading">SwiftAI</span>
             </p>
           </div>
 

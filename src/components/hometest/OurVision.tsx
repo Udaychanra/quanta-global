@@ -81,14 +81,14 @@ const OurVision: React.FC = () => {
             }}
           >
             <div>
-              <h6 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-3">
+              <h6 className="text-sm font-body-medium text-gray-400 uppercase tracking-wide mb-3">
                 AI TRANSFORMATION
               </h6>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading text-gray-900 mb-8">
                 Our Vision
               </h2>
             </div>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+            <p className="text-lg text-gray-600 leading-relaxed max-w-lg font-body">
               We solve high-impact problems by developing computationally efficient algorithms to enable pervasive artificial intelligence. 
               With our technology, every device – no matter how big or small – will have intelligence. In a more intelligent world, 
               people and businesses are free from manual tasks and can make better decisions much more quickly.

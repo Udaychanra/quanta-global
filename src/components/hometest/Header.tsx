@@ -22,7 +22,7 @@ const Header: React.FC = () => {
                 alt="SwiftAI Logo"
                 className="h-8 w-8"
               />
-              <span className={`text-2xl font-bold transition-colors duration-300 ${
+              <span className={`text-2xl font-heading transition-colors duration-300 ${
                 isScrolled ? 'text-white' : 'text-white'
               }`}>
                
@@ -33,31 +33,31 @@ const Header: React.FC = () => {
           {/* Navigation with Social Links */}
           <div className="hidden md:flex items-center space-x-6">
             <nav className="flex items-center space-x-6">
-              <a href="#studio" className={`font-serif text-sm font-medium transition-colors hover:text-blue-400 ${
+              <a href="#studio" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
                 isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
               }`}>
                 SWIFT STUDIO
               </a>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#edge" className={`font-serif text-sm font-medium transition-colors hover:text-blue-400 ${
+              <a href="#edge" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
                 isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
               }`}>
                 SWIFT EDGE
               </a>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#cloud" className={`font-serif text-sm font-medium transition-colors hover:text-blue-400 ${
+              <a href="#cloud" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
                 isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
               }`}>
                 SWIFT CLOUD
               </a>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#squad" className={`font-serif text-sm font-medium transition-colors hover:text-blue-400 ${
+              <a href="#squad" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
                 isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
               }`}>
                 SWIFT SQUAD
               </a>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#contact" className={`font-serif text-sm font-medium transition-colors hover:text-blue-400 ${
+              <a href="#contact" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
                 isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
               }`}>
                 CONTACT US

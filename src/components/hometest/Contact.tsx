@@ -39,10 +39,10 @@ const Contact: React.FC = () => {
           style={{ background: 'rgba(0,0,0,0.45)', zIndex: 1 }}
         ></div>
         <div className="relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-heading text-white mb-6">
             Get in touch
           </h2>
-          <p className="text-xl text-white max-w-4xl mx-auto">
+          <p className="text-xl text-white max-w-4xl mx-auto font-body">
             Want to get in touch? We'd love to hear from you. Here's how you can reach us…
           </p>
         </div>
@@ -62,15 +62,15 @@ const Contact: React.FC = () => {
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
               </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-4">
+              <h4 className="text-2xl font-subheading text-gray-900 mb-4">
                 Talk to sales
               </h4>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 font-body">
                 Interested in our solutions? Just pick up the phone and call us.
               </p>
               <a
                 href="tel:+919392834067"
-                className="inline-block bg-[#8B4513] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#A0522D] transition-colors"
+                className="inline-block bg-[#8B4513] text-white px-6 py-3 rounded-lg font-body-medium hover:bg-[#A0522D] transition-colors"
               >
                 +91 939-283-4067
               </a>
@@ -83,13 +83,13 @@ const Contact: React.FC = () => {
                   <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
                 </svg>
               </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-4">
+              <h4 className="text-2xl font-subheading text-gray-900 mb-4">
                 Contact support
               </h4>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 font-body">
                 Sometimes you need a little help. Don't worry, We're here for you.
               </p>
-              <button className="bg-[#8B4513] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#A0522D] transition-colors">
+              <button className="bg-[#8B4513] text-white px-6 py-3 rounded-lg font-body-medium hover:bg-[#A0522D] transition-colors">
                 CONTACT SUPPORT
               </button>
             </div>
@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
             className="bg-white rounded-xl p-8 shadow-lg max-w-7xl mx-auto"
           >
             <div className="text-center mb-8">
-              <h4 className="text-2xl font-bold text-gray-900 mb-4">
+              <h4 className="text-2xl font-subheading text-gray-900 mb-4">
                 Ask a question
               </h4>
               <div className="w-16 h-0.5 bg-gray-300 mx-auto"></div>
@@ -142,7 +142,7 @@ const Contact: React.FC = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#2C3E50] text-white py-3 px-6 rounded-lg hover:bg-[#34495E] transition-colors font-medium"
+                className="w-full bg-[#2C3E50] text-white py-3 px-6 rounded-lg hover:bg-[#34495E] transition-colors font-body-medium"
               >
                 SUBMIT
               </button>

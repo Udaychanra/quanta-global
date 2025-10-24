@@ -35,13 +35,13 @@ const Workforce: React.FC = () => {
             }}
           >
             <div>
-              <h6 className="text-sm font-semibold text-[#8B4513] uppercase tracking-wide mb-4">
+              <h6 className="text-sm font-body-medium text-[#8B4513] uppercase tracking-wide mb-4">
                 RETHINK WORKFORCE
               </h6>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-heading text-gray-900 mb-6">
                 Workforce On-Demand
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed font-body">
                 Our workforce helps in every phase, Development, Deployment & Support.<br />
                 We help you to better understand your requirement & developing the solution that best suits
               </p>
@@ -63,7 +63,7 @@ const Workforce: React.FC = () => {
                       <svg className="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
-                      <h4 className="text-lg font-medium text-gray-900">
+                      <h4 className="text-lg font-body-medium text-gray-900">
                         {faq.question}
                       </h4>
                     </div>
@@ -98,7 +98,7 @@ const Workforce: React.FC = () => {
                   />
                   
                   {/* Overlay with "1.00" */}
-                  <div className="absolute top-4 left-4 bg-gray-800 text-white px-3 py-1 rounded text-sm font-medium">
+                  <div className="absolute top-4 left-4 bg-gray-800 text-white px-3 py-1 rounded text-sm font-body-medium">
                     1.00
                   </div>
                 </div>

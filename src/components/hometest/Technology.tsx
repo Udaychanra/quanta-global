@@ -57,13 +57,13 @@ const Technology: React.FC = () => {
                 transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
               }}
             >
-              <h6 className="text-sm font-semibold text-[#ADFF2F] uppercase tracking-wide mb-4">
+              <h6 className="text-sm font-body-medium text-[#ADFF2F] uppercase tracking-wide mb-4">
                 DISRUPTIVE TECHNOLOGY
               </h6>
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
+              <h2 className="text-4xl md:text-6xl font-heading text-white mb-8 leading-tight">
                 We Built Our Solutions using State of the art AI Tools
               </h2>
-              <button className="bg-gray-300 text-gray-800 px-6 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">
+              <button className="bg-gray-300 text-gray-800 px-6 py-2 text-sm font-body-medium hover:bg-gray-200 transition-colors">
                 Know more
               </button>
             </div>
@@ -76,12 +76,12 @@ const Technology: React.FC = () => {
                 transition: 'transform 0.8s ease-out'
               }}
             >
-              <p className="text-lg text-white leading-relaxed">
+              <p className="text-lg text-white leading-relaxed font-body">
                 Much of the recent innovation within machine learning has revolved around scaling up models. 
                 These large models allow for more complex ideas and tasks to be captured at the cost of 
                 massively increased hardware requirements.
               </p>
-              <p className="text-lg text-white leading-relaxed">
+              <p className="text-lg text-white leading-relaxed font-body">
                 SwiftAI has developed a suite of innovative algorithms that compress and optimize state of 
                 the art models to work with hardware that is more than an order of magnitude smaller than 
                 that used by competitors.
@@ -104,10 +104,10 @@ const Technology: React.FC = () => {
               <div className="mb-6">
                 {feature.image}
               </div>
-              <h3 className="text-xl font-bold text-white mb-4 text-center">
+              <h3 className="text-xl font-subheading text-white mb-4 text-center">
                 {feature.title}
               </h3>
-              <p className="text-gray-300 text-center">
+              <p className="text-gray-300 text-center font-body">
                 {feature.description.split(' / ').map((part, partIndex) => (
                   <span key={partIndex}>
                     {partIndex > 0 && ' / '}
