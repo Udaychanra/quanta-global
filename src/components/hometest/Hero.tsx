@@ -17,6 +17,16 @@ const Hero: React.FC = () => {
   const { ref: parallaxRef, offsetY } = useParallax(0.3);
   const { ref: fadeRef, isVisible } = useFadeInOnScroll(0.2);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setShowPrimary((prev) => !prev);
@@ -84,8 +94,8 @@ const Hero: React.FC = () => {
           </div>
           {/* CTA Buttons - side by side, beneath subheading, orange and outlined white */}
           <div className="flex flex-row gap-4 mt-6">
-            <a
-              href="#studio"
+            <button
+              onClick={() => scrollToSection('solutions')}
               className="inline-flex items-center px-6 py-2.5 text-base font-body-medium rounded bg-[#F18641] hover:bg-[#e2772f] text-white shadow transition-colors duration-200"
               style={{ minWidth: '170px', justifyContent: 'center' }}
             >
@@ -93,9 +103,9 @@ const Hero: React.FC = () => {
               <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
-            </a>
-            <a
-              href="#edge"
+            </button>
+            <button
+              onClick={() => scrollToSection('edge')}
               className="inline-flex items-center px-6 py-2.5 text-base font-body-medium rounded border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#F18641] transition-colors duration-200"
               style={{ minWidth: '170px', justifyContent: 'center' }}
             >
@@ -103,7 +113,7 @@ const Hero: React.FC = () => {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
               </svg>
               Watch Products
-            </a>
+            </button>
           </div>
         </div>
         {/* Carousel Indicators (visually hidden to match the screenshot, but logic preserved for a11y/future use) */}

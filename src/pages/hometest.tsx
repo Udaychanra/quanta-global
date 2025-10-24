@@ -17,17 +17,34 @@ const HomeTest: React.FC = () => {
     <div id="top" className="min-h-screen">
       <Header />
       <main>
-        <Hero />
-        <OurVision />
-        <OurSolutions />
-        <Technology />
-       
-        <EdgeConnectivity />
-        <EdgeDevices />
-        <TechSpecs />
-        <CloudConnectivity />
-        <Workforce />
-        <Contact />
+        <section id="studio">
+          <Hero />
+        </section>
+        <section id="vision">
+          <OurVision />
+        </section>
+        <section id="solutions">
+          <OurSolutions />
+        </section>
+        <section id="technology">
+          <Technology />
+        </section>
+        <section id="edge">
+          <EdgeConnectivity />
+          <EdgeDevices />
+        </section>
+        <section id="specs">
+          <TechSpecs />
+        </section>
+        <section id="cloud">
+          <CloudConnectivity />
+        </section>
+        <section id="squad">
+          <Workforce />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
       <Footer />
     </div>

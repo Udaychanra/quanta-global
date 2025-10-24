@@ -4,6 +4,16 @@ import { useScroll } from '../../hooks/useScroll';
 const Header: React.FC = () => {
   const { isScrolled } = useScroll();
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   return (
     <header 
       className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -33,35 +43,50 @@ const Header: React.FC = () => {
           {/* Navigation with Social Links */}
           <div className="hidden md:flex items-center space-x-6">
             <nav className="flex items-center space-x-6">
-              <a href="#studio" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
-                isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
-              }`}>
+              <button 
+                onClick={() => scrollToSection('studio')}
+                className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
+                  isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
+                }`}
+              >
                 SWIFT STUDIO
-              </a>
+              </button>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#edge" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
-                isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
-              }`}>
+              <button 
+                onClick={() => scrollToSection('edge')}
+                className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
+                  isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
+                }`}
+              >
                 SWIFT EDGE
-              </a>
+              </button>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#cloud" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
-                isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
-              }`}>
+              <button 
+                onClick={() => scrollToSection('cloud')}
+                className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
+                  isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
+                }`}
+              >
                 SWIFT CLOUD
-              </a>
+              </button>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#squad" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
-                isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
-              }`}>
+              <button 
+                onClick={() => scrollToSection('squad')}
+                className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
+                  isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
+                }`}
+              >
                 SWIFT SQUAD
-              </a>
+              </button>
               <div className="h-4 w-px bg-gray-400"></div>
-              <a href="#contact" className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
-                isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
-              }`}>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className={`font-body text-sm font-body-medium transition-colors hover:text-blue-400 ${
+                  isScrolled ? 'text-gray-300' : 'text-white hover:text-blue-300'
+                }`}
+              >
                 CONTACT US
-              </a>
+              </button>
               <div className="h-4 w-px bg-gray-400"></div>
             </nav>
 
