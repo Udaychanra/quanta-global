@@ -38,6 +38,7 @@ import Offerings from "./pages/Offerings";
 import Enablers from "./pages/Enablers";
 import Industries from "./pages/Industries";
 import Leadership from "./pages/Leadership";
+import HomeTest from "./pages/hometest";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -100,7 +101,8 @@ const App = () => (
           {/* Three-layer detail remains four segments */}
           <Route path="/blogs/:section/:subcategory/:subitem/:slug" element={<ContentDetail type="blogs" />} />
           <Route path="/insights/:section/:subcategory/:subitem/:slug" element={<ContentDetail type="insights" />} />
-          
+          <Route path="/hometest" element={<HomeTest />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

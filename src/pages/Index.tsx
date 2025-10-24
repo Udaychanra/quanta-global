@@ -14,12 +14,15 @@ import OfficeLocationsSection from '@/components/OfficeLocationsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import ModelMonitor from '@/components/ModelMonitor';
+import Header from '@/components/hometest/Header';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+   
       <Navigation />
       <HeroSection />
+  
       {/* <VideoHeroSection /> */}
       {/* <WhyItMattersSection /> */}
       {/* <ValuePropositionSection /> */}
