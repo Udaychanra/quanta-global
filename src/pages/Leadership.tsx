@@ -16,6 +16,14 @@ const Leadership = () => {
       expertise: ['AI Operating Models', 'Enterprise Blueprints', 'Regulated Industries']
     },
     {
+      step: 'Chief Financial Officer',
+      title: 'Mehul Dave',
+      content: 'Mehul is the Chief Financial Officer of Quanta Global and is responsible for the company’s finance function end to end. He manages all finance operations, including planning, reporting, and controls, and partners with the leadership team to ensure that Quanta’s growth, investments, and product bets are grounded in clear financial discipline and long term sustainability.',
+      image: '/mehul.jpeg',
+      credentials: 'CFO, Finance Operations Expert',
+      expertise: ['Financial Planning', 'Reporting & Controls', 'Strategic Finance', 'Business Sustainability']
+    },
+    {
       step: 'Chairman',
       title: 'Remani Challagundla',
       content: 'Remani is the Chairman of Quanta Global and brings over 30 years of experience as an operating executive, board member, investor, and chairman. He works closely with the CEO and leadership team to provide steady guidance, thoughtful challenge, and strategic oversight, helping Quanta grow in a way that serves both C level clients and the long term health of the business.',
@@ -32,14 +40,7 @@ const Leadership = () => {
       expertise: ['Full-Stack Development', 'Scalable Applications', 'Enterprise Operations Optimization', 'User Experience Enhancement']
     },
     
-    {
-      step: 'Industry Advisor, Financial Services',
-      title: 'Ajay Chowdavarapu',
-      content: 'Ajay is a seasoned financial services leader with deep experience in housing finance, risk, and large scale operations. As Industry Advisor for Financial Services at Quanta Global, he brings a practitioner\'s view of regulation, credit, and complex portfolios, helping ensure that Quanta\'s AI operating models and product fabric reflect the real constraints and opportunities inside major financial institutions. His insight keeps our work grounded, trusted, and ready for use in high stakes environments.',
-      image: '/ajay.jpeg',
-      credentials: 'Financial Services Leader, Housing Finance & Risk Expert',
-      expertise: ['Financial Regulation', 'Credit Risk Management', 'Housing Finance', 'Large Scale Operations']
-    }
+   
   ];
 
 
