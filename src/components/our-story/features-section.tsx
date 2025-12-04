@@ -89,7 +89,8 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
+              "order-1 md:order-2 relative h-[300px] md:h-[400px] lg:h-[600px] overflow-hidden rounded-lg",
+              imageHeight
             )}
           >
             <AnimatePresence mode="wait">
@@ -109,7 +110,7 @@ export function FeatureSteps({
                         alt={feature.step}
                         className="w-full h-full object-cover transition-transform transform"
                         width={1000}
-                        height={500}
+                        height={600}
                       />
                       <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent" />
                     </motion.div>

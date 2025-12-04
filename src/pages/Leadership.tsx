@@ -8,60 +8,46 @@ import { CTA } from '@/components/our-story/call-to-action';
 const Leadership = () => {
   const leadershipTeam = [
     {
-      step: 'Chief Executive Officer',
-      title: 'Sarah Mitchell',
-      content: 'Visionary leader with 20+ years in enterprise transformation. Former McKinsey partner specializing in AI-driven business strategy and digital orchestration.',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=2070&auto=format&fit=crop',
-      credentials: 'MBA Harvard, Former McKinsey Partner',
-      expertise: ['Strategic Leadership', 'AI Strategy', 'Enterprise Transformation']
+      step: 'Founder & Chief Executive Officer',
+      title: 'Smitha Dave',
+      content: 'Smitha is the Founder and CEO of Quanta Global and an experienced enterprise transformation leader with a Big 4 consulting background. She works with C level executives in financial services, manufacturing, and other regulated industries to design AI powered operating models and enterprise blueprints that align strategy, core systems, and daily operations. At Quanta, she leads advisory and product teams that focus on the foundation, helping clients build the data, value, and integration fabric that AI products and agents need to operate safely and effectively at enterprise scale.',
+      image: '/smitha2.jpeg',
+      credentials: 'Big 4 Consulting Background, Enterprise Transformation Expert',
+      expertise: ['AI Operating Models', 'Enterprise Blueprints', 'Regulated Industries']
     },
     {
-      step: 'Chief Technology Officer',
-      title: 'Dr. Michael Chen',
-      content: 'AI pioneer and enterprise architect with deep expertise in machine learning, data orchestration, and scalable cloud platforms.',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop',
-      credentials: 'PhD Computer Science MIT, Former Google AI Lead',
-      expertise: ['Artificial Intelligence', 'Cloud Architecture', 'Machine Learning']
+      step: 'Chairman',
+      title: 'Remani Challagundla',
+      content: 'Remani is the Chairman of Quanta Global and brings over 30 years of experience as an operating executive, board member, investor, and chairman. He works closely with the CEO and leadership team to provide steady guidance, thoughtful challenge, and strategic oversight, helping Quanta grow in a way that serves both C level clients and the long term health of the business.',
+      image: '/smitha.jpeg',
+      credentials: '30+ Years Operating Executive, Board Member, Investor, Chairman',
+      expertise: ['Strategic Oversight', 'Governance', 'Enterprise Transformation', 'AI Strategy']
     },
     {
-      step: 'Chief Operating Officer',
-      title: 'Jennifer Rodriguez',
-      content: 'Operations excellence leader with proven track record in large-scale enterprise implementations and program management.',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop',
-      credentials: 'MBA Stanford, Former Accenture Managing Director',
-      expertise: ['Program Management', 'Operations Excellence', 'Change Management']
+      step: 'Software Developer',
+      title: 'Sid  Nallella',
+      content: 'Sid is Quanta Global\'s data science leader and AI architect, specialising in enterprise AI applications, predictive analytics, and intelligent automation solutions. He designs the models and systems that sit on top of Quanta\'s data, value, and integration fabric, turning complex datasets into practical AI products and agents that can operate safely and reliably at enterprise scale.',
+      image: '/sid.jpeg',
+      credentials: 'Full-Stack Development Specialist, Scalable Digital Solutions Expert',
+      expertise: ['Full-Stack Development', 'Scalable Applications', 'Enterprise Operations Optimization', 'User Experience Enhancement']
     },
+    
     {
-      step: 'Chief Innovation Officer',
-      title: 'David Thompson',
-      content: 'Innovation catalyst focused on emerging technologies, digital transformation, and next-generation enterprise solutions.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop',
-      credentials: 'MS Engineering Caltech, Former Microsoft Innovation Lead',
-      expertise: ['Innovation Strategy', 'Emerging Technologies', 'Digital Transformation']
-    },
-    {
-      step: 'Head of Client Success',
-      title: 'Lisa Park',
-      content: 'Client success champion with deep understanding of enterprise challenges and proven ability to drive measurable outcomes.',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2070&auto=format&fit=crop',
-      credentials: 'MBA Wharton, Former Deloitte Principal',
-      expertise: ['Client Success', 'Enterprise Solutions', 'Outcome Delivery']
-    },
-    {
-      step: 'Head of AI & Data',
-      title: 'Dr. Alex Kumar',
-      content: 'Data science leader specializing in enterprise AI applications, predictive analytics, and intelligent automation solutions.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2070&auto=format&fit=crop',
-      credentials: 'PhD Statistics Berkeley, Former Amazon ML Director',
-      expertise: ['Data Science', 'Machine Learning', 'Predictive Analytics']
+      step: 'Industry Advisor, Financial Services',
+      title: 'Ajay Chowdavarapu',
+      content: 'Ajay is a seasoned financial services leader with deep experience in housing finance, risk, and large scale operations. As Industry Advisor for Financial Services at Quanta Global, he brings a practitioner\'s view of regulation, credit, and complex portfolios, helping ensure that Quanta\'s AI operating models and product fabric reflect the real constraints and opportunities inside major financial institutions. His insight keeps our work grounded, trusted, and ready for use in high stakes environments.',
+      image: '/ajay.jpeg',
+      credentials: 'Financial Services Leader, Housing Finance & Risk Expert',
+      expertise: ['Financial Regulation', 'Credit Risk Management', 'Housing Finance', 'Large Scale Operations']
     }
   ];
 
+
   const leadershipPrinciples = [
     {
-      step: 'Visionary Leadership',
-      title: 'Future-Focused Strategy',
-      content: 'Our leaders anticipate market trends and position QuantaGlobal at the forefront of enterprise transformation, driving innovation that shapes tomorrow\'s business landscape.',
+      step: 'Foundation-First Approach',
+      title: 'Building the AI Fabric',
+      content: 'Most enterprises try to add AI on top of fragmented systems and data. At Quanta, our leadership focuses on the foundation, building the data, value, and integration fabric that AI products and agents need to operate safely and effectively in production. This fabric is the basis for Quanta\'s AI offerings, designed to let organizations move from isolated pilots to a true, enterprise-level AI operating layer.',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop'
     },
     {
@@ -108,12 +94,12 @@ const Leadership = () => {
           {/* <AboutSection3 /> */}
 
           {/* Leadership Team */}
-          <div className="bg-white rounded-2xl shadow-lg mb-16 mt-10">
+          <div className="bg-white rounded-2xl shadow-lg mb-6 mt-1">
             <FeatureSteps 
               features={leadershipTeam}
               title="Meet Our Leadership Team"
               autoPlayInterval={6000}
-              imageHeight="h-[600px]"
+              imageHeight="h-auto"
             />
           </div>
 
