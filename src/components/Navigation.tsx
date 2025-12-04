@@ -38,6 +38,15 @@ const Navigation = () => {
   // Navigation items with three-level structure (default fallback)
   const defaultNavigationItems: TopNav[] = [
     {
+      label: 'Home',
+      items: [
+        {
+          label: 'Home',
+          action: () => { window.location.href = '/'; }
+        }
+      ]
+    },
+    {
       label: 'Who we are',
       items: [
         {
@@ -540,8 +549,9 @@ const Navigation = () => {
       };
       ensureSimple('Careers', '/careers');
       ensureSimple('Contact Us', '/contact');
+      ensureSimple('Home', '/');
 
-      const ordered = ['Who we are', 'What we do', 'Blogs', 'Insights', 'Careers', 'Contact Us'];
+      const ordered = ['Home', 'Who we are', 'What we do', 'Blogs', 'Insights', 'Careers', 'Contact Us'];
       built.sort((a, b) => ordered.indexOf(a.label) - ordered.indexOf(b.label));
 
       setNavigationItems(built);
@@ -657,15 +667,15 @@ const Navigation = () => {
               >
                 <button
                   className="flex items-center text-blue-800 hover:text-blue-300 transition-colors"
-                  // If Careers or Contact Us, make the button directly clickable
+                  // If Home, Careers or Contact Us, make the button directly clickable
                   onClick={
-                    (item.label === 'Careers' || item.label === 'Contact Us')
+                    (item.label === 'Home' || item.label === 'Careers' || item.label === 'Contact Us')
                       ? item.items[0].action
                       : undefined
                   }
                 >
                   {item.label}
-                  <ChevronDown className="ml-1 h-4 w-4" />
+                  {(item.label !== 'Home' && item.label !== 'Careers' && item.label !== 'Contact Us') && <ChevronDown className="ml-1 h-4 w-4" />}
                 </button>
                 {/* Dropdown Menu */}
                 {activeDropdown === item.label && (
@@ -674,8 +684,8 @@ const Navigation = () => {
                     const hasTwoLevels = item.items.some((i: any) => i.subItems && i.subItems.length > 0);
                     const isMega = hasThreeLevels || hasTwoLevels;
                     
-                    // If Careers or Contact Us, do not show dropdown
-                    if (item.label === 'Careers' || item.label === 'Contact Us') {
+                    // If Home, Careers or Contact Us, do not show dropdown
+                    if (item.label === 'Home' || item.label === 'Careers' || item.label === 'Contact Us') {
                       return null;
                     }
                     if (!isMega) {
