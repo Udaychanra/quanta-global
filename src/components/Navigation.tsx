@@ -47,6 +47,15 @@ const Navigation = () => {
       ]
     },
     {
+      label: 'SARAH AI Platform',
+      items: [
+        {
+          label: 'SARAH AI Platform',
+          action: () => { window.location.href = '/sarah-ai-platform'; }
+        }
+      ]
+    },
+    {
       label: 'Who we are',
       items: [
         {
@@ -235,6 +244,7 @@ const Navigation = () => {
         },
       ]
     },
+   
     {
       label: 'Blogs',
       items: [
@@ -407,48 +417,49 @@ const Navigation = () => {
         },
       ]
     },
-    {
-      label: 'Insights',
-      items: [
-        {
-          label: 'Trending Topics',
-          action: () => { window.location.href = '/insights/trending'; },
-          subItems: [
-            { label: 'Artificial Intelligence & Gen AI', action: () => { window.location.href = '/insights/trending/ai-genai'; } },
-            { label: 'Business Resilience', action: () => { window.location.href = '/insights/trending/business-resilience'; } },
-            { label: 'Case Studies', action: () => { window.location.href = '/insights/trending/case-studies'; } },
-            { label: 'CEO Excellence', action: () => { window.location.href = '/insights/trending/ceo-excellence'; } },
-            { label: 'Geopolitics', action: () => { window.location.href = '/insights/trending/geopolitics'; } },
-            { label: 'Tariffs and Global Trade', action: () => { window.location.href = '/insights/trending/tariffs-trade'; } },
-          ]
-        },
-        {
-          label: 'Explore',
-          action: () => { window.location.href = '/insights/explore'; },
-          subItems: [
-            { label: 'Author Talks', action: () => { window.location.href = '/insights/explore/author-talks'; } },
-            { label: 'Global Surveys', action: () => { window.location.href = '/insights/explore/global-surveys'; } },
-            { label: 'Quanta Explainers', action: () => { window.location.href = '/insights/explore/explainers'; } },
-            { label: 'Quanta Live', action: () => { window.location.href = '/insights/explore/live'; } },
-            { label: 'Quanta on Books', action: () => { window.location.href = '/insights/explore/books'; } },
-            { label: 'Quanta on Lives & Legacies', action: () => { window.location.href = '/insights/explore/lives-legacies'; } },
-            { label: 'Quanta Podcast', action: () => { window.location.href = '/insights/explore/podcast'; } },
-            { label: 'Quanta Themes', action: () => { window.location.href = '/insights/explore/themes'; } },
-            { label: 'Quanta Video', action: () => { window.location.href = '/insights/explore/video'; } },
-            { label: 'Week in Charts', action: () => { window.location.href = '/insights/explore/week-in-charts'; } },
-          ]
-        },
-        {
-          label: 'Featured',
-          action: () => { window.location.href = '/insights/featured'; },
-          subItems: [
-            { label: 'Ask Quanta', action: () => { window.location.href = '/insights/featured/ask-quanta'; } },
-            { label: 'Quanta Quarterly', action: () => { window.location.href = '/insights/featured/quarterly'; } },
-            { label: 'Quanta Global Institute', action: () => { window.location.href = '/insights/featured/global-institute'; } },
-          ]
-        },
-      ]
-    },
+   
+    // {
+    //   label: 'Insights',
+    //   items: [
+    //     {
+    //       label: 'Trending Topics',
+    //       action: () => { window.location.href = '/insights/trending'; },
+    //       subItems: [
+    //         { label: 'Artificial Intelligence & Gen AI', action: () => { window.location.href = '/insights/trending/ai-genai'; } },
+    //         { label: 'Business Resilience', action: () => { window.location.href = '/insights/trending/business-resilience'; } },
+    //         { label: 'Case Studies', action: () => { window.location.href = '/insights/trending/case-studies'; } },
+    //         { label: 'CEO Excellence', action: () => { window.location.href = '/insights/trending/ceo-excellence'; } },
+    //         { label: 'Geopolitics', action: () => { window.location.href = '/insights/trending/geopolitics'; } },
+    //         { label: 'Tariffs and Global Trade', action: () => { window.location.href = '/insights/trending/tariffs-trade'; } },
+    //       ]
+    //     },
+    //     {
+    //       label: 'Explore',
+    //       action: () => { window.location.href = '/insights/explore'; },
+    //       subItems: [
+    //         { label: 'Author Talks', action: () => { window.location.href = '/insights/explore/author-talks'; } },
+    //         { label: 'Global Surveys', action: () => { window.location.href = '/insights/explore/global-surveys'; } },
+    //         { label: 'Quanta Explainers', action: () => { window.location.href = '/insights/explore/explainers'; } },
+    //         { label: 'Quanta Live', action: () => { window.location.href = '/insights/explore/live'; } },
+    //         { label: 'Quanta on Books', action: () => { window.location.href = '/insights/explore/books'; } },
+    //         { label: 'Quanta on Lives & Legacies', action: () => { window.location.href = '/insights/explore/lives-legacies'; } },
+    //         { label: 'Quanta Podcast', action: () => { window.location.href = '/insights/explore/podcast'; } },
+    //         { label: 'Quanta Themes', action: () => { window.location.href = '/insights/explore/themes'; } },
+    //         { label: 'Quanta Video', action: () => { window.location.href = '/insights/explore/video'; } },
+    //         { label: 'Week in Charts', action: () => { window.location.href = '/insights/explore/week-in-charts'; } },
+    //       ]
+    //     },
+    //     {
+    //       label: 'Featured',
+    //       action: () => { window.location.href = '/insights/featured'; },
+    //       subItems: [
+    //         { label: 'Ask Quanta', action: () => { window.location.href = '/insights/featured/ask-quanta'; } },
+    //         { label: 'Quanta Quarterly', action: () => { window.location.href = '/insights/featured/quarterly'; } },
+    //         { label: 'Quanta Global Institute', action: () => { window.location.href = '/insights/featured/global-institute'; } },
+    //       ]
+    //     },
+    //   ]
+    // },
     {
       label: 'Careers',
       items: [
@@ -550,8 +561,9 @@ const Navigation = () => {
       ensureSimple('Careers', '/careers');
       ensureSimple('Contact Us', '/contact');
       ensureSimple('Home', '/');
+      ensureSimple('SARAH AI Platform', '/sarah-ai-platform');
 
-      const ordered = ['Home', 'Who we are', 'What we do', 'Blogs', 'Insights', 'Careers', 'Contact Us'];
+      const ordered = ['Home', 'Who we are', 'What we do', 'SARAH AI Platform', 'Blogs', 'Insights', 'Careers', 'Contact Us'];
       built.sort((a, b) => ordered.indexOf(a.label) - ordered.indexOf(b.label));
 
       setNavigationItems(built);
@@ -669,13 +681,13 @@ const Navigation = () => {
                   className="flex items-center text-blue-800 hover:text-blue-300 transition-colors"
                   // If Home, Careers or Contact Us, make the button directly clickable
                   onClick={
-                    (item.label === 'Home' || item.label === 'Careers' || item.label === 'Contact Us')
+                    (item.label === 'Home' || item.label === 'Careers' || item.label === 'Contact Us' || item.label === 'SARAH AI Platform')
                       ? item.items[0].action
                       : undefined
                   }
                 >
                   {item.label}
-                  {(item.label !== 'Home' && item.label !== 'Careers' && item.label !== 'Contact Us') && <ChevronDown className="ml-1 h-4 w-4" />}
+                  {(item.label !== 'Home' && item.label !== 'Careers' && item.label !== 'Contact Us' && item.label !== 'SARAH AI Platform') && <ChevronDown className="ml-1 h-4 w-4" />}
                 </button>
                 {/* Dropdown Menu */}
                 {activeDropdown === item.label && (
@@ -685,7 +697,7 @@ const Navigation = () => {
                     const isMega = hasThreeLevels || hasTwoLevels;
                     
                     // If Home, Careers or Contact Us, do not show dropdown
-                    if (item.label === 'Home' || item.label === 'Careers' || item.label === 'Contact Us') {
+                    if (item.label === 'Home' || item.label === 'Careers' || item.label === 'Contact Us' || item.label === 'SARAH AI Platform') {
                       return null;
                     }
                     if (!isMega) {

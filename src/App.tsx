@@ -28,6 +28,7 @@ import TCTSolutions from "./pages/TCTSolutions";
 import PESSolution from "./pages/PESSolution";
 import AIDATASolution from "./pages/AIDATASolution";
 import EnterpriseOrchestration from "./pages/EnterpriseOrchestration";
+import SarahAIPlatform from "./pages/SarahAIPlatform";
 import OurStory from "./pages/OurStory";
 import AdminDashboard from "./pages/admin/Dashboard";
 import NavigationManagement from "./pages/admin/NavigationManagement";
@@ -82,6 +83,7 @@ const App = () => (
           
           {/* Enterprise Orchestration main page */}
           <Route path="/enterprise-orchestration" element={<EnterpriseOrchestration />} />
+          <Route path="/sarah-ai-platform" element={<SarahAIPlatform />} />
           
           {/* Specific solution routes - must come BEFORE dynamic blog routes */}
           <Route path="/solutions/transformation-control-tower" element={<TCTSolutions />} />
