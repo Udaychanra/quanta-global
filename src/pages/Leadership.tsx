@@ -25,7 +25,7 @@ const Leadership = () => {
     },
     {
       step: 'Chairman',
-      title: 'Remani Challagundla',
+      title: 'Rama Challa',
       content: 'Remani is the Chairman of Quanta Global and brings over 30 years of experience as an operating executive, board member, investor, and chairman. He works closely with the CEO and leadership team to provide steady guidance, thoughtful challenge, and strategic oversight, helping Quanta grow in a way that serves both C level clients and the long term health of the business.',
       image: '/smitha.jpeg',
       credentials: '30+ Years Operating Executive, Board Member, Investor, Chairman',
