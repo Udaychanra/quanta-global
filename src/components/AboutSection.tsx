@@ -27,8 +27,7 @@ const AboutSection = () => {
       name: "Smitha Dave",
       role: "Founder & Chief Executive Officer",
       description: "Smitha is the Founder and CEO of Quanta Global and an experienced enterprise transformation leader with a Big 4 consulting background.",
-      image: "/smitha2.jpeg"
-  ,
+      image: "/smitha2.jpeg",
     },
     {
       name: "Mehul Dave",
@@ -40,8 +39,7 @@ const AboutSection = () => {
       name: "Rama Challa",
       role: "Chairman",
       description: "30+ years of executive leadership, governance and strategic oversight.",
-      image: "/smitha.jpeg"
-  ,
+      image: "/smitha.jpeg",
     },
     {
       name: "Sid  Nallella",
@@ -172,27 +170,27 @@ const AboutSection = () => {
                   </h4>
                   <div className="w-12 h-1 bg-blue-600 rounded-full"></div>
                 </div>
-                <div className="grid grid-cols-1 gap-8 max-h-[220px] md:max-h-[240px] overflow-y-auto pr-2 scroll-smooth">
+                <div className="grid grid-cols-1 gap-6 max-h-[220px] md:max-h-[240px] overflow-y-auto pr-2 scroll-smooth">
                   {leaders.map((leader) => (
                     <div
                       key={leader.name}
-                      className="flex flex-col md:flex-row items-center gap-6"
+                      className="flex flex-col md:flex-row items-center md:items-start gap-4 p-4 rounded-2xl hover:bg-blue-50/60 transition-colors"
                       onMouseEnter={() => setActiveLeader(leader)}
                     >
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="w-20 h-20 rounded-full object-cover border-2 border-blue-200 mb-2 md:mb-0 cursor-pointer"
-                      style={{
-                        objectPosition:
-                          leader.name === "Rama Challa"
-                            ? "center top"
-                            : leader.name === "Sid  Nallella"
-                            ? "center 20%"
-                            : "center"
-                      }}
-                      onMouseEnter={() => setActiveLeader(leader)}
-                    />
+                      <img
+                        src={leader.image}
+                        alt={leader.name}
+                        className="w-20 h-20 min-w-[80px] min-h-[80px] rounded-full object-cover border-2 border-blue-200 cursor-pointer"
+                        style={{
+                          objectPosition:
+                            leader.name === "Rama Challa"
+                              ? "center top"
+                              : leader.name === "Sid  Nallella"
+                                ? "center 20%"
+                                : "center",
+                        }}
+                      />
+
                       <div className="text-center md:text-left">
                         <span className="font-bold text-black block">{leader.name}</span>
                         <span className="text-sm text-blue-700 font-medium block">
@@ -240,7 +238,6 @@ const AboutSection = () => {
               </div>
             </div>
           </div>
-        </div>
 
           {/* Blue Accent What Sets Us Apart Section */}
           {/* "What Sets Us Apart" - Card Grid UI like attached image */}
@@ -420,17 +417,26 @@ const AboutSection = () => {
         <div className="-mx-8 md:-mx-16 lg:-mx-32 xl:-mx-48 mt-10">
           <div className="py-12 px-4 md:px-16 lg:px-32 xl:px-48 rounded-2xl border border-blue-100">
             <div className="text-center mb-8">
-              <h3 className="text-xl md:text-2xl font-bold text-black mb-2">Technology Platforms We Master</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-2">
+                Technology Platforms We Master
+              </h3>
               <div className="w-12 h-1 bg-blue-600 mx-auto rounded-full"></div>
             </div>
+
             <div className="relative overflow-x-hidden w-full">
-              <div className="flex whitespace-nowrap animate-tech-marquee will-change-transform items-center" style={{animationDuration: '18s'}}>
+              <div
+                className="flex whitespace-nowrap animate-tech-marquee will-change-transform items-center"
+                style={{ animationDuration: "18s" }}
+              >
                 {techLogos.concat(techLogos).map((logo, idx) => (
-                  <div key={logo.alt + idx} className="mx-6 flex items-center justify-center min-w-[160px] h-[80px] group">
-                    <img 
-                      src={logo.src} 
-                      alt={logo.alt} 
-                      className="h-16 md:h-20 object-contain max-w-[140px] group-hover:scale-105 transition-transform duration-300" 
+                  <div
+                    key={logo.alt + idx}
+                    className="mx-6 flex items-center justify-center min-w-[160px] h-[80px] group"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="h-16 md:h-20 object-contain max-w-[140px] group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 ))}
@@ -438,7 +444,11 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-        <style>{`
+
+        {/* Close Main About Content */}
+        </div>
+
+      <style>{`
           @keyframes tech-marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
