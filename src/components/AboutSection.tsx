@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Users,
   Globe,
@@ -22,35 +21,6 @@ const techLogos = [
 ];
 
 const AboutSection = () => {
-  const leaders = [
-    {
-      name: "Smitha Dave",
-      role: "Founder & Chief Executive Officer",
-      description: "Smitha is the Founder and CEO of Quanta Global and an experienced enterprise transformation leader with a Big 4 consulting background.",
-      image: "/smitha2.jpeg",
-    },
-    {
-      name: "Mehul Dave",
-      role: "Chief Financial Officer",
-      description: "Mehul leads Quanta Global’s finance operations including planning, reporting and controls.",
-      image: "/mehul.jpeg"
-    },
-    {
-      name: "Rama Challa",
-      role: "Chairman",
-      description: "30+ years of executive leadership, governance and strategic oversight.",
-      image: "/smitha.jpeg",
-    },
-    {
-      name: "Sid  Nallella",
-      role: "Chief Operations Officer",
-      description: "Leading operational excellence.",
-      image: "/sid.jpeg",
-    },
-  ];
-
-  const [activeLeader, setActiveLeader] = useState(leaders[0]);
-
   return (
     <section id="about" className="section-padding bg-gray-200 text-black relative overflow-hidden">
       {/* Blue accent background elements */}
@@ -130,76 +100,6 @@ const AboutSection = () => {
                   <p className="text-base md:text-lg text-gray-700 leading-relaxed">
                     Our Navigate + Orchestrate philosophy is the anchor of our EO framework. We help enterprises chart the right course and orchestrate the moving parts—so strategy becomes action, and action becomes impact.
                   </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Leadership: Executive Bios, Credibility */}
-          <div className="flex flex-col md:flex-row items-stretch gap-0 md:gap-0 h-[400px] md:h-[400px] w-full">
-            {/* Left Side Image */}
-            <div className="w-full md:w-1/2 h-[200px] md:h-full flex justify-center items-center bg-transparent group">
-              <img
-                key={activeLeader.image}
-                src={activeLeader.image}
-                alt="Leadership"
-                
-                className={`rounded-3xl shadow-xl w-[94%] h-[94%] object-cover object-top border border-blue-200 ring-1 ring-blue-100 leader-fade-300 transition-all duration-500 ease-in-out bg-white group-hover:shadow-2xl group-hover:scale-[1.02] ${
-                  activeLeader.name === "Rama Challa"
-                    ? "ring-2 ring-blue-300 border-blue-300"
-                    : ""
-                }`}
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectPosition:
-                    activeLeader.name === "Rama Challa"
-                      ? "center 30%"
-                      : activeLeader.name === "Sid  Nallella"
-                        ? "center 18%"
-                        : undefined,
-                }}
-              />
-            </div>
-            {/* Right Side Content */}
-            <div className="w-full md:w-1/2 h-[200px] md:h-full flex items-center bg-white">
-              <div className="bg-white border border-blue-100 rounded-2xl p-8 md:p-12 shadow-sm h-full w-full flex flex-col justify-center">
-                <div className="mb-8">
-                  <h4 className="text-xl md:text-2xl font-bold text-black mb-2">
-                    Leadership
-                  </h4>
-                  <div className="w-12 h-1 bg-blue-600 rounded-full"></div>
-                </div>
-                <div className="grid grid-cols-1 gap-6 max-h-[220px] md:max-h-[240px] overflow-y-auto pr-2 scroll-smooth">
-                  {leaders.map((leader) => (
-                    <div
-                      key={leader.name}
-                      className="flex flex-col md:flex-row items-center md:items-start gap-4 p-4 rounded-2xl hover:bg-blue-50/60 transition-colors"
-                      onMouseEnter={() => setActiveLeader(leader)}
-                    >
-                      <img
-                        src={leader.image}
-                        alt={leader.name}
-                        className="w-20 h-20 min-w-[80px] min-h-[80px] rounded-full object-cover border-2 border-blue-200 cursor-pointer"
-                        style={{
-                          objectPosition:
-                            leader.name === "Rama Challa"
-                              ? "center top"
-                              : leader.name === "Sid  Nallella"
-                                ? "center 20%"
-                                : "center",
-                        }}
-                      />
-
-                      <div className="text-center md:text-left">
-                        <span className="font-bold text-black block">{leader.name}</span>
-                        <span className="text-sm text-blue-700 font-medium block">
-                          {leader.role}
-                        </span>
-                        <p className="text-sm text-gray-600">{leader.description}</p>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
@@ -455,13 +355,6 @@ const AboutSection = () => {
           }
           .animate-tech-marquee {
             animation: tech-marquee linear infinite;
-          }
-          @keyframes leader-fade-300 {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          .leader-fade-300 {
-            animation: leader-fade-300 300ms ease-in-out;
           }
         `}</style>
       
